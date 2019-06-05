@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application Title="Landry's Engineering Project Organizer" Company="David Landry" Copyright="Copyright (C) 2019 {0:Company} ALL RIGHTS RESERVED" Description="The Management Tool for EPC Firms">
+  <Options>
+    <LayoutManagerOptions RequiredFieldMark="*" />
+  </Options>
+  <SchemaModules>
+    <SchemaModule Name="CloneObjectModule" Version="19.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="19.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="19.1.3.0" IsNewNode="True" />
+  </SchemaModules>
+  <Views>
+    <DetailView Id="Instrument_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100" Direction="Horizontal">
+          <LayoutGroup Id="Auto24a70610-cacc-4b89-8694-ce8ef8b82248" ShowCaption="False" Caption="Auto24a70610-cacc-4b89-8694-ce8ef8b82248(2)" Index="0" RelativeSize="59.536784741144416" IsNewNode="True">
+            <LayoutGroup Id="Tag Number" ShowCaption="True" Index="0" RelativeSize="23.634453781512605" IsNewNode="True">
+              <LayoutGroup Id="Tag Number_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                <LayoutItem Id="TagNumber" ViewItem="TagNumber" Index="0" RelativeSize="36.30952380952381" IsNewNode="True" />
+                <LayoutGroup Id="Auto45a9fbb5-f356-415e-bcda-c482013c8993" ShowCaption="False" Caption="Auto45a9fbb5-f356-415e-bcda-c482013c8993(6)" Direction="Horizontal" Index="1" RelativeSize="63.69047619047619" IsNewNode="True">
+                  <LayoutItem Id="OptionalPrefix" ViewItem="OptionalPrefix" CaptionLocation="Bottom" Index="0" RelativeSize="25.595238095238095" IsNewNode="True" />
+                  <LayoutItem Id="Letters" ViewItem="Letters" Index="1" RelativeSize="24.404761904761905" CaptionLocation="Bottom" IsNewNode="True" />
+                  <LayoutItem Id="Number" ViewItem="Number" Index="2" RelativeSize="24.404761904761905" CaptionLocation="Bottom" IsNewNode="True" />
+                  <LayoutItem Id="OptionalSuffix" ViewItem="OptionalSuffix" Index="3" RelativeSize="24.404761904761905" CaptionLocation="Bottom" IsNewNode="True" />
+                  <LayoutItem Id="Item2" Index="4" RelativeSize="1.1904761904761905" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="SimpleEditors" ShowCaption="False" Index="1" RelativeSize="76.3655462184874" IsNewNode="True">
+              <LayoutGroup Id="Area Classification" ShowCaption="True" Index="0" RelativeSize="17.744154057771663" IsNewNode="True">
+                <LayoutGroup Id="Area Classification_col1" ShowCaption="False" Direction="Horizontal" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="Class" ShowCaption="False" ViewItem="Class" Index="0" RelativeSize="16.785714285714285" IsNewNode="True" />
+                  <LayoutItem Id="Div" ShowCaption="False" ViewItem="Div" Index="1" RelativeSize="14.285714285714287" IsNewNode="True" />
+                  <LayoutItem Id="GroupA" ShowCaption="False" ViewItem="GroupA" Index="2" RelativeSize="14.285714285714287" IsNewNode="True" />
+                  <LayoutItem Id="GroupB" ShowCaption="False" ViewItem="GroupB" Index="3" RelativeSize="14.285714285714287" IsNewNode="True" />
+                  <LayoutItem Id="GroupC" ShowCaption="False" ViewItem="GroupC" Index="4" RelativeSize="14.285714285714287" IsNewNode="True" />
+                  <LayoutItem Id="GroupD" ShowCaption="False" ViewItem="GroupD" Index="5" RelativeSize="14.285714285714287" IsNewNode="True" />
+                  <LayoutItem Id="Item1" Index="6" RelativeSize="11.785714285714287" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Instrument" ShowCaption="True" Index="1" RelativeSize="47.867950481430533" IsNewNode="True">
+                <LayoutGroup Id="Instrument_col1" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True">
+                  <LayoutItem Id="ServiceDescription" ViewItem="ServiceDescription" Index="0" RelativeSize="19.934640522875817" IsNewNode="True" />
+                  <LayoutItem Id="InstrumentType" ViewItem="InstrumentType" Index="1" RelativeSize="15.032679738562091" IsNewNode="True" />
+                  <LayoutItem Id="Location" ViewItem="Location" Index="2" RelativeSize="15.032679738562091" IsNewNode="True" />
+                  <LayoutItem Id="IoType" ViewItem="IoType" Index="3" RelativeSize="15.032679738562091" IsNewNode="True" />
+                  <LayoutItem Id="Manufacturer" ViewItem="Manufacturer" Index="4" RelativeSize="15.032679738562091" IsNewNode="True" />
+                  <LayoutItem Id="ModelNumber" ViewItem="ModelNumber" Index="5" RelativeSize="19.934640522875817" IsNewNode="True" />
+                </LayoutGroup>
+              </LayoutGroup>
+              <LayoutGroup Id="Drawings" ShowCaption="True" Index="2" RelativeSize="34.3878954607978" IsNewNode="True">
+                <LayoutItem Id="Pid" ViewItem="Pid" Index="0" RelativeSize="31.606217616580309" IsNewNode="True" />
+                <LayoutItem Id="PlanDrawing" ViewItem="PlanDrawing" Index="1" RelativeSize="68.393782383419691" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Tag Number" Index="0" Direction="Horizontal" ShowCaption="True" Removed="True">
+            <LayoutGroup Id="Tag Number_col1" Index="0" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="TagNumber" ViewItem="TagNumber" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutItem Id="OptionalPrefix" ViewItem="OptionalPrefix" ShowCaption="" Index="1" IsNewNode="True" />
+              <LayoutItem Id="Letters" ViewItem="Letters" ShowCaption="" Index="2" IsNewNode="True" />
+              <LayoutItem Id="Number" ViewItem="Number" ShowCaption="" Index="3" IsNewNode="True" />
+              <LayoutItem Id="OptionalSuffix" ViewItem="OptionalSuffix" ShowCaption="" Index="4" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Area Classification" Direction="Vertical" Index="1" RelativeSize="41.18150684931507" Removed="True">
+            <LayoutGroup Id="Area Classification_col1" RelativeSize="100">
+              <LayoutItem Id="Class" RelativeSize="14.022988505747126" />
+              <LayoutItem Id="Div" RelativeSize="10.574712643678161" />
+              <LayoutItem Id="GroupA" RelativeSize="10.574712643678161" />
+              <LayoutItem Id="GroupB" RelativeSize="10.574712643678161" />
+              <LayoutItem Id="GroupC" RelativeSize="10.574712643678161" />
+              <LayoutItem Id="GroupD" RelativeSize="43.678160919540232" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SimpleEditors" Index="1" Removed="True" />
+          <LayoutGroup Id="SpecSheet_Group" ShowCaption="True" Caption="Spec Sheet" Index="1" RelativeSize="40.463215258855584" IsNewNode="True" Removed="True">
+            <LayoutItem Id="SpecSheet" ShowCaption="False" ViewItem="SpecSheet" Index="0" RelativeSize="100" SizeConstraintsType="Custom" MinSize="560, 285" MaxSize="0, 0" IsNewNode="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Drawings" Caption="Drawings" Index="2" RelativeSize="21.62341982701264" Direction="Horizontal" ShowCaption="True" Removed="True">
+            <LayoutItem Id="Pid" Index="0" RelativeSize="100" Removed="True" />
+            <LayoutItem Id="PlanDrawing" Removed="True" />
+          </LayoutGroup>
+          <LayoutGroup Id="Notes" ShowCaption="True">
+            <LayoutItem Id="Notes" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
