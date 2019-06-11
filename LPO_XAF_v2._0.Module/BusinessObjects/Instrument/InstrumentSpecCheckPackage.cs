@@ -16,11 +16,14 @@ using System.Linq;
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 {
     [DefaultClassOptions, CreatableItem(false), DefaultProperty("CheckPackageName"), NavigationItem("Instrumentation")]
+    [ImageName("BO_Security_Permission_Type")]
     public class InstrumentSpecCheckPackage : BaseObject
     {
         public InstrumentSpecCheckPackage(Session session) : base(session) { }
         public override void AfterConstruction() => base.AfterConstruction();
 
+        FileData ifaPackage;
+        FileData backCheckPackage;
         byte[] notes;
         bool checkFinalized;
         bool backCheckComplete;
@@ -95,13 +98,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         //[CollectionOperationSet(AllowAdd = false, AllowRemove = false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         [Association("Instruments-InstrumentSpecCheckPackages")]
-        public XPCollection<Instrument> Instruments
-        {
-            get
-            {
-                return GetCollection<Instrument>(nameof(Instruments));
-            }
-        }
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
 
 
         public DateTime DateSubmittedToCheck { get => dateSubmittedToCheck; set => SetPropertyValue(nameof(DateSubmittedToCheck), ref dateSubmittedToCheck, value); }
@@ -109,6 +106,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         public FileData OriginalCheckPackage { get => originalCheckPackage; set => SetPropertyValue(nameof(OriginalCheckPackage), ref originalCheckPackage, value); }
         public FileData CheckedPackage { get => checkedPackage; set => SetPropertyValue(nameof(CheckedPackage), ref checkedPackage, value); }
+        public FileData BackCheckPackage { get => backCheckPackage; set => SetPropertyValue(nameof(BackCheckPackage), ref backCheckPackage, value); }
+        public FileData IfaPackage { get => ifaPackage; set => SetPropertyValue(nameof(IfaPackage), ref ifaPackage, value); }
 
 
         public bool SubmittedForCheck { get => submittedForCheck; set => SetPropertyValue(nameof(SubmittedForCheck), ref submittedForCheck, value); }

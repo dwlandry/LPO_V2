@@ -10,6 +10,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Procurement;
 using System;
 using System.Linq;
 
@@ -17,6 +18,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 {
     [DefaultClassOptions]
     [CreatableItem(false), NavigationItem("Instrumentation")]
+    [ImageName("Instrument")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewAndDetailView)]
     public class Instrument : BaseObject
     {
@@ -28,6 +30,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         }
 
 
+
+        ControlSystem controlSystem;
+        string equipmentNumber;
+        string lineNumber;
+        Physical_Instrument physicalOrSoftTag;
         byte[] notes;
         LoopDrawing loopDrawing;
         PID pid;
@@ -68,8 +75,22 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(5), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         [DisplayName("Suffix")]
         public string OptionalSuffix { get => optionalSuffix; set => SetPropertyValue(nameof(OptionalSuffix), ref optionalSuffix, value); }
+        [DisplayName("Physical/Soft Tag")]
+        public Physical_Instrument PhysicalOrSoftTag { get => physicalOrSoftTag; set => SetPropertyValue(nameof(PhysicalOrSoftTag), ref physicalOrSoftTag, value); }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string EquipmentNumber { get => equipmentNumber; set => SetPropertyValue(nameof(EquipmentNumber), ref equipmentNumber, value); }
+
+
+        [Association("ControlSystem-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public ControlSystem ControlSystem { get => controlSystem; set => SetPropertyValue(nameof(ControlSystem), ref controlSystem, value); }
+
         [EditorAlias(EditorAliases.SpreadsheetPropertyEditor)]
         [DetailViewLayoutAttribute(LayoutColumnPosition.Right)]
         public byte[] SpecSheet { get => specSheet; set => SetPropertyValue(nameof(SpecSheet), ref specSheet, value); }
@@ -112,11 +133,19 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public PID Pid { get => pid; set => SetPropertyValue(nameof(Pid), ref pid, value); }
 
         [Association("LoopDrawing-Instruments"), DetailViewLayout("Drawings")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public LoopDrawing LoopDrawing { get => loopDrawing; set => SetPropertyValue(nameof(LoopDrawing), ref loopDrawing, value); }
+
+        [Association("Instrument-VendorDocs"), DetailViewLayout("Drawings"), Aggregated]
+        public XPCollection<VendorDocument> VendorDocs { get { return GetCollection<VendorDocument>(nameof(VendorDocs)); } }
 
         [VisibleInDetailView(false), VisibleInListView(false)]
         [Association("Instruments-InstrumentSpecCheckPackages")]
         public XPCollection<InstrumentSpecCheckPackage> InstrumentSpecCheckPackages { get { return GetCollection<InstrumentSpecCheckPackage>(nameof(InstrumentSpecCheckPackages)); } }
+
+        [Association("Instruments-Quotes")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<InstrumentQuote> Quotes { get { return GetCollection<InstrumentQuote>(nameof(Quotes)); } }
     }
 
     public enum AreaClass_Class
@@ -132,14 +161,26 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         Div2 = 2
     }
 
+    public enum Physical_Instrument
+    {
+        PhysicalInstrument = 0,
+        SoftTag = 1
+    }
+
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
     public class InstrumentType : BaseObject
     {
         public InstrumentType(Session session) : base(session) { }
 
+        byte[] notes;
         string name;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+        [Size(SizeAttribute.Unlimited)]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
     }
 
     public class Manufacturer : BaseObject
@@ -229,4 +270,64 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
             }
         }
     }
+
+    public class ControlSystem : BaseObject
+    {
+        public ControlSystem(Session session) : base(session) { }
+
+
+        Project.Project project;
+        string description;
+        string name;
+
+
+        [Association("Project-ControlSystems")]
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
+
+        [Association("ControlSystem-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
+    }
+
+    public class VendorDocument : BaseObject
+    {
+        public VendorDocument(Session session) : base(session) { }
+
+
+        Instrument instrument;
+        FileData file;
+        string description;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
+
+
+        public FileData File { get => file; set => SetPropertyValue(nameof(File), ref file, value); }
+
+        [Association("Instrument-VendorDocs")]
+        public Instrument Instrument { get => instrument; set => SetPropertyValue(nameof(Instrument), ref instrument, value); }
+
+    }
+
+    [DefaultClassOptions, NavigationItem("Instrumentation")]
+    public class InstrumentQuote : Quote
+    {
+
+        public InstrumentQuote(Session session) : base(session) { }
+
+        Project.Project project;
+
+        [Association("Project-InstrumentQuotes")]
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+        [Association("Instruments-Quotes")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
+    }
+
 }

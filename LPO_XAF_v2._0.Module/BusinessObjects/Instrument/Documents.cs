@@ -4,6 +4,7 @@
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
 //-----------------------------------------------------------------------
+using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
@@ -113,6 +114,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
     }
     [DefaultProperty("DrawingNumber")]
+    [DefaultClassOptions, CreatableItem(false)]
+    [DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
     public class Drawing : BaseObject
     {
         public Drawing(Session session) : base(session) { }

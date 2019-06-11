@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Logo="ExpressAppLogo">
-  <NavigationItems NavigationStyle="NavBar" ShowImages="True" DefaultChildItemsDisplayStyle="List" RootGroupsStyle="OutlookAnimated" StartupNavigationItem="Project_ListView" />
-  <Options UIType="SingleWindowSDI" FormStyle="Ribbon" ShowTabImage="False">
+  <NavigationItems NavigationStyle="NavBar" ShowImages="True" DefaultChildItemsDisplayStyle="LargeIcons" RootGroupsStyle="OutlookAnimated" StartupNavigationItem="Project_ListView" />
+  <Options UIType="TabbedMDI" FormStyle="Ribbon" ShowTabImage="False" Skin="Sharp">
     <LayoutManagerOptions EnableLayoutGroupImages="False" />
   </Options>
   <SchemaModules>
@@ -16,44 +16,62 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="Auto24a70610-cacc-4b89-8694-ce8ef8b82248" RelativeSize="40.212577502214351">
-            <LayoutGroup Id="Tag Number" RelativeSize="21.47887323943662">
+            <LayoutGroup Id="Tag Number" RelativeSize="17.96759941089838">
               <LayoutGroup Id="Tag Number_col1">
-                <LayoutItem Id="TagNumber" RelativeSize="36.363636363636367" />
-                <LayoutGroup Id="Auto45a9fbb5-f356-415e-bcda-c482013c8993" RelativeSize="63.636363636363633">
+                <LayoutGroup Id="Autob9984eb6-bde4-41bb-a66c-1c0aa0565a8b" ShowCaption="False" Caption="Autob9984eb6-bde4-41bb-a66c-1c0aa0565a8b(5)" Direction="Horizontal" Index="0" RelativeSize="39.772727272727273" IsNewNode="True">
+                  <LayoutItem Id="TagNumber" ViewItem="TagNumber" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
+                  <LayoutItem Id="PhysicalOrSoftTag" ViewItem="PhysicalOrSoftTag" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutGroup Id="Auto45a9fbb5-f356-415e-bcda-c482013c8993" RelativeSize="60.227272727272727">
                   <LayoutItem Id="OptionalPrefix" RelativeSize="25.287356321839081" />
                   <LayoutItem Id="Letters" RelativeSize="24.137931034482758" />
                   <LayoutItem Id="Number" RelativeSize="24.137931034482758" />
                   <LayoutItem Id="OptionalSuffix" RelativeSize="24.137931034482758" />
                   <LayoutItem Id="Item2" RelativeSize="2.2988505747126435" />
                 </LayoutGroup>
+                <LayoutItem Id="TagNumber" RelativeSize="36.363636363636367" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="SimpleEditors" RelativeSize="78.521126760563376">
-              <LayoutGroup Id="Area Classification" RelativeSize="16.143497757847534">
+            <LayoutGroup Id="SimpleEditors" RelativeSize="82.032400589101627">
+              <LayoutGroup Id="Area Classification" RelativeSize="12.926391382405745">
                 <LayoutGroup Id="Area Classification_col1" TextAlignMode="AlignWithChildren">
                   <LayoutItem Id="Class" RelativeSize="16.7816091954023" />
-                  <LayoutItem Id="Div" RelativeSize="14.022988505747126" />
+                  <LayoutItem Id="Div" RelativeSize="13.793103448275861" />
                   <LayoutItem Id="GroupA" RelativeSize="15.862068965517242" />
                   <LayoutItem Id="GroupB" RelativeSize="15.632183908045978" />
                   <LayoutItem Id="GroupC" RelativeSize="15.862068965517242" />
                   <LayoutItem Id="GroupD" RelativeSize="15.862068965517242" />
-                  <LayoutItem Id="Item1" RelativeSize="5.9770114942528734" />
+                  <LayoutItem Id="Item1" RelativeSize="6.2068965517241379" />
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutGroup Id="Instrument" RelativeSize="41.704035874439462">
+              <LayoutGroup Id="Instrument" RelativeSize="42.010771992818668">
                 <LayoutGroup Id="Instrument_col1">
-                  <LayoutItem Id="ServiceDescription" RelativeSize="20" />
-                  <LayoutItem Id="InstrumentType" RelativeSize="15" />
-                  <LayoutItem Id="Location" RelativeSize="15" />
-                  <LayoutItem Id="IoType" RelativeSize="15" />
-                  <LayoutItem Id="Manufacturer" RelativeSize="15" />
-                  <LayoutItem Id="ModelNumber" RelativeSize="20" />
+                  <LayoutItem Id="InstrumentType" ViewItem="InstrumentType" Index="0" RelativeSize="15.384615384615385" IsNewNode="True" Removed="True" />
+                  <LayoutItem Id="ServiceDescription" Index="1" ViewItem="ServiceDescription" RelativeSize="11.538461538461538" IsNewNode="True" Removed="True" />
+                  <LayoutGroup Id="Autod3c406b5-209e-4e8b-9548-50d8e02bf3e4" ShowCaption="False" Caption="Autod3c406b5-209e-4e8b-9548-50d8e02bf3e4(28)" Direction="Horizontal" Index="2" RelativeSize="15.865384615384615" GroupStyle="Inherited" IsNewNode="True">
+                    <LayoutItem Id="EquipmentNumber" ViewItem="EquipmentNumber" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
+                    <LayoutItem Id="LineNumber" ViewItem="LineNumber" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Autoda5c7d83-e1ff-49b2-9588-dcaf5a439e61" ShowCaption="False" Caption="Autoda5c7d83-e1ff-49b2-9588-dcaf5a439e61(33)" Direction="Horizontal" Index="3" RelativeSize="57.142857142857146" IsNewNode="True">
+                    <LayoutItem Id="ControlSystem" ViewItem="ControlSystem" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
+                    <LayoutItem Id="IoType" ViewItem="IoType" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutItem Id="IoType" RelativeSize="15" Index="4" Removed="True" />
+                  <LayoutItem Id="Location" ViewItem="Location" Index="4" RelativeSize="42.857142857142854" IsNewNode="True" Removed="True" />
+                  <LayoutItem Id="Manufacturer" RelativeSize="11.538461538461538" Index="5" />
+                  <LayoutItem Id="ModelNumber" RelativeSize="15.384615384615385" Index="6" />
                 </LayoutGroup>
               </LayoutGroup>
-              <LayoutGroup Id="Drawings" RelativeSize="42.152466367713004">
-                <LayoutItem Id="Pid" RelativeSize="20.779220779220779" />
-                <LayoutItem Id="PlanDrawing" RelativeSize="79.220779220779221" />
+              <LayoutGroup Id="Drawings" RelativeSize="20.466786355475762">
+                <LayoutItem Id="Pid" RelativeSize="36.363636363636367" />
+                <LayoutItem Id="PlanDrawing" RelativeSize="27.272727272727273" />
+                <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
               </LayoutGroup>
+              <LayoutGroup Id="Vendor Docs" ShowCaption="True" Index="3" RelativeSize="21.723518850987432" IsNewNode="True">
+                <LayoutItem Id="VendorDocs" ViewItem="VendorDocs" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
+              </LayoutGroup>
+              <SplitterItem Id="SplitterItem3" Index="4" RelativeSize="1.0771992818671454" IsNewNode="True" />
+              <LayoutItem Id="Item3" Index="5" RelativeSize="1.7953321364452424" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
           <SplitterItem Id="SplitterItem1" Index="1" RelativeSize="0.53144375553587242" IsNewNode="True" />

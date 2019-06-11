@@ -333,11 +333,18 @@
       <DependentUpon>XafSplashScreen.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WinApplication.resx">
+      <DependentUpon>WinApplication.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="XafSplashScreen.resx">
       <DependentUpon>XafSplashScreen.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HyperLinkPropertyEditor.Win\HyperLinkPropertyEditor.Win.csproj">
+      <Project>{b8003a32-5d6c-49c5-9216-6bf42edb83bd}</Project>
+      <Name>HyperLinkPropertyEditor.Win</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LPO_XAF_v2._0.Module.Win\LPO_XAF_v2._0.Module.Win.csproj">
       <Project>{7964F87D-BC5D-4C4E-8B2F-71E89739AA97}</Project>
       <Name>LPO_XAF_v2._0.Module.Win</Name>

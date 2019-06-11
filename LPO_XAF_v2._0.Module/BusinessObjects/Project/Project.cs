@@ -16,7 +16,7 @@ using System.Linq;
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
 {
     [DefaultClassOptions, NavigationItem("Projects")]
-    [ImageName("BO_Handshake"), CreatableItem(false), DefaultProperty("DisplayName")]
+    [ImageName("BO_Project"), CreatableItem(false), DefaultProperty("DisplayName")]
     [DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class Project : BaseObject
@@ -24,6 +24,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         public Project(Session session) : base(session) { }
         public override void AfterConstruction() => base.AfterConstruction();
 
+        string projectFolder;
         string clientProjectNumber;
         byte[] scope;
         ProjectStatus status;
@@ -34,6 +35,13 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ProjectNumber { get => projectNumber; set => SetPropertyValue(nameof(ProjectNumber), ref projectNumber, value); }
 
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [EditorAlias("HyperLinkStringPropertyEditor")]
+        public string ProjectFolder
+        {
+            get => projectFolder;
+            set => SetPropertyValue(nameof(ProjectFolder), ref projectFolder, value);
+        }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ClientProjectNumber { get => clientProjectNumber; set => SetPropertyValue(nameof(ClientProjectNumber), ref clientProjectNumber, value); }
 
@@ -89,6 +97,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-JunctionBoxes"), Aggregated]
         [VisibleInListView(false)]
         public XPCollection<Instrument.JunctionBox> JunctionBoxes { get { return GetCollection<Instrument.JunctionBox>(nameof(JunctionBoxes)); } }
+
+        [Association("Project-ControlSystems"), Aggregated]
+        [VisibleInListView(false)]
+        public XPCollection<Instrument.ControlSystem> ControlSystems { get { return GetCollection<Instrument.ControlSystem>(nameof(ControlSystems)); } }
+
+        [Association("Project-InstrumentQuotes")]
+        public XPCollection<Instrument.InstrumentQuote> InstrumentQuotes { get { return GetCollection<Instrument.InstrumentQuote>(nameof(InstrumentQuotes)); } }
+
     }
 
     [DefaultClassOptions, NavigationItem("Projects")]
@@ -98,12 +114,18 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         public Client(Session session) : base(session) { }
         public override void AfterConstruction() => base.AfterConstruction();
 
+        byte[] sitePPERequirements;
         string name;
 
         [Size(50)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
         [Association("Client-Projects")]
         public XPCollection<Project> Projects => GetCollection<Project>(nameof(Projects));
+
+        [DevExpress.Xpo.DisplayName("Site PPE Requirements")]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        public byte[] SitePPERequirements { get => sitePPERequirements; set => SetPropertyValue(nameof(SitePPERequirements), ref sitePPERequirements, value); }
+
     }
 
     public enum ProjectStatus

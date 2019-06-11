@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Landry's Engineering Project Organizer" Company="David Landry" Copyright="Copyright (C) 2019 {0:Company} ALL RIGHTS RESERVED" Description="The Management Tool for EPC Firms">
+  <NavigationItems StartupNavigationItem="Project_ListView">
+    <Items>
+      <Item Id="Instrumentation" ImageName="Instruments">
+        <Items>
+          <Item Id="Instrument_ListView" ImageName="Instruments" Caption="Instruments" />
+        </Items>
+      </Item>
+      <Item Id="Projects" ImageName="BO_Project" />
+    </Items>
+  </NavigationItems>
   <Options>
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
@@ -82,6 +92,45 @@
           </LayoutGroup>
           <LayoutGroup Id="Notes" ShowCaption="True">
             <LayoutItem Id="Notes" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Project_DetailView" AllowDelete="False" />
+    <ListView Id="Project_ListView" AllowDelete="False" />
+    <DetailView Id="Tutorial_DetailView">
+      <Items>
+        <PropertyEditor Id="CreatedBy" AllowEdit="False" />
+        <PropertyEditor Id="DateCreated" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="17.80821917808219">
+            <LayoutGroup Id="Tutorial" RelativeSize="100" Direction="Vertical">
+              <LayoutGroup Id="Tutorial_col1" Caption="Tutorial_col1" RelativeSize="100" Direction="Vertical">
+                <LayoutGroup Id="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a" ShowCaption="False" Caption="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a(5)" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
+                  <LayoutGroup Id="Autoe25358a3-b5a3-46ec-8c67-6f6f59ada0d0" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="DateCreated" ViewItem="DateCreated" Index="0" RelativeSize="34.034165571616292" IsNewNode="True" />
+                    <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="1" RelativeSize="32.982917214191851" IsNewNode="True" />
+                    <LayoutItem Id="SearchableTerms" ViewItem="SearchableTerms" Index="2" RelativeSize="32.982917214191851" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto4c4bd55a-b45f-4c1b-b5a1-51b91ca422aa" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
+                    <LayoutItem Id="Category" ViewItem="Category" Index="0" RelativeSize="38.896189224704337" IsNewNode="True" />
+                    <LayoutItem Id="Topic" ViewItem="Topic" Index="1" RelativeSize="61.103810775295663" IsNewNode="True" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Category" Index="1" RelativeSize="50" Removed="True" />
+                <LayoutItem Id="CreatedBy" Removed="True" />
+                <LayoutItem Id="DateCreated" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Tutorial_col2" RelativeSize="34.559789750328513" Caption="Tutorial_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="SearchableTerms" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Topic" RelativeSize="50" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="Content_Group" Direction="Vertical" RelativeSize="82.1917808219178">
+            <LayoutItem Id="Content" RelativeSize="100" ShowCaption="False" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
