@@ -5,12 +5,15 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
+using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
@@ -18,11 +21,24 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
     [DefaultClassOptions, NavigationItem("Projects")]
     [ImageName("BO_Project"), CreatableItem(false), DefaultProperty("DisplayName")]
     [DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
+    [Appearance("Closed or Lost Bid", TargetItems = "*;Status",
+        Criteria = "Status = 2 | Status = 3", Enabled = false)]
+    [Appearance("Lost Bid", TargetItems = "ProjectNumber, ProjectDescription, DisplayName, ClientProjectNumber, Client",
+        Criteria = "Status = 3", FontColor = "DarkMagenta", FontStyle = FontStyle.Strikeout)]
+    [Appearance("Closed", TargetItems = "ProjectNumber, ProjectDescription, DisplayName, ClientProjectNumber, Client",
+        Criteria = "Status = 2", FontColor = "ForestGreen", FontStyle = FontStyle.Strikeout)]
+    [Appearance("Bid", TargetItems = "ProjectNumber, ProjectDescription, DisplayName, ClientProjectNumber, Client",
+        Criteria = "Status = 0", FontColor = "DarkMagenta")]
+
     // Specify more UI options using a declarative approach (https://documentation.devexpress.com/#eXpressAppFramework/CustomDocument112701).
     public class Project : BaseObject
     {
         public Project(Session session) : base(session) { }
-        public override void AfterConstruction() => base.AfterConstruction();
+        public override void AfterConstruction()
+        {
+            Status = ProjectStatus.Active;
+            base.AfterConstruction();
+        }
 
         string projectFolder;
         string clientProjectNumber;
@@ -33,6 +49,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         string projectNumber;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleUniqueValue("RuleUniqueField for Project.ProjectNumber", DefaultContexts.Save, "The Project Number entered already exists. Please enter a unique Project Number.")]
+        [RuleRequiredField("RuleRequiredField for Project.ProjectNumber", DefaultContexts.Save, "A Project Number must be specified.")]
         public string ProjectNumber { get => projectNumber; set => SetPropertyValue(nameof(ProjectNumber), ref projectNumber, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
@@ -49,6 +67,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         public string ProjectDescription { get => projectDescription; set => SetPropertyValue(nameof(ProjectDescription), ref projectDescription, value); }
 
         [Association("Client-Projects")]
+        [RuleRequiredField("RuleRequiredField for Project.Client", DefaultContexts.Save, "A Client must be specified.")]
         public Client Client { get => client; set => SetPropertyValue(nameof(Client), ref client, value); }
 
         public ProjectStatus Status { get => status; set => SetPropertyValue(nameof(Status), ref status, value); }
@@ -131,8 +150,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
     public enum ProjectStatus
     {
         Bid = 0,
-        Open = 1,
-        Closed = 2
+        Active = 1,
+        Closed = 2,
+        LostBid = 3
+
     }
 
 }

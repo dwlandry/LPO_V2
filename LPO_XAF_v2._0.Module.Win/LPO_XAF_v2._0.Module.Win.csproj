@@ -235,6 +235,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\EnableClickableFileDataObjectInListViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\EnableClickableFileDataObjectInListViewController.Designer.cs">
+      <DependentUpon>EnableClickableFileDataObjectInListViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HideToolBarViewController.cs">
       <SubType>Component</SubType>
     </Compile>
