@@ -15,70 +15,56 @@
     <DetailView Id="Instrument_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
-          <LayoutGroup Id="Auto24a70610-cacc-4b89-8694-ce8ef8b82248" RelativeSize="40.212577502214351">
-            <LayoutGroup Id="Tag Number" RelativeSize="17.96759941089838">
-              <LayoutGroup Id="Tag Number_col1">
-                <LayoutGroup Id="Autob9984eb6-bde4-41bb-a66c-1c0aa0565a8b" ShowCaption="False" Caption="Autob9984eb6-bde4-41bb-a66c-1c0aa0565a8b(5)" Direction="Horizontal" Index="0" RelativeSize="39.772727272727273" IsNewNode="True">
-                  <LayoutItem Id="TagNumber" ViewItem="TagNumber" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
-                  <LayoutItem Id="PhysicalOrSoftTag" ViewItem="PhysicalOrSoftTag" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
-                </LayoutGroup>
-                <LayoutGroup Id="Auto45a9fbb5-f356-415e-bcda-c482013c8993" RelativeSize="60.227272727272727">
-                  <LayoutItem Id="OptionalPrefix" RelativeSize="25.287356321839081" />
-                  <LayoutItem Id="Letters" RelativeSize="24.137931034482758" />
-                  <LayoutItem Id="Number" RelativeSize="24.137931034482758" />
-                  <LayoutItem Id="OptionalSuffix" RelativeSize="24.137931034482758" />
-                  <LayoutItem Id="Item2" RelativeSize="2.2988505747126435" />
-                </LayoutGroup>
-                <LayoutItem Id="TagNumber" RelativeSize="36.363636363636367" Removed="True" />
+          <LayoutGroup Id="Instrument_Group" RelativeSize="20" ImageName="Instrument">
+            <LayoutGroup Id="Tag Number" RelativeSize="24.691358024691358">
+              <LayoutGroup Id="Tag Number_Row1" ShowCaption="False" RelativeSize="50">
+                <LayoutItem Id="TagNumber" RelativeSize="35.030549898167" />
+                <LayoutItem Id="PhysicalOrSoftTag" RelativeSize="32.179226069246432" />
+                <LayoutItem Id="ResponsibleCompany" RelativeSize="32.790224032586558" />
+              </LayoutGroup>
+              <LayoutGroup Id="Tag Number_Row2" Index="1" RelativeSize="50">
+                <LayoutItem Id="OptionalPrefix" RelativeSize="25.254582484725052" />
+                <LayoutItem Id="Letters" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="Number" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="OptionalSuffix" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="Item2" RelativeSize="2.0366598778004072" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="SimpleEditors" RelativeSize="82.032400589101627">
-              <LayoutGroup Id="Area Classification" RelativeSize="12.926391382405745">
-                <LayoutGroup Id="Area Classification_col1" TextAlignMode="AlignWithChildren">
-                  <LayoutItem Id="Class" RelativeSize="16.7816091954023" />
-                  <LayoutItem Id="Div" RelativeSize="13.793103448275861" />
-                  <LayoutItem Id="GroupA" RelativeSize="15.862068965517242" />
-                  <LayoutItem Id="GroupB" RelativeSize="15.632183908045978" />
-                  <LayoutItem Id="GroupC" RelativeSize="15.862068965517242" />
-                  <LayoutItem Id="GroupD" RelativeSize="15.862068965517242" />
-                  <LayoutItem Id="Item1" RelativeSize="6.2068965517241379" />
-                </LayoutGroup>
-              </LayoutGroup>
-              <LayoutGroup Id="Instrument" RelativeSize="42.010771992818668">
-                <LayoutGroup Id="Instrument_col1">
-                  <LayoutItem Id="InstrumentType" ViewItem="InstrumentType" Index="0" RelativeSize="15.384615384615385" IsNewNode="True" Removed="True" />
-                  <LayoutItem Id="ServiceDescription" Index="1" ViewItem="ServiceDescription" RelativeSize="11.538461538461538" IsNewNode="True" Removed="True" />
-                  <LayoutGroup Id="Autod3c406b5-209e-4e8b-9548-50d8e02bf3e4" ShowCaption="False" Caption="Autod3c406b5-209e-4e8b-9548-50d8e02bf3e4(28)" Direction="Horizontal" Index="2" RelativeSize="15.865384615384615" GroupStyle="Inherited" IsNewNode="True">
-                    <LayoutItem Id="EquipmentNumber" ViewItem="EquipmentNumber" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
-                    <LayoutItem Id="LineNumber" ViewItem="LineNumber" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutGroup Id="Autoda5c7d83-e1ff-49b2-9588-dcaf5a439e61" ShowCaption="False" Caption="Autoda5c7d83-e1ff-49b2-9588-dcaf5a439e61(33)" Direction="Horizontal" Index="3" RelativeSize="57.142857142857146" IsNewNode="True">
-                    <LayoutItem Id="ControlSystem" ViewItem="ControlSystem" Index="0" RelativeSize="49.6551724137931" IsNewNode="True" />
-                    <LayoutItem Id="IoType" ViewItem="IoType" Index="1" RelativeSize="50.3448275862069" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutItem Id="IoType" RelativeSize="15" Index="4" Removed="True" />
-                  <LayoutItem Id="Location" ViewItem="Location" Index="4" RelativeSize="42.857142857142854" IsNewNode="True" Removed="True" />
-                  <LayoutItem Id="Manufacturer" RelativeSize="11.538461538461538" Index="5" />
-                  <LayoutItem Id="ModelNumber" RelativeSize="15.384615384615385" Index="6" />
-                </LayoutGroup>
-              </LayoutGroup>
-              <LayoutGroup Id="Drawings" RelativeSize="20.466786355475762">
-                <LayoutItem Id="Pid" RelativeSize="36.363636363636367" />
-                <LayoutItem Id="PlanDrawing" RelativeSize="27.272727272727273" />
-                <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" Index="2" RelativeSize="36.363636363636367" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Vendor Docs" ShowCaption="True" Index="3" RelativeSize="21.723518850987432" IsNewNode="True">
-                <LayoutItem Id="VendorDocs" ViewItem="VendorDocs" ShowCaption="False" Index="0" RelativeSize="100" IsNewNode="True" />
-              </LayoutGroup>
-              <SplitterItem Id="SplitterItem3" Index="4" RelativeSize="1.0771992818671454" IsNewNode="True" />
-              <LayoutItem Id="Item3" Index="5" RelativeSize="1.7953321364452424" IsNewNode="True" />
+            <LayoutGroup Id="Area Classification" TextAlignMode="AlignWithChildren" RelativeSize="11.640211640211641">
+              <LayoutItem Id="Class" RelativeSize="16.700610997963341" />
+              <LayoutItem Id="Div" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupA" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupB" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupC" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupD" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="Item1" RelativeSize="13.034623217922608" />
             </LayoutGroup>
+            <LayoutGroup Id="Instrument" RelativeSize="32.804232804232804">
+              <LayoutItem Id="ServiceDescription" RelativeSize="20" />
+              <LayoutItem Id="InstrumentType" RelativeSize="15" />
+              <LayoutItem Id="Location" RelativeSize="15" />
+              <LayoutItem Id="IoType" RelativeSize="15" />
+              <LayoutItem Id="Manufacturer" RelativeSize="15" />
+              <LayoutItem Id="ModelNumber" RelativeSize="20" />
+            </LayoutGroup>
+            <LayoutGroup Id="Drawings" RelativeSize="30.864197530864196" Index="3">
+              <LayoutItem Id="Pid" RelativeSize="22.695035460992909" />
+              <LayoutItem Id="PlanDrawing" RelativeSize="77.304964539007088" />
+              <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Vendor Docs" Index="4" />
+            <SplitterItem Id="Splitter3" Index="5" RelativeSize="0.5089058524173028" IsNewNode="True" />
+            <LayoutGroup Id="Quotes" Index="6" />
+            <SplitterItem Id="Splitter4" Index="7" RelativeSize="0.5089058524173028" IsNewNode="True" />
           </LayoutGroup>
-          <SplitterItem Id="SplitterItem1" Index="1" RelativeSize="0.53144375553587242" IsNewNode="True" />
-          <LayoutGroup Id="SpecSheet_Group" TextAlignMode="AlignWithChildren" Index="2" RelativeSize="50.841452612931796" />
-          <SplitterItem Id="SplitterItem2" Index="3" RelativeSize="0.53144375553587242" IsNewNode="True" />
-          <LayoutGroup Id="Notes" TextAlignMode="AlignWithChildren" RelativeSize="7.8830823737821083" Index="4">
-            <LayoutItem Id="Notes" RelativeSize="100" />
+          <SplitterItem Id="Splitter1" Index="1" RelativeSize="0.5089058524173028" IsNewNode="True" />
+          <LayoutGroup Id="SpecSheet_Group" Index="2" TextAlignMode="AlignWithChildren" RelativeSize="50" ImageName="Instrument" />
+          <SplitterItem Id="Splitter2" Index="3" RelativeSize="0.5089058524173028" IsNewNode="True" />
+          <LayoutGroup Id="Notes" ShowCaption="True" Index="4" TextAlignMode="AlignWithChildren" RelativeSize="30" ImageName="BO_Note">
+            <LayoutItem Id="Notes" RelativeSize="100" ViewItem="Notes" />
+          </LayoutGroup>
+          <LayoutGroup Id="Quotes_Group" Removed="True">
+            <LayoutItem Id="Quotes" ViewItem="Quotes" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>

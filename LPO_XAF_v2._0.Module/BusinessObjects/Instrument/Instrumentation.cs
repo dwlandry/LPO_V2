@@ -31,6 +31,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
 
 
+        ResponsibleEngineeringCompany responsibleCompany;
         ControlSystem controlSystem;
         string equipmentNumber;
         string lineNumber;
@@ -117,6 +118,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public string Location { get => location; set => SetPropertyValue(nameof(Location), ref location, value); }
         [DisplayName("IO Type"), DetailViewLayout(LayoutColumnPosition.Left)]
         public InstrumentIOType IoType { get => ioType; set => SetPropertyValue(nameof(IoType), ref ioType, value); }
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
 
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         [Size(SizeAttribute.Unlimited)]
@@ -191,15 +194,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
     }
-
-    //public class InstrumentLocation : BaseObject{
-    //    public InstrumentLocation(Session session) : base(session) { }
-
-    //    string name;
-
-    //    [Size(50)]
-    //    public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
-    //}
 
     public class InstrumentIOType : XPObject
     {
@@ -330,4 +324,19 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
     }
 
+    public class ResponsibleEngineeringCompany : BaseObject
+    {
+        
+        public ResponsibleEngineeringCompany(Session session) : base(session) { }
+
+
+        Project.Project project;
+        string name;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+
+    }
 }

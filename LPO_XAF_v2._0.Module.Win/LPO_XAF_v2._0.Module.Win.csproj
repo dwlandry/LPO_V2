@@ -241,6 +241,10 @@
     <Compile Include="Controllers\EnableClickableFileDataObjectInListViewController.Designer.cs">
       <DependentUpon>EnableClickableFileDataObjectInListViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ExpandableLayoutGroupViewController.cs" />
+    <Compile Include="Controllers\ExpandableLayoutGroupViewController.Designer.cs">
+      <DependentUpon>ExpandableLayoutGroupViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\HideToolBarViewController.cs">
       <SubType>Component</SubType>
     </Compile>

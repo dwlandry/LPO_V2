@@ -10,6 +10,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 using System;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
@@ -129,7 +130,16 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
-        public FileData File { get => file; set => SetPropertyValue(nameof(File), ref file, value); }
+        public FileData File
+        {
+            get => file;
+            set
+            {
+                if (DrawingNumber == null || DrawingNumber.Length == 0)
+                    DrawingNumber = Path.GetFileNameWithoutExtension(value.FileName);
+                SetPropertyValue(nameof(File), ref file, value);
+            }
+        }
 
     }
 }
