@@ -20,10 +20,10 @@ using LPO_XAF_v2._0.Module.BusinessObjects.Project;
 namespace LPO_XAF_v2._0.Module.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
-    public partial class InitializeProjectForIProjectDrawingViewController : ViewController
+    public partial class InitializePropertiesForIProjectDrawingViewController : ViewController
     {
         private NewObjectViewController controller;
-        public InitializeProjectForIProjectDrawingViewController()
+        public InitializePropertiesForIProjectDrawingViewController()
         {
             InitializeComponent();
             TargetObjectType = typeof(IProjectDrawing);

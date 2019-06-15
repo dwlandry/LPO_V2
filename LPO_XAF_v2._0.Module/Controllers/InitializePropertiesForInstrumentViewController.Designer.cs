@@ -1,6 +1,6 @@
 ﻿namespace LPO_XAF_v2._0.Module.Controllers
 {
-    partial class InitializeProjectForIProjectDrawingViewController
+    partial class InitializePropertiesForInstrumentViewController
     {
         /// <summary>
         /// Required designer variable.

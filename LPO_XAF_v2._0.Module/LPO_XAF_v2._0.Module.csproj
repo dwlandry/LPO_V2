@@ -152,11 +152,23 @@
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
-    <Compile Include="Controllers\InitializeProjectForIProjectDrawingViewController.cs">
+    <Compile Include="Controllers\InitializePropertiesForInstrumentViewController.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controllers\InitializeProjectForIProjectDrawingViewController.Designer.cs">
-      <DependentUpon>InitializeProjectForIProjectDrawingViewController.cs</DependentUpon>
+    <Compile Include="Controllers\InitializePropertiesForInstrumentViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForInstrumentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForIProjectDrawingViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForIProjectDrawingViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForIProjectDrawingViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForResponsibleCompanyViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForResponsibleCompanyViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForResponsibleCompanyViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
