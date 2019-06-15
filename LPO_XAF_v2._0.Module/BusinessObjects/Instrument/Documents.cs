@@ -16,7 +16,7 @@ using System.Linq;
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 {
 
-    public class PlanDrawing : Drawing
+    public class PlanDrawing : Drawing, IProjectDrawing
     {
         public PlanDrawing(Session session) : base(session) { }
 
@@ -33,20 +33,20 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public XPCollection<JunctionBox> JunctionBoxes { get { return GetCollection<JunctionBox>(nameof(JunctionBoxes)); } }
     }
 
-    public class PID : Drawing
+    public class PID : Drawing, IProjectDrawing
     {
         public PID(Session session) : base(session) { }
 
         Project.Project project;
 
         [Association("Project-PIDs")]
-        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+        public Project.Project Project { get { return project; } set { SetPropertyValue(nameof(Project), ref project, value); } }
         [Association("PID-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
     }
 
-    public class LoopDrawing : Drawing
+    public class LoopDrawing : Drawing, IProjectDrawing
     {
         public LoopDrawing(Session session) : base(session) { }
 
@@ -63,7 +63,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public string LoopNumber { get => loopNumber; set => SetPropertyValue(nameof(LoopNumber), ref loopNumber, value); }
     }
 
-    public class WiringDrawing : Drawing
+    public class WiringDrawing : Drawing, IProjectDrawing
     {
         public WiringDrawing(Session session) : base(session) { }
 
@@ -79,7 +79,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public JunctionBox JunctionBox { get => junctionBox; set => SetPropertyValue(nameof(JunctionBox), ref junctionBox, value); }
     }
 
-    public class LayoutDrawing : Drawing
+    public class LayoutDrawing : Drawing, IProjectDrawing
     {
         public LayoutDrawing(Session session) : base(session) { }
 
@@ -114,6 +114,12 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         }
 
     }
+
+    public interface IProjectDrawing
+    {
+        Project.Project Project { get; set; }
+    }
+
     [DefaultProperty("DrawingNumber")]
     [DefaultClassOptions, CreatableItem(false)]
     [DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
