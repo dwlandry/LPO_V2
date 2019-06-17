@@ -114,6 +114,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <DetailView Id="Project_DetailView" AllowDelete="False" />
     <ListView Id="Project_ListView" AllowDelete="False" />
     <DetailView Id="Tutorial_DetailView">

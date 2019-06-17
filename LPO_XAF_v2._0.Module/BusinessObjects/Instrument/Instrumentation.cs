@@ -29,8 +29,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         }
 
-
-
         ResponsibleEngineeringCompany responsibleCompany;
         ControlSystem controlSystem;
         string equipmentNumber;

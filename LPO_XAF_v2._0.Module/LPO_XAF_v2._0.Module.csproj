@@ -164,6 +164,12 @@
     <Compile Include="Controllers\InitializePropertiesForIProjectDrawingViewController.Designer.cs">
       <DependentUpon>InitializePropertiesForIProjectDrawingViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\InitializePropertiesForControlSystemViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForControlSystemViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForControlSystemViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\InitializePropertiesForResponsibleCompanyViewController.cs">
       <SubType>Component</SubType>
     </Compile>
