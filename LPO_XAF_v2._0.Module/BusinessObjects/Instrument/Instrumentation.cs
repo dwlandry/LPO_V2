@@ -308,7 +308,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
     }
 
     [DefaultClassOptions, NavigationItem("Instrumentation")]
-    public class InstrumentQuote : Quote
+    public class InstrumentQuote : Quote, IProjectQuote
     {
 
         public InstrumentQuote(Session session) : base(session) { }
@@ -324,7 +324,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
     public class ResponsibleEngineeringCompany : BaseObject
     {
-        
+
         public ResponsibleEngineeringCompany(Session session) : base(session) { }
 
 

@@ -13,7 +13,7 @@
     <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>\\RECONSERVERTX\TX Users\dlandry\Public\_landrys-programs\landrys-project-organizer\</PublishUrl>
+    <PublishUrl>\\reconqnaptx\TX-Users\Users Shared Folders\dlandry\Public\_landrys-programs\landrys-project-organizer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -26,7 +26,7 @@
     <ProductName>Landrys Project Organizer</ProductName>
     <PublisherName>David Landry</PublisherName>
     <SuiteName>Landrys Project Organizer</SuiteName>
-    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationRevision>2</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>

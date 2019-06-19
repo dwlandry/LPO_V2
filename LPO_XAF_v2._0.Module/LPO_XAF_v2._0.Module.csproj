@@ -152,6 +152,12 @@
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
+    <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForIProjectQuoteViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\InitializePropertiesForInstrumentViewController.cs">
       <SubType>Component</SubType>
     </Compile>

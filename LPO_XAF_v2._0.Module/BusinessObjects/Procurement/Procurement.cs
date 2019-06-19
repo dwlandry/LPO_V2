@@ -36,6 +36,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         public string Engineer { get => engineer; set => SetPropertyValue(nameof(Engineer), ref engineer, value); }
     }
 
+    public interface IProjectQuote
+    {
+        Project.Project Project { get; set; }
+    }
+
     [DefaultProperty("DisplayText")]
     public class Quote : BaseObject
     {
