@@ -81,12 +81,19 @@
             <LayoutGroup Id="Drawings" ShowCaption="True" Index="4" RelativeSize="34.3878954607978" IsNewNode="True">
               <LayoutItem Id="Pid" ViewItem="Pid" Index="0" RelativeSize="31.606217616580309" IsNewNode="True" />
               <LayoutItem Id="PlanDrawing" ViewItem="PlanDrawing" Index="1" RelativeSize="68.393782383419691" IsNewNode="True" />
-              <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" IsNewNode="True" />
+              <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" Index="2" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="Vendor Docs" ShowCaption="True" Index="5" IsNewNode="True">
+            <LayoutGroup Id="Installation Details" Index="5" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="ProcessConnectionDetail" ViewItem="ProcessConnectionDetail" Index="3" IsNewNode="True" />
+              <LayoutItem Id="MountingDetail" ViewItem="MountingDetail" Index="4" IsNewNode="True" />
+              <LayoutItem Id="ElectricalDetail" ViewItem="ElectricalDetail" Index="5" IsNewNode="True" />
+              <LayoutItem Id="TracingDetail" ViewItem="TracingDetail" IsNewNode="True" />
+              <LayoutItem Id="TubingDetail" ViewItem="TubingDetail" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Vendor Docs" ShowCaption="True" Index="6" IsNewNode="True">
               <LayoutItem Id="Vendor Docs" ViewItem="VendorDocs" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="Quotes" ShowCaption="True" Index="6" IsNewNode="True">
+            <LayoutGroup Id="Quotes" ShowCaption="True" Index="7" IsNewNode="True">
               <LayoutItem Id="Quotes" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>
@@ -120,6 +127,8 @@
           <LayoutGroup Id="Notes" ShowCaption="True">
             <LayoutItem Id="Notes" ShowCaption="False" />
           </LayoutGroup>
+          <LayoutGroup Id="DraInstallation Detailswings" Removed="True" />
+          <LayoutGroup Id="Installation Details" Removed="True" />
           <TabbedGroup Id="Tabs" Removed="True" />
         </LayoutGroup>
       </Layout>

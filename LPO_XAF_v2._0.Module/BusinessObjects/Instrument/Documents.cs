@@ -8,7 +8,6 @@ using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
-using LPO_XAF_v2._0.Module.BusinessObjects.Project;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -118,7 +117,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
     public class AreaClassificationDrawing : Drawing, IProjectDrawing
     {
-        
+
         public AreaClassificationDrawing(Session session) : base(session) { }
 
         Project.Project project;
@@ -127,6 +126,57 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
     }
 
+    public class ProjectInstallationDetail : Drawing, IProjectDrawing
+    {
+
+        public ProjectInstallationDetail(Session session) : base(session) { }
+
+        Project.Project project;
+
+        [Association("Project-InstallationDetails")]
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+
+    }
+    public class ProcessConnectionDetail : ProjectInstallationDetail
+    {
+        public ProcessConnectionDetail(Session session) : base(session) { }
+
+        [Association("ProcessConnectionDetail-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
+    }
+    public class ElectricalDetail : ProjectInstallationDetail
+    {
+        public ElectricalDetail(Session session) : base(session) { }
+
+        [Association("ElectricalDetail-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
+    }
+    public class MountingDetail : ProjectInstallationDetail
+    {
+        public MountingDetail(Session session) : base(session) { }
+
+        [Association("MountingDetail-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
+    }
+    public class TubingDetail : ProjectInstallationDetail
+    {
+        public TubingDetail(Session session) : base(session) { }
+
+        [Association("TubingDetail-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
+    }
+    public class TracingDetail : ProjectInstallationDetail
+    {
+        public TracingDetail(Session session) : base(session) { }
+
+        [Association("TracingDetail-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument> Instruments => GetCollection<Instrument>(nameof(Instruments));
+    }
     public interface IProjectDrawing
     {
         Project.Project Project { get; set; }

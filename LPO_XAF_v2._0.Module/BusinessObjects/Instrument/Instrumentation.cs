@@ -29,6 +29,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         }
 
+        TracingDetail tracingDetail;
+        TubingDetail tubingDetail;
+        MountingDetail mountingDetail;
+        ElectricalDetail electricalDetail;
+        ProcessConnectionDetail processConnectionDetail;
         ResponsibleEngineeringCompany responsibleCompany;
         ControlSystem controlSystem;
         string equipmentNumber;
@@ -136,6 +141,26 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("LoopDrawing-Instruments"), DetailViewLayout("Drawings")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public LoopDrawing LoopDrawing { get => loopDrawing; set => SetPropertyValue(nameof(LoopDrawing), ref loopDrawing, value); }
+
+        [Association("ProcessConnectionDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public ProcessConnectionDetail ProcessConnectionDetail { get => processConnectionDetail; set => SetPropertyValue(nameof(ProcessConnectionDetail), ref processConnectionDetail, value); }
+
+        [Association("ElectricalDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public ElectricalDetail ElectricalDetail { get => electricalDetail; set => SetPropertyValue(nameof(ElectricalDetail), ref electricalDetail, value); }
+
+        [Association("MountingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public MountingDetail MountingDetail { get => mountingDetail; set => SetPropertyValue(nameof(MountingDetail), ref mountingDetail, value); }
+
+        [Association("TubingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public TubingDetail TubingDetail { get => tubingDetail; set => SetPropertyValue(nameof(TubingDetail), ref tubingDetail, value); }
+
+        [Association("TracingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public TracingDetail TracingDetail { get => tracingDetail; set => SetPropertyValue(nameof(TracingDetail), ref tracingDetail, value); }
 
         [Association("Instrument-VendorDocs"), DetailViewLayout("Drawings"), Aggregated]
         public XPCollection<VendorDocument> VendorDocs { get { return GetCollection<VendorDocument>(nameof(VendorDocs)); } }

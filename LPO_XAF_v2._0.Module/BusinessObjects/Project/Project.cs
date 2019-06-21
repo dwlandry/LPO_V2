@@ -114,6 +114,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-AreaClassificationDrawings")]
         public XPCollection<Instrument.AreaClassificationDrawing> AreaClassificationDrawings { get { return GetCollection<Instrument.AreaClassificationDrawing>(nameof(AreaClassificationDrawings)); } }
 
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        [Association("Project-InstallationDetails")]
+        public XPCollection<Instrument.ProjectInstallationDetail> InstallationDetails { get { return GetCollection<Instrument.ProjectInstallationDetail>(nameof(InstallationDetails)); } }
+
         [Association("Project-InstrumentSpecCheckPackages")]
         [VisibleInListView(false), VisibleInDetailView(false)]
         public XPCollection<Instrument.InstrumentSpecCheckPackage> InstrumentSpecCheckPackages => GetCollection<Instrument.InstrumentSpecCheckPackage>(nameof(InstrumentSpecCheckPackages));
