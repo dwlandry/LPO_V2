@@ -7,6 +7,7 @@
 using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Editors;
+using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
@@ -76,7 +77,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         public byte[] ProjectScope { get => scope; set => SetPropertyValue(nameof(ProjectScope), ref scope, value); }
 
-        [Association("Project-Instruments"), DevExpress.Xpo.Aggregated]
+        [Association("Project-Instruments"), Aggregated]
         public XPCollection<Instrument.Instrument> Instruments => GetCollection<Instrument.Instrument>(nameof(Instruments));
 
         [DevExpress.Xpo.DisplayName("Project")]
@@ -108,6 +109,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
 
         [Association("Project-LayoutDrawings"), Aggregated]
         public XPCollection<Instrument.LayoutDrawing> LayoutDrawings { get { return GetCollection<Instrument.LayoutDrawing>(nameof(LayoutDrawings)); } }
+
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        [Association("Project-AreaClassificationDrawings")]
+        public XPCollection<Instrument.AreaClassificationDrawing> AreaClassificationDrawings { get { return GetCollection<Instrument.AreaClassificationDrawing>(nameof(AreaClassificationDrawings)); } }
 
         [Association("Project-InstrumentSpecCheckPackages")]
         [VisibleInListView(false), VisibleInDetailView(false)]
@@ -141,8 +146,12 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Client-Projects")]
         public XPCollection<Project> Projects => GetCollection<Project>(nameof(Projects));
 
+        [Association("Client-Standards")]
+        public XPCollection<ClientStandard> Standards { get { return GetCollection<ClientStandard>(nameof(Standards)); } }
+
         [DevExpress.Xpo.DisplayName("Site PPE Requirements")]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        [DetailViewLayout("Site Requirements")]
         public byte[] SitePPERequirements { get => sitePPERequirements; set => SetPropertyValue(nameof(SitePPERequirements), ref sitePPERequirements, value); }
 
     }

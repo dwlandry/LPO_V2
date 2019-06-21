@@ -8,6 +8,7 @@ using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Project;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -113,6 +114,17 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
             }
         }
 
+    }
+
+    public class AreaClassificationDrawing : Drawing, IProjectDrawing
+    {
+        
+        public AreaClassificationDrawing(Session session) : base(session) { }
+
+        Project.Project project;
+
+        [Association("Project-AreaClassificationDrawings")]
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
     }
 
     public interface IProjectDrawing

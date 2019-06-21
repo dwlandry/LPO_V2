@@ -22,6 +22,16 @@
     <SchemaModule Name="SystemModule" Version="19.1.3.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <DetailView Id="Client_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="Site Requirements" Index="1" ShowCaption="True">
+            <LayoutItem Id="SitePPERequirements" ShowCaption="False" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="2" />
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Instrument_DetailView">
       <Items>
         <PropertyEditor Id="Project" PropertyName="Project" AllowEdit="False" IsNewNode="True" />

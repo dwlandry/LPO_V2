@@ -151,6 +151,7 @@
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
+    <Compile Include="BusinessObjects\Project\ClientStandards.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
     <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.cs">
       <SubType>Component</SubType>
@@ -211,6 +212,7 @@
     <None Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="BusinessObjects\Client\" />
     <Folder Include="BusinessObjects\Documents\" />
   </ItemGroup>
   <ItemGroup>
