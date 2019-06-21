@@ -22,6 +22,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public InstrumentSpecCheckPackage(Session session) : base(session) { }
         public override void AfterConstruction() => base.AfterConstruction();
 
+        bool approved;
+        bool issuedForApproval;
+        FileData ifpPackage;
+        bool issuedForPurchase;
         FileData ifaPackage;
         FileData backCheckPackage;
         byte[] notes;
@@ -107,20 +111,20 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public FileData OriginalCheckPackage { get => originalCheckPackage; set => SetPropertyValue(nameof(OriginalCheckPackage), ref originalCheckPackage, value); }
         public FileData CheckedPackage { get => checkedPackage; set => SetPropertyValue(nameof(CheckedPackage), ref checkedPackage, value); }
         public FileData BackCheckPackage { get => backCheckPackage; set => SetPropertyValue(nameof(BackCheckPackage), ref backCheckPackage, value); }
+        [DevExpress.Xpo.DisplayName("IFA Package")]
         public FileData IfaPackage { get => ifaPackage; set => SetPropertyValue(nameof(IfaPackage), ref ifaPackage, value); }
-
+        [DevExpress.Xpo.DisplayName("IFP Package")]
+        public FileData IfpPackage { get => ifpPackage; set => SetPropertyValue(nameof(IfpPackage), ref ifpPackage, value); }
 
         public bool SubmittedForCheck { get => submittedForCheck; set => SetPropertyValue(nameof(SubmittedForCheck), ref submittedForCheck, value); }
-
         public bool Checked { get => @checked; set => SetPropertyValue(nameof(Checked), ref @checked, value); }
-
         public bool PickupsMade { get => pickupsMade; set => SetPropertyValue(nameof(PickupsMade), ref pickupsMade, value); }
-
         public bool SubmittedForBackCheck { get => submittedForBackCheck; set => SetPropertyValue(nameof(SubmittedForBackCheck), ref submittedForBackCheck, value); }
-
         public bool BackCheckComplete { get => backCheckComplete; set => SetPropertyValue(nameof(BackCheckComplete), ref backCheckComplete, value); }
-
         public bool CheckFinalized { get => checkFinalized; set => SetPropertyValue(nameof(CheckFinalized), ref checkFinalized, value); }
+        public bool IssuedForApproval { get => issuedForApproval; set => SetPropertyValue(nameof(IssuedForApproval), ref issuedForApproval, value); }
+        public bool Approved { get => approved; set => SetPropertyValue(nameof(Approved), ref approved, value); }
+        public bool IssuedForPurchase { get => issuedForPurchase; set => SetPropertyValue(nameof(IssuedForPurchase), ref issuedForPurchase, value); }
 
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]

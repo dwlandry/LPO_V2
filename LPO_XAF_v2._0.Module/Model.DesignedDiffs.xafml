@@ -124,6 +124,52 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="InstrumentSpecCheckPackage_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="InstrumentSpecCheckPackage">
+              <LayoutGroup Id="InstrumentSpecCheckPackage_col1">
+                <LayoutItem Id="OriginalCheckPackage" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="InstrumentSpecCheckPackage_col2">
+                <LayoutItem Id="OriginalCheckPackage" ViewItem="OriginalCheckPackage" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="CheckedPackage" Index="1" />
+                <LayoutItem Id="BackCheckPackage" Index="2" />
+                <LayoutItem Id="IfaPackage" Index="3" />
+                <LayoutItem Id="IfpPackage" Index="4" />
+                <LayoutItem Id="Approved" Removed="True" />
+                <LayoutItem Id="BackCheckComplete" Removed="True" />
+                <LayoutItem Id="Checked" Removed="True" />
+                <LayoutItem Id="CheckFinalized" Removed="True" />
+                <LayoutGroup Id="CheckPackgeStatus" Direction="Horizontal" IsNewNode="True">
+                  <LayoutGroup Id="EmptySpace1" Index="0" IsNewNode="True" />
+                  <LayoutGroup Id="Column1" Index="1" IsNewNode="True">
+                    <LayoutItem Id="SubmittedForCheck" ViewItem="SubmittedForCheck" ShowCaption="" Index="5" IsNewNode="True" />
+                    <LayoutItem Id="Checked" ViewItem="Checked" ShowCaption="" Index="6" IsNewNode="True" />
+                    <LayoutItem Id="PickupsMade" ViewItem="PickupsMade" ShowCaption="" Index="7" IsNewNode="True" />
+                    <LayoutItem Id="SubmittedForBackCheck" ViewItem="SubmittedForBackCheck" ShowCaption="" Index="8" IsNewNode="True" />
+                    <LayoutItem Id="BackCheckComplete" ViewItem="BackCheckComplete" ShowCaption="" Index="9" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Column2" Index="2" IsNewNode="True">
+                    <LayoutItem Id="CheckFinalized" ViewItem="CheckFinalized" ShowCaption="" Index="10" IsNewNode="True" />
+                    <LayoutItem Id="IssuedForApproval" ViewItem="IssuedForApproval" ShowCaption="" Index="10" IsNewNode="True" />
+                    <LayoutItem Id="Approved" ViewItem="Approved" ShowCaption="" Index="11" IsNewNode="True" />
+                    <LayoutItem Id="IssuedForPurchase" ViewItem="IssuedForPurchase" ShowCaption="" Index="11" IsNewNode="True" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="EmptySpace2" Index="3" IsNewNode="True" />
+                </LayoutGroup>
+                <LayoutItem Id="IssuedForApproval" Removed="True" />
+                <LayoutItem Id="IssuedForPurchase" Removed="True" />
+                <LayoutItem Id="PickupsMade" Removed="True" />
+                <LayoutItem Id="SubmittedForBackCheck" Removed="True" />
+                <LayoutItem Id="SubmittedForCheck" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <DetailView Id="Project_DetailView" AllowDelete="False" />
     <ListView Id="Project_ListView" AllowDelete="False" />
