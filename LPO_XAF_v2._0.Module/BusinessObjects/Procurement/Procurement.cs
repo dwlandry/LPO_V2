@@ -49,6 +49,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
 
 
 
+        string description;
         decimal taxTotal;
         byte[] comments;
         FileData quoteFile;
@@ -60,6 +61,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         string contactEmail;
         string contactName;
         string vendor;
+
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
