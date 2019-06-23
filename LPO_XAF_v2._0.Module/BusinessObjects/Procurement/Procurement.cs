@@ -5,12 +5,14 @@
 // </copyright>
 //-----------------------------------------------------------------------
 using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.ConditionalAppearance;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
@@ -42,13 +44,24 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
     }
 
     [DefaultProperty("DisplayText")]
+    [Appearance("Waiting For Quote", TargetItems = "*;Status;Comments",
+        Criteria = "Status == 0 || Status == 2", FontColor = "DarkMagenta", BackColor = "LightGoldenrodYellow")]
+    [Appearance("Rejected", TargetItems = "*;Status;Comments",
+        Criteria = "Status == 4 || Status == 5", FontColor = "LightSlateGray", FontStyle = FontStyle.Strikeout)]
+    [Appearance("Accepted", TargetItems = "*;Status;Comments",
+        Criteria = "Status = 3", FontStyle = FontStyle.Bold)]
     public class Quote : BaseObject
     {
 
         public Quote(Session session) : base(session) { }
 
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            Status = QuoteStatus.Received;
+        }
 
-
+        QuoteStatus quoteStatus;
         string description;
         decimal taxTotal;
         byte[] comments;
@@ -61,7 +74,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         string contactEmail;
         string contactName;
         string vendor;
-
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
@@ -102,6 +114,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
 
         [VisibleInListView(false), VisibleInDetailView(false)]
         public string DisplayText { get { return $"{Vendor} - Quote No: {VendorQuoteNumber}"; } }
+
+        public QuoteStatus Status { get => quoteStatus; set => SetPropertyValue(nameof(QuoteStatus), ref quoteStatus, value); }
     }
 
     [DefaultProperty("DisplayText")]
@@ -168,5 +182,16 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
 
         [Association("Quote-Documents")]
         public Quote Quote { get => quote; set => SetPropertyValue(nameof(Quote), ref quote, value); }
+    }
+
+    public enum QuoteStatus
+    {
+        WaitingForQuote = 0,
+        Received = 1,
+        ChangeRequested = 2,
+        Accepted = 3,
+        Rejected = 4,
+        NotQuoted = 5
+
     }
 }
