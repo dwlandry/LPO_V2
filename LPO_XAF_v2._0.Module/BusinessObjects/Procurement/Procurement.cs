@@ -64,7 +64,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         QuoteStatus quoteStatus;
         string description;
         decimal taxTotal;
-        byte[] comments;
+        string comments;
         FileData quoteFile;
         decimal quoteTotal;
         string vendorQuoteNumber;
@@ -103,8 +103,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
 
         public FileData QuoteFile { get => quoteFile; set => SetPropertyValue(nameof(QuoteFile), ref quoteFile, value); }
 
-        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
-        public byte[] Comments { get => comments; set => SetPropertyValue(nameof(Comments), ref comments, value); }
+        [Size(SizeAttribute.Unlimited)]
+        public string Comments { get => comments; set => SetPropertyValue(nameof(Comments), ref comments, value); }
 
         [Association("Quote-Documents"), Aggregated]
         public XPCollection<QuoteDocument> Documents { get { return GetCollection<QuoteDocument>(nameof(Documents)); } }

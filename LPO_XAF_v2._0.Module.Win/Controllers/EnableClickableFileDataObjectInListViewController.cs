@@ -67,7 +67,15 @@ namespace LPO_XAF_v2._0.Module.Win.Controllers
                         {
                             //MyFileObject obj = gv.GetRow(hi.RowHandle) as MyFileObject;
                             var obj = gv.GetRow(hi.RowHandle);
-                            FileData fd = obj.GetType().GetProperty("File").GetValue(obj, null) as FileData;  //obj.File;
+                            FileData fd;
+                            if (obj.GetType().IsSubclassOf(typeof(BusinessObjects.Procurement.Quote)))
+                            {
+                                fd = obj.GetType().GetProperty("QuoteFile").GetValue(obj, null) as FileData;
+                            }
+                            else
+                            {
+                                fd = obj.GetType().GetProperty("File").GetValue(obj, null) as FileData;
+                            }
                             var tempFolder = System.IO.Path.GetTempPath();
                             var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
                             System.IO.File.WriteAllBytes(filename, fd.Content);
