@@ -29,6 +29,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         }
 
+        AreaClassificationDrawing areaClassificationDrawing;
         TracingDetail tracingDetail;
         TubingDetail tubingDetail;
         MountingDetail mountingDetail;
@@ -141,6 +142,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("LoopDrawing-Instruments"), DetailViewLayout("Drawings")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public LoopDrawing LoopDrawing { get => loopDrawing; set => SetPropertyValue(nameof(LoopDrawing), ref loopDrawing, value); }
+
+
+        [Association("AreaClassificationDrawing-Instruments"), DetailViewLayout("Drawings")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public AreaClassificationDrawing AreaClassificationDrawing { get => areaClassificationDrawing; set => SetPropertyValue(nameof(AreaClassificationDrawing), ref areaClassificationDrawing, value); }
 
         [Association("ProcessConnectionDetail-Instruments"), DetailViewLayout("Installation Details")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]

@@ -4,7 +4,6 @@
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
 //-----------------------------------------------------------------------
-using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
@@ -124,6 +123,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         [Association("Project-AreaClassificationDrawings")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        [Association("AreaClassificationDrawing-Instruments")]
+        public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
     }
 
     public class ProjectInstallationDetail : Drawing, IProjectDrawing
@@ -184,7 +187,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
     [DefaultProperty("DrawingNumber")]
     [DefaultClassOptions, CreatableItem(false)]
-    [DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
+    //[DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
     public class Drawing : BaseObject
     {
         public Drawing(Session session) : base(session) { }

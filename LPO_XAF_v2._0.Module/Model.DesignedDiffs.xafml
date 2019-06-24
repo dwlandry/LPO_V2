@@ -82,6 +82,7 @@
               <LayoutItem Id="Pid" ViewItem="Pid" Index="0" RelativeSize="31.606217616580309" IsNewNode="True" />
               <LayoutItem Id="PlanDrawing" ViewItem="PlanDrawing" Index="1" RelativeSize="68.393782383419691" IsNewNode="True" />
               <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" Index="2" IsNewNode="True" />
+              <LayoutItem Id="AreaClassDrawing" ViewItem="AreaClassificationDrawing" IsNewNode="True" />
             </LayoutGroup>
             <LayoutGroup Id="Installation Details" Index="5" ShowCaption="True" IsNewNode="True">
               <LayoutItem Id="ProcessConnectionDetail" ViewItem="ProcessConnectionDetail" Index="3" IsNewNode="True" />
@@ -127,7 +128,6 @@
           <LayoutGroup Id="Notes" ShowCaption="True">
             <LayoutItem Id="Notes" ShowCaption="False" />
           </LayoutGroup>
-          <LayoutGroup Id="DraInstallation Detailswings" Removed="True" />
           <LayoutGroup Id="Installation Details" Removed="True" />
           <TabbedGroup Id="Tabs" Removed="True" />
         </LayoutGroup>
