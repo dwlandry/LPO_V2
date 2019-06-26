@@ -4,6 +4,7 @@
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
 //-----------------------------------------------------------------------
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
@@ -26,9 +27,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-
+            CreatedBy = SecuritySystem.CurrentUser;
+            CreatedOn = DateTime.Now;
         }
 
+        DateTime createdOn;
+        private XPCollection<AuditDataItemPersistent> auditTrail;
+        object createdBy;
+        bool requiresSpecSheet;
         AreaClassificationDrawing areaClassificationDrawing;
         TracingDetail tracingDetail;
         TubingDetail tubingDetail;
@@ -124,6 +130,24 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public InstrumentIOType IoType { get => ioType; set => SetPropertyValue(nameof(IoType), ref ioType, value); }
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
+
+        public bool RequiresSpecSheet { get => requiresSpecSheet; set => SetPropertyValue(nameof(RequiresSpecSheet), ref requiresSpecSheet, value); }
+
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public Object CreatedBy { get => createdBy; private set => SetPropertyValue(nameof(CreatedBy), ref createdBy, value); }
+
+        public DateTime CreatedOn { get => createdOn; private set => SetPropertyValue(nameof(CreatedOn), ref createdOn, value); }
+
+        public XPCollection<AuditDataItemPersistent> AuditTrail
+        {
+            get
+            {
+                if (auditTrail == null)
+                    auditTrail = AuditedObjectWeakReference.GetAuditTrail(Session, this);
+                return auditTrail;
+            }
+        }
 
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         [Size(SizeAttribute.Unlimited)]

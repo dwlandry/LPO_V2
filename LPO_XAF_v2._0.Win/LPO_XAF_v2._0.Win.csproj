@@ -340,6 +340,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExpressApp.ico" />
+    <None Include="UnusableNodes3.xml">
+      <DependentUpon>Model.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="UnusableNodes2.xml">
       <DependentUpon>Model.xafml</DependentUpon>
       <SubType>Designer</SubType>
