@@ -177,6 +177,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
     }
 
     [RuleCombinationOfPropertiesIsUnique("UniqueApprovedInstrumentManufacturer", DefaultContexts.Save, "Client, Manufacturer, InstrumentType")]
+    [DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
     public class ApprovedInstrumentManufacturer : BaseObject, IApprovedManufacturer
     {
 
