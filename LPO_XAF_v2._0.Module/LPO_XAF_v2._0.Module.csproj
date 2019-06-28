@@ -153,6 +153,7 @@
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
     <Compile Include="BusinessObjects\Project\ClientStandards.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
+    <Compile Include="BusinessObjects\Vendor\Vendor.cs" />
     <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -233,6 +234,26 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Vendors.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Vendors_3.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Vendors_2.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Vendors_4.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
