@@ -12,6 +12,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Products;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -142,6 +143,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         public Client(Session session) : base(session) { }
         public override void AfterConstruction() => base.AfterConstruction();
 
+        FileData aMLDocument;
         byte[] sitePPERequirements;
         string name;
 
@@ -158,6 +160,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [DetailViewLayout("Site Requirements")]
         public byte[] SitePPERequirements { get => sitePPERequirements; set => SetPropertyValue(nameof(SitePPERequirements), ref sitePPERequirements, value); }
 
+        [DevExpress.Xpo.DisplayName("AML Document")]
+        public FileData AMLDocument { get => aMLDocument; set => SetPropertyValue(nameof(AMLDocument), ref aMLDocument, value); }
+        [Association("Client-ApprovedInstrumentManufacturers"), Aggregated]
+        public XPCollection<ApprovedInstrumentManufacturer> ApprovedInstrumentManufacturers { get { return GetCollection<ApprovedInstrumentManufacturer>(nameof(ApprovedInstrumentManufacturers)); } }
+
     }
 
     public enum ProjectStatus
@@ -169,4 +176,38 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
 
     }
 
+    [RuleCombinationOfPropertiesIsUnique("UniqueApprovedInstrumentManufacturer", DefaultContexts.Save, "Client, Manufacturer, InstrumentType")]
+    public class ApprovedInstrumentManufacturer : BaseObject, IApprovedManufacturer
+    {
+
+        public ApprovedInstrumentManufacturer(Session session) : base(session) { }
+
+
+        bool isPreferred;
+        string comments;
+        Instrument.InstrumentType instrumentType;
+        Manufacturer manufacturer;
+        Client client;
+
+        [Association("Client-ApprovedInstrumentManufacturers")]
+        public Client Client { get => client; set => SetPropertyValue(nameof(Client), ref client, value); }
+
+        public Manufacturer Manufacturer { get => manufacturer; set => SetPropertyValue(nameof(Manufacturer), ref manufacturer, value); }
+
+        public Instrument.InstrumentType InstrumentType { get => instrumentType; set => SetPropertyValue(nameof(InstrumentType), ref instrumentType, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Comments { get => comments; set => SetPropertyValue(nameof(Comments), ref comments, value); }
+
+        public bool IsPreferred { get => isPreferred; set => SetPropertyValue(nameof(IsPreferred), ref isPreferred, value); }
+
+        //[Association("ApprovedInstrumentManufacturer-PreferredVendors")]
+        //public XPCollection<Vendor> PreferredVendors { get { return GetCollection<Vendor>(nameof(PreferredVendors)); } }
+
+    }
+    public interface IApprovedManufacturer
+    {
+        Client Client { get; set; }
+        Manufacturer Manufacturer { get; set; }
+    }
 }

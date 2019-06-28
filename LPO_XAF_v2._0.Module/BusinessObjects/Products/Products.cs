@@ -25,6 +25,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
             // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
         }
 
+        FileData lineListDocument;
         Address address;
         string website;
         string name;
@@ -47,6 +48,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         [Association("Vendor-SupportedManufacturers")]
         public XPCollection<Manufacturer> SupportedManufacturers { get { return GetCollection<Manufacturer>(nameof(SupportedManufacturers)); } }
 
+        public FileData LineListDocument { get => lineListDocument; set => SetPropertyValue(nameof(LineListDocument), ref lineListDocument, value); }
     }
 
     public class VendorContact : Person
