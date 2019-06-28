@@ -12,6 +12,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using LPO_XAF_v2._0.Module.BusinessObjects.Procurement;
+using LPO_XAF_v2._0.Module.BusinessObjects.Products;
 using System;
 using System.Linq;
 
@@ -237,15 +238,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
-    }
-
-    public class Manufacturer : BaseObject
-    {
-        public Manufacturer(Session session) : base(session) { }
-        string name;
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
     }
 
     public class InstrumentIOType : XPObject
