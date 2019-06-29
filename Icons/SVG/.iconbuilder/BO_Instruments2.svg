@@ -1,0 +1,14 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(0.5, 0, 0, 0.5, 0, 0)">
+    <path d="M17.51, 2.49A0 0 0 0 0 17.51, 2.49A11 11 0 0 0 12, 1A11 11 0 0 0 1.61, 8.4A10.94 10.94 0 0 0 1.33, 14.67A10.65 10.65 0 0 0 2.48, 17.5A0 0 0 0 0 2.48, 17.5A11 11 0 1 0 17.48, 2.5zM18.51, 17.49L5.5, 17.49L5.5, 15.49L18.5, 15.49zM18.51, 9.49L5.5, 9.49L5.5, 7.49L18.5, 7.49z" fill="#FFFFFF" fill-opacity="1" class="White" stroke="#727272" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="5.5" y="7.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="5.5" y="15.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+    <path d="M21.51, 6.49L21.51, 6.49A11 11 0 0 0 16, 5A11 11 0 0 0 5.61, 12.4A10.94 10.94 0 0 0 5.33, 18.67A10.65 10.65 0 0 0 6.48, 21.5A0 0 0 0 0 6.48, 21.5A11 11 0 1 0 21.48, 6.5zM22.51, 21.49L9.5, 21.49L9.5, 19.49L22.5, 19.49zM22.51, 13.49L9.5, 13.49L9.5, 11.49L22.5, 11.49z" fill="#FFFFFF" fill-opacity="1" class="White" stroke="#727272" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="9.5" y="11.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="9.5" y="19.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+    <path d="M25.51, 10.49L25.51, 10.49A11 11 0 0 0 20, 9A11 11 0 0 0 9.61, 16.4A10.94 10.94 0 0 0 9.33, 22.67A10.65 10.65 0 0 0 10.48, 25.5A0 0 0 0 0 10.48, 25.5A11 11 0 1 0 25.48, 10.5zM26.51, 25.49L13.51, 25.49L13.51, 23.49L26.51, 23.49zM26.51, 17.49L13.51, 17.49L13.51, 15.49L26.51, 15.49z" fill="#FFFFFF" fill-opacity="1" class="White" stroke="#727272" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="13.5" y="15.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+    <rect x="13.5" y="23.5" width="13" height="2" rx="0" ry="0" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-miterlimit="10" stroke-opacity="1" />
+  </g>
+</svg>

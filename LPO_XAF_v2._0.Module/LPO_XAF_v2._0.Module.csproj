@@ -150,6 +150,7 @@
     <Compile Include="BusinessObjects\Instrument\Documents.cs" />
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
+    <Compile Include="BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
     <Compile Include="BusinessObjects\Project\ClientStandards.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
@@ -245,6 +246,35 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\InstrumentQuotes.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\InstrumentSpecSheet.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\InstrumentSpecSheetTemplate.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\InstrumentCheckPackage.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Images\InstrumentCheckPackage2.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\InstrumentCheckPackage3.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\InstrumentCheckPackage4.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

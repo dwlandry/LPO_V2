@@ -1,0 +1,11 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(0.5215, 0, 0, 0.5215, 0, 0)">
+    <circle cx="15.34" cy="15.34" r="15.22" fill="#1177D7" fill-opacity="1" class="Blue" stroke="#1177D7" stroke-width="0.25px" stroke-miterlimit="10" stroke-opacity="1" />
+    <circle cx="15.34" cy="15.34" r="14.33" fill="none" stroke="#FFFFFF" stroke-width="0.5px" stroke-miterlimit="10" stroke-opacity="1" />
+    <text fill="#FFFFFF" fill-opacity="1" class="White" transform="translate(4.46, 18.89) scale(1, 2.5)" font-family="MyriadPro-Regular, Myriad Pro" font-size="5px">
+      <text fill="#FFFFFF" fill-opacity="1" class="White" font-family="MyriadPro-Regular, Myriad Pro" font-size="5px">VENDOR</text>
+      <text x="19.3px" y="0px" fill="#FFFFFF" fill-opacity="1" class="White" font-family="MyriadPro-Regular, Myriad Pro" font-size="5px">S</text>
+    </text>
+  </g>
+</svg>

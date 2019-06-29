@@ -6,6 +6,7 @@
       <Item Id="Instrumentation" ImageName="Instruments">
         <Items>
           <Item Id="Instrument_ListView" ImageName="Instruments" Caption="Instruments" />
+          <Item Id="InstrumentSpecSheetTemplate_ListView" ViewId="InstrumentSpecSheetTemplate_NavigationView" />
         </Items>
       </Item>
       <Item Id="Products" ImageName="BO_Product">
@@ -196,6 +197,40 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="InstrumentSpecSheetTemplate_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors" Direction="Horizontal">
+            <LayoutGroup Id="Column1" Index="0" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="Category" ViewItem="Category" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutItem Id="Title" ViewItem="Title" ShowCaption="" Index="2" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="InstrumentSpecSheetTemplate" Caption="" Index="1" Removed="True">
+              <LayoutItem Id="Category" Removed="True" />
+              <LayoutItem Id="FormNumber" Removed="True" />
+              <LayoutItem Id="Source" Removed="True" />
+              <LayoutItem Id="Title" Removed="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Column2" IsNewNode="True">
+              <LayoutItem Id="FormNumber" ViewItem="FormNumber" ShowCaption="" Index="1" IsNewNode="True" />
+              <LayoutItem Id="Source" ViewItem="Source" ShowCaption="" Index="3" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SpecSheet_Group">
+            <LayoutItem Id="SpecSheet" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="InstrumentSpecSheetTemplate_NavigationView" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Instrument.InstrumentSpecSheetTemplate" MasterDetailMode="ListViewAndDetailView" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="Oid" PropertyName="Oid" Width="70" Index="-1" IsNewNode="True" />
+        <ColumnInfo Id="Category" PropertyName="Category" Width="70" Index="0" IsNewNode="True" />
+        <ColumnInfo Id="FormNumber" PropertyName="FormNumber" Width="70" Index="1" IsNewNode="True" />
+        <ColumnInfo Id="Title" PropertyName="Title" Width="70" Index="2" IsNewNode="True" />
+        <ColumnInfo Id="Source" PropertyName="Source" Width="70" Index="3" IsNewNode="True" />
+      </Columns>
+    </ListView>
     <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <DetailView Id="Project_DetailView" AllowDelete="False" />
     <ListView Id="Project_ListView" AllowDelete="False" />

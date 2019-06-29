@@ -209,7 +209,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
     {
         ClassI = 1,
         ClassII = 2,
-        ClassIII = 3
+        ClassIII = 3,
+        Unclassified = 4
+
     }
 
     public enum AreaClass_Division
@@ -224,7 +226,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         SoftTag = 1
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
+    //[DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
     public class InstrumentType : BaseObject
     {
         public InstrumentType(Session session) : base(session) { }
@@ -262,7 +264,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
+    //[DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
     public class JunctionBox : BaseObject
     {
         public JunctionBox(Session session) : base(session) { }
@@ -354,7 +356,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
     }
 
-    [DefaultClassOptions, NavigationItem("Instrumentation")]
+    [DefaultClassOptions, NavigationItem("Instrumentation"), ImageName("InstrumentQuotes")]
     public class InstrumentQuote : Quote, IProjectQuote
     {
 
