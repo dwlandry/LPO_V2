@@ -28,13 +28,15 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            CreatedBy = SecuritySystem.CurrentUser;
-            CreatedOn = DateTime.Now;
+            createdBy = SecuritySystem.CurrentUserName;
+            createdOn = DateTime.Now;
         }
 
+        [Persistent("CreatedOn")]
         DateTime createdOn;
         private XPCollection<AuditDataItemPersistent> auditTrail;
-        object createdBy;
+        [Persistent("CreatedBy")]
+        string createdBy;
         bool requiresSpecSheet;
         AreaClassificationDrawing areaClassificationDrawing;
         TracingDetail tracingDetail;
@@ -71,7 +73,12 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         string tagNumber;
         Project.Project project;
 
-        [Association("Project-Instruments")]
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [PersistentAlias("createdBy"), VisibleInListView(false)]
+        public string CreatedBy { get => createdBy;}
+        [PersistentAlias("createdOn"), VisibleInListView(false)]
+        public DateTime CreatedOn { get => createdOn; }
+        [Association("Project-Instruments"), VisibleInListView(false)]
         [RuleRequiredField("RuleRequiredField for Instrument.Project", DefaultContexts.Save, "A Project must be specified.")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
         [RuleRequiredField("RuleRequiredField for Instrument.TagNumber", DefaultContexts.Save, "A Tag Number must be specified.")]
@@ -93,30 +100,32 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [VisibleInListView(false)]
         public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
+        [VisibleInListView(false)]
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string EquipmentNumber { get => equipmentNumber; set => SetPropertyValue(nameof(EquipmentNumber), ref equipmentNumber, value); }
 
 
-        [Association("ControlSystem-Instruments")]
+        [Association("ControlSystem-Instruments"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public ControlSystem ControlSystem { get => controlSystem; set => SetPropertyValue(nameof(ControlSystem), ref controlSystem, value); }
 
         [EditorAlias(EditorAliases.SpreadsheetPropertyEditor)]
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Right)]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Right), VisibleInListView(false)]
         public byte[] SpecSheet { get => specSheet; set => SetPropertyValue(nameof(SpecSheet), ref specSheet, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public AreaClass_Class Class { get => @class; set => SetPropertyValue(nameof(Class), ref @class, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public AreaClass_Division Div { get => div; set => SetPropertyValue(nameof(Div), ref div, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public bool GroupA { get => groupA; set => SetPropertyValue(nameof(GroupA), ref groupA, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public bool GroupB { get => groupB; set => SetPropertyValue(nameof(GroupB), ref groupB, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public bool GroupC { get => groupC; set => SetPropertyValue(nameof(GroupC), ref groupC, value); }
-        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification")]
+        [DetailViewLayoutAttribute(LayoutColumnPosition.Left, "Area Classification"), VisibleInListView(false)]
         public bool GroupD { get => groupD; set => SetPropertyValue(nameof(GroupD), ref groupD, value); }
         [DetailViewLayout(LayoutColumnPosition.Left)]
         public InstrumentType InstrumentType { get => instrumentType; set => SetPropertyValue(nameof(InstrumentType), ref instrumentType, value); }
@@ -125,21 +134,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [DetailViewLayout(LayoutColumnPosition.Left)]
         public string ModelNumber { get => modelNumber; set => SetPropertyValue(nameof(ModelNumber), ref modelNumber, value); }
-        [Size(50), DetailViewLayout(LayoutColumnPosition.Left)]
+        [Size(50), DetailViewLayout(LayoutColumnPosition.Left), VisibleInListView(false)]
         public string Location { get => location; set => SetPropertyValue(nameof(Location), ref location, value); }
-        [DisplayName("IO Type"), DetailViewLayout(LayoutColumnPosition.Left)]
+        [DisplayName("IO Type"), DetailViewLayout(LayoutColumnPosition.Left), VisibleInListView(false)]
         public InstrumentIOType IoType { get => ioType; set => SetPropertyValue(nameof(IoType), ref ioType, value); }
-        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'"), VisibleInListView(false)]
         public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
-
+        [VisibleInListView(false)]
         public bool RequiresSpecSheet { get => requiresSpecSheet; set => SetPropertyValue(nameof(RequiresSpecSheet), ref requiresSpecSheet, value); }
-
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public Object CreatedBy { get => createdBy; private set => SetPropertyValue(nameof(CreatedBy), ref createdBy, value); }
-
-        public DateTime CreatedOn { get => createdOn; private set => SetPropertyValue(nameof(CreatedOn), ref createdOn, value); }
-
         public XPCollection<AuditDataItemPersistent> AuditTrail
         {
             get
@@ -149,47 +151,46 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
                 return auditTrail;
             }
         }
-
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         [Size(SizeAttribute.Unlimited)]
         [VisibleInListView(false), DetailViewLayout("Notes")]
         public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
 
-        [Association("PlanDrawing-Instruments"), DetailViewLayout("Drawings")]
+        [Association("PlanDrawing-Instruments"), DetailViewLayout("Drawings"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public PlanDrawing PlanDrawing { get => planDrawing; set => SetPropertyValue(nameof(PlanDrawing), ref planDrawing, value); }
 
-        [Association("PID-Instruments"), DetailViewLayout("Drawings")]
+        [Association("PID-Instruments"), DetailViewLayout("Drawings"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         [DisplayName("P&ID")]
         public PID Pid { get => pid; set => SetPropertyValue(nameof(Pid), ref pid, value); }
 
-        [Association("LoopDrawing-Instruments"), DetailViewLayout("Drawings")]
+        [Association("LoopDrawing-Instruments"), DetailViewLayout("Drawings"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public LoopDrawing LoopDrawing { get => loopDrawing; set => SetPropertyValue(nameof(LoopDrawing), ref loopDrawing, value); }
 
 
-        [Association("AreaClassificationDrawing-Instruments"), DetailViewLayout("Drawings")]
+        [Association("AreaClassificationDrawing-Instruments"), DetailViewLayout("Drawings"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public AreaClassificationDrawing AreaClassificationDrawing { get => areaClassificationDrawing; set => SetPropertyValue(nameof(AreaClassificationDrawing), ref areaClassificationDrawing, value); }
 
-        [Association("ProcessConnectionDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [Association("ProcessConnectionDetail-Instruments"), DetailViewLayout("Installation Details"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public ProcessConnectionDetail ProcessConnectionDetail { get => processConnectionDetail; set => SetPropertyValue(nameof(ProcessConnectionDetail), ref processConnectionDetail, value); }
 
-        [Association("ElectricalDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [Association("ElectricalDetail-Instruments"), DetailViewLayout("Installation Details"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public ElectricalDetail ElectricalDetail { get => electricalDetail; set => SetPropertyValue(nameof(ElectricalDetail), ref electricalDetail, value); }
 
-        [Association("MountingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [Association("MountingDetail-Instruments"), DetailViewLayout("Installation Details"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public MountingDetail MountingDetail { get => mountingDetail; set => SetPropertyValue(nameof(MountingDetail), ref mountingDetail, value); }
 
-        [Association("TubingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [Association("TubingDetail-Instruments"), DetailViewLayout("Installation Details"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public TubingDetail TubingDetail { get => tubingDetail; set => SetPropertyValue(nameof(TubingDetail), ref tubingDetail, value); }
 
-        [Association("TracingDetail-Instruments"), DetailViewLayout("Installation Details")]
+        [Association("TracingDetail-Instruments"), DetailViewLayout("Installation Details"), VisibleInListView(false)]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public TracingDetail TracingDetail { get => tracingDetail; set => SetPropertyValue(nameof(TracingDetail), ref tracingDetail, value); }
 
