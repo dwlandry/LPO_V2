@@ -149,6 +149,7 @@
     <Compile Include="BusinessObjects\Education\Tutorial.cs" />
     <Compile Include="BusinessObjects\Instrument\Documents.cs" />
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
+    <Compile Include="BusinessObjects\Instrument\InstrumentIndexTemplate.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
@@ -262,17 +263,9 @@
     <EmbeddedResource Include="Images\InstrumentCheckPackage.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="Images\InstrumentCheckPackage2.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\InstrumentCheckPackage3.svg">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Images\InstrumentCheckPackage4.svg">
+    <EmbeddedResource Include="Images\InstrumentIndexTemplate.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

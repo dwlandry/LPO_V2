@@ -17,7 +17,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 {
     [DefaultClassOptions, CreatableItem(false), DefaultProperty("CheckPackageName"), NavigationItem("Instrumentation")]
     //[ImageName("BO_Security_Permission_Type")]
-    [ImageName("InstrumentCheckPackage4")]
+    [ImageName("InstrumentCheckPackage")]
     public class InstrumentSpecCheckPackage : BaseObject
     {
         public InstrumentSpecCheckPackage(Session session) : base(session) { }
