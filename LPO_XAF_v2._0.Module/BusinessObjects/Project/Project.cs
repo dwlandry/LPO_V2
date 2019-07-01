@@ -55,7 +55,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [RuleRequiredField("RuleRequiredField for Project.ProjectNumber", DefaultContexts.Save, "A Project Number must be specified.")]
         public string ProjectNumber { get => projectNumber; set => SetPropertyValue(nameof(ProjectNumber), ref projectNumber, value); }
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [Size(200)]
         [EditorAlias("HyperLinkStringPropertyEditor")]
         public string ProjectFolder
         {
@@ -65,7 +65,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ClientProjectNumber { get => clientProjectNumber; set => SetPropertyValue(nameof(ClientProjectNumber), ref clientProjectNumber, value); }
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [Size(200)]
         public string ProjectDescription { get => projectDescription; set => SetPropertyValue(nameof(ProjectDescription), ref projectDescription, value); }
 
         [Association("Client-Projects")]
