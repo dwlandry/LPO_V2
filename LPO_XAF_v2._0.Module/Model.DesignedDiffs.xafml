@@ -63,7 +63,12 @@
                 <LayoutItem Id="OptionalSuffix" ViewItem="OptionalSuffix" Index="3" RelativeSize="24.404761904761905" CaptionLocation="Top" IsNewNode="True" />
                 <LayoutItem Id="Item2" Index="4" RelativeSize="1.1904761904761905" IsNewNode="True" />
               </LayoutGroup>
-              <LayoutItem Id="RequiresSpecSheet" ViewItem="RequiresSpecSheet" CaptionLocation="Default" IsNewNode="True" />
+              <LayoutGroup Id="TagNumber_Row3" Direction="Horizontal" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="RequiresSpecSheet" ViewItem="RequiresSpecSheet" Index="0" CaptionLocation="Default" IsNewNode="True" />
+                <LayoutItem Id="SpecSheetNumber" ViewItem="SpecSheetNumber" CaptionLocation="Top" Index="1" IsNewNode="True" />
+                <LayoutItem Id="EmptySpaceItem" Index="2" IsNewNode="True" />
+                <LayoutItem Id="EmptySpaceItem2" Index="2" IsNewNode="True" />
+              </LayoutGroup>
             </LayoutGroup>
             <LayoutGroup Id="Area Classification" ShowCaption="True" Index="3" RelativeSize="17.744154057771663" Direction="Horizontal" IsNewNode="True">
               <LayoutItem Id="Class" ShowCaption="False" ViewItem="Class" Index="0" RelativeSize="16.785714285714285" IsNewNode="True" />

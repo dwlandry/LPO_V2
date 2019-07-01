@@ -198,7 +198,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string DrawingNumber { get => drawingNumber; set => SetPropertyValue(nameof(DrawingNumber), ref drawingNumber, value); }
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [Size(200)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
         public FileData File

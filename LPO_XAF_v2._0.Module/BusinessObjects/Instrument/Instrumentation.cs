@@ -32,6 +32,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
             createdOn = DateTime.Now;
         }
 
+        string specSheetNumber;
         [Persistent("CreatedOn")]
         DateTime createdOn;
         private XPCollection<AuditDataItemPersistent> auditTrail;
@@ -75,23 +76,23 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         [PersistentAlias("createdBy"), VisibleInListView(false)]
-        public string CreatedBy { get => createdBy;}
+        public string CreatedBy { get => createdBy; }
         [PersistentAlias("createdOn"), VisibleInListView(false)]
         public DateTime CreatedOn { get => createdOn; }
         [Association("Project-Instruments"), VisibleInListView(false)]
         [RuleRequiredField("RuleRequiredField for Instrument.Project", DefaultContexts.Save, "A Project must be specified.")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
         [RuleRequiredField("RuleRequiredField for Instrument.TagNumber", DefaultContexts.Save, "A Tag Number must be specified.")]
-        [Size(15), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
+        [Size(60), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         public string TagNumber { get => tagNumber; set => SetPropertyValue(nameof(TagNumber), ref tagNumber, value); }
-        [Size(5), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
+        [Size(15), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         [DisplayName("Prefix")]
         public string OptionalPrefix { get => optionalPrefix; set => SetPropertyValue(nameof(OptionalPrefix), ref optionalPrefix, value); }
-        [Size(10), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
+        [Size(15), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         public string Letters { get => letters; set => SetPropertyValue(nameof(Letters), ref letters, value); }
-        [Size(10), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
+        [Size(15), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         public string Number { get => number; set => SetPropertyValue(nameof(Number), ref number, value); }
-        [Size(5), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
+        [Size(15), DetailViewLayout(LayoutColumnPosition.Left, "Tag Number")]
         [DisplayName("Suffix")]
         public string OptionalSuffix { get => optionalSuffix; set => SetPropertyValue(nameof(OptionalSuffix), ref optionalSuffix, value); }
         [DisplayName("Physical/Soft Tag")]
@@ -142,6 +143,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
         [VisibleInListView(false)]
         public bool RequiresSpecSheet { get => requiresSpecSheet; set => SetPropertyValue(nameof(RequiresSpecSheet), ref requiresSpecSheet, value); }
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string SpecSheetNumber { get => specSheetNumber; set => SetPropertyValue(nameof(SpecSheetNumber), ref specSheetNumber, value); }
         public XPCollection<AuditDataItemPersistent> AuditTrail
         {
             get
@@ -227,20 +230,50 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         SoftTag = 1
     }
 
-    //[DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Instrumentation")]
     public class InstrumentType : BaseObject
     {
         public InstrumentType(Session session) : base(session) { }
 
+        InstrumentDeviceCategory deviceCategory;
+        InstrumentMeasurementCategory measurementCategory;
         byte[] notes;
         string name;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
 
+        public InstrumentMeasurementCategory MeasurementCategory { get => measurementCategory; set => SetPropertyValue(nameof(MeasurementCategory), ref measurementCategory, value); }
+        public InstrumentDeviceCategory DeviceCategory { get => deviceCategory; set => SetPropertyValue(nameof(DeviceCategory), ref deviceCategory, value); }
+
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
+    }
+
+    public class InstrumentMeasurementCategory : BaseObject
+    {
+
+        public InstrumentMeasurementCategory(Session session) : base(session) { }
+
+        string name;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleUniqueValue]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+    }
+
+    public class InstrumentDeviceCategory : BaseObject
+    {
+
+        public InstrumentDeviceCategory(Session session) : base(session) { }
+
+        string name;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleUniqueValue]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
     }
 
     public class InstrumentIOType : XPObject
