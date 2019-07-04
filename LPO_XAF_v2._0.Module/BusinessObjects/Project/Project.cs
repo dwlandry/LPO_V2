@@ -134,6 +134,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-InstrumentQuotes")]
         public XPCollection<Instrument.InstrumentQuote> InstrumentQuotes { get { return GetCollection<Instrument.InstrumentQuote>(nameof(InstrumentQuotes)); } }
 
+        [Association("Project-PipingLines"), Aggregated]
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        public XPCollection<Piping.Line> PipingLines { get { return GetCollection<Piping.Line>(nameof(PipingLines)); } }
     }
 
     [DefaultClassOptions, NavigationItem("Projects")]
@@ -165,6 +168,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Client-ApprovedInstrumentManufacturers"), Aggregated]
         public XPCollection<ApprovedInstrumentManufacturer> ApprovedInstrumentManufacturers { get { return GetCollection<ApprovedInstrumentManufacturer>(nameof(ApprovedInstrumentManufacturers)); } }
 
+        [Association("Client-PipeSpecs")]
+        [DataSourceCriteria("ClientPipeSpec.Oid = '@This.Oid'"), Aggregated]
+        public XPCollection<Piping.ClientPipeSpec> PipeSpecs { get { return GetCollection<Piping.ClientPipeSpec>(nameof(PipeSpecs)); } }
     }
 
     public enum ProjectStatus
