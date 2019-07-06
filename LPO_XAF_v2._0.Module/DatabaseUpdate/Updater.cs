@@ -41,6 +41,8 @@ namespace LPO_XAF_v2._0.Module.DatabaseUpdate
             CreatePipingStandards();
             CreatePipingSchedules();
             CreatePipeWallThickness();
+            CreateMetallurgyGeneralTypes();
+            CreateMetallurgyMaterials();
         }
         public override void UpdateDatabaseBeforeUpdateSchema()
         {
@@ -598,6 +600,86 @@ namespace LPO_XAF_v2._0.Module.DatabaseUpdate
             thickness.WallThickness = wallThickness;
             thickness.NPS = nps;
             thickness.Schedule = pipingSchedule;
+        }
+
+        private void CreateMetallurgyGeneralTypes()
+        {
+            if (!MetallurgyGeneralTypeExists("Carbon Steel")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "Carbon Steel";
+            if (!MetallurgyGeneralTypeExists("Alloy Steel")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "Alloy Steel";
+            if (!MetallurgyGeneralTypeExists("Stainless Steel")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "Stainless Steel";
+            if (!MetallurgyGeneralTypeExists("PVC")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "PVC";
+            if (!MetallurgyGeneralTypeExists("Bronze")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "Bronze";
+            if (!MetallurgyGeneralTypeExists("Galvanized")) ObjectSpace.CreateObject<MetallurgyGeneralType>().Name = "Galvanized";
+            ObjectSpace.CommitChanges();
+        }
+        private bool MetallurgyGeneralTypeExists(string name)
+        {
+            MetallurgyGeneralType value = ObjectSpace.FindObject<MetallurgyGeneralType>(
+                new BinaryOperator("Name", name));
+            return value != null;
+        }
+
+        private void CreateMetallurgyMaterials()
+        {
+            if (!MetallurgyMaterialExists("Carbon Steel")) AddMetallurgyMaterial("Carbon Steel", "Carbon Steel", "A181-Gr.1 A181-Gr.2", "", "A234-WPA WPB WPC", "");
+            if (!MetallurgyMaterialExists("Carbon Steel - Moderate, High Temp Service")) AddMetallurgyMaterial("Carbon Steel", "Carbon Steel - Moderate, High Temp Service", "A105-Gr.1 A105-Gr.2", "A216-WCA WCB WCC", "", "A106-Gr.B/API 5 LB");
+            if (!MetallurgyMaterialExists("Carbon Steel - Cold Temp Service")) AddMetallurgyMaterial("Carbon Steel", "Carbon Steel - Cold Temp Service", "A350-LF1 A350-LF2", "A352-LCB, LCC", "A420-WPL6", "A33-Gr.6/A 671");
+            if (!MetallurgyMaterialExists("Carbon - 1/2 Moly")) AddMetallurgyMaterial("Alloy Steel", "Carbon - 1/2 Moly", "", "", "", "");
+            if (!MetallurgyMaterialExists("Carbon - 1/2 Moly - High Temp Service")) AddMetallurgyMaterial("Alloy Steel", "Carbon - 1/2 Moly - High Temp Service", "A182-F1", "A217-WC1", "A234-WP1", "");
+            if (!MetallurgyMaterialExists("Carbon - 1/2 Moly - Cold Temp Service")) AddMetallurgyMaterial("Alloy Steel", "Carbon - 1/2 Moly - Cold Temp Service", "", "A352-LC1", "", "");
+            if (!MetallurgyMaterialExists("1/2Cr-1/2Mo")) AddMetallurgyMaterial("Alloy Steel", "1/2Cr-1/2Mo", "A182-F2", "", "", "");
+            if (!MetallurgyMaterialExists("1/2Cr-1/2Mo-1")) AddMetallurgyMaterial("Alloy Steel", "1/2Cr", "", "A217-WC4", "", "");
+            if (!MetallurgyMaterialExists("3/4Cr-1 Mo-3/4NI")) AddMetallurgyMaterial("Alloy Steel", "3/4Cr-1 Mo-3/4NI", "", "A217-WC5", "", "");
+            if (!MetallurgyMaterialExists("1Cr-1/2Mo")) AddMetallurgyMaterial("Alloy Steel", "1Cr-1/2Mo", "A182-F12", "", "A234-WP12", "");
+            if (!MetallurgyMaterialExists("1Cr-1 Mo-Vd")) AddMetallurgyMaterial("Alloy Steel", "1Cr-1 Mo-Vd", "A404-F24", "A389-C24", "", "");
+            if (!MetallurgyMaterialExists("1-1/4Cr-1/2Mo")) AddMetallurgyMaterial("Alloy Steel", "1-1/4Cr-1/2Mo", "A182-F11", "A217-WC6", "A234-WP11", "");
+            if (!MetallurgyMaterialExists("1-1/4Cr-1/2Mo-Vd")) AddMetallurgyMaterial("Alloy Steel", "1-1/4Cr-1/2Mo-Vd", "", "A389-C23", "", "");
+            if (!MetallurgyMaterialExists("2-1/4Cr-1/2Mo-Vd")) AddMetallurgyMaterial("Alloy Steel", "2-1/4Cr-1/2Mo-Vd", "A182-F22", "A217-WC9", "A234-WP22", "");
+            if (!MetallurgyMaterialExists("3Cr-1 Mo")) AddMetallurgyMaterial("Alloy Steel", "3Cr-1 Mo", "A182-F21", "", "", "");
+            if (!MetallurgyMaterialExists("5Cr-1/2Mo")) AddMetallurgyMaterial("Alloy Steel", "5Cr-1/2Mo", "A182-F5", "", "A234-WP5", "");
+            if (!MetallurgyMaterialExists("5Cr-1/2Mo-Si")) AddMetallurgyMaterial("Alloy Steel", "5Cr-1/2Mo-Si", "", "A217-Gr.C5", "", "");
+            if (!MetallurgyMaterialExists("7Cr-1/2Mo")) AddMetallurgyMaterial("Alloy Steel", "7Cr-1/2Mo", "A182-F7", "", "A234-WP7", "");
+            if (!MetallurgyMaterialExists("9Cr-1Mo")) AddMetallurgyMaterial("Alloy Steel", "9Cr-1Mo", "A182-F9", "A217-Gr.C12", "A234-WP9", "");
+            if (!MetallurgyMaterialExists("13Cr")) AddMetallurgyMaterial("Alloy Steel", "13Cr", "A182-F6", "A351-CA15", "", "");
+            if (!MetallurgyMaterialExists("304 SS - Standard")) AddMetallurgyMaterial("Stainless Steel", "304 SS - Standard", "A182-F304", "A351-Gr.CF8 CF8a", "A403-WP304", "A312-TP304");
+            if (!MetallurgyMaterialExists("304 SS - Low Carbon")) AddMetallurgyMaterial("Stainless Steel", "304 SS - Low Carbon", "A182-F304-L", "A351-Gr.CF3 CF3a", "A403-WP304-L", "A312-Tp304L");
+            if (!MetallurgyMaterialExists("304 SS - High Temp Service")) AddMetallurgyMaterial("Stainless Steel", "304 SS - High Temp Service", "A182-F304-H", "A351.Gr.CF10", "A403-WP304-H", "A312-TP304H");
+            if (!MetallurgyMaterialExists("309 SS")) AddMetallurgyMaterial("Stainless Steel", "309 SS", "", "", "A403-WP309", "");
+            if (!MetallurgyMaterialExists("310 SS")) AddMetallurgyMaterial("Stainless Steel", "310 SS", "A182-F310", "", "A403-WP310", "A312-TP310");
+            if (!MetallurgyMaterialExists("316 SS - Standard")) AddMetallurgyMaterial("Stainless Steel", "316 SS - Standard", "A182-F316", "A351-Gr.CF8M", "A403-WP316", "A312-TP316");
+            if (!MetallurgyMaterialExists("316 SS - Low Carbon")) AddMetallurgyMaterial("Stainless Steel", "316 SS - Low Carbon", "A182-F316-L", "A351-Gr.CF3M", "A403-WP316-L", "A312-TP316L");
+            if (!MetallurgyMaterialExists("316 SS - High Temp Service")) AddMetallurgyMaterial("Stainless Steel", "316 SS - High Temp Service", "A182-F316-H", "A351.Gr.CF10", "A403-WP316-H", "A312-TP316H");
+            if (!MetallurgyMaterialExists("317 SS")) AddMetallurgyMaterial("Stainless Steel", "317 SS", "", "A403-WP317", "", "");
+            if (!MetallurgyMaterialExists("321 SS - Standard")) AddMetallurgyMaterial("Stainless Steel", "321 SS - Standard", "A182-F321", "", "A403-WP321", "");
+            if (!MetallurgyMaterialExists("321 SS - High Temp Service")) AddMetallurgyMaterial("Stainless Steel", "321 SS - High Temp Service", "A182-F321-H", "", "A403-WP321-H", "");
+            if (!MetallurgyMaterialExists("347 SS - Standard")) AddMetallurgyMaterial("Stainless Steel", "347 SS - Standard", "A182-F347", "", "A403-WP347", "");
+            if (!MetallurgyMaterialExists("347 SS - High Temp Service")) AddMetallurgyMaterial("Stainless Steel", "347 SS - High Temp Service", "A182-F347-H", "A351-Gr.CF8C", "A403-WP347-H", "");
+            if (!MetallurgyMaterialExists("348 SS - Standard")) AddMetallurgyMaterial("Stainless Steel", "348 SS - Standard", "A182-F348", "", "A403-WP348", "");
+            if (!MetallurgyMaterialExists("348 SS - High Temp Service")) AddMetallurgyMaterial("Stainless Steel", "348 SS - High Temp Service", "A182-F348-H", "", "", "");
+            if (!MetallurgyMaterialExists("Duplex SS")) AddMetallurgyMaterial("Stainless Steel", "Duplex SS", "", "", "", "");
+            if (!MetallurgyMaterialExists("Hastelloy C276")) AddMetallurgyMaterial("Alloy Steel", "Hastelloy C276", "", "", "", "");
+            if (!MetallurgyMaterialExists("PVC")) AddMetallurgyMaterial("PVC", "PVC", "", "", "", "");
+            if (!MetallurgyMaterialExists("Bronze")) AddMetallurgyMaterial("Alloy Steel", "Bronze", "", "", "", "");
+            if (!MetallurgyMaterialExists("Galvanized")) AddMetallurgyMaterial("Alloy", "Galvanized", "", "", "", "");
+            if (!MetallurgyMaterialExists("20 Ni-8 Cr")) AddMetallurgyMaterial("Alloy", "20 Ni-8 Cr", "A182-F10", "", "", "");
+            if (!MetallurgyMaterialExists("2 Nickel Alloy Steel - Low Temp Service")) AddMetallurgyMaterial("Alloy Steel", "2 Nickel Alloy Steel - Low Temp Service", "", "A352-LC2", "", "");
+            ObjectSpace.CommitChanges();
+
+        }
+        private bool MetallurgyMaterialExists(string name)
+        {
+            MetallurgyMaterial value = ObjectSpace.FindObject<MetallurgyMaterial>(new BinaryOperator("Name", name));
+            return value != null;
+        }
+        private void AddMetallurgyMaterial(string materialType, string materialName, string forgings, string castings, string wroughtFittings, string pipe)
+        {
+            MetallurgyMaterial item = ObjectSpace.CreateObject<MetallurgyMaterial>();
+            item.Name = materialName;
+            item.Type = ObjectSpace.FindObject<MetallurgyGeneralType>(new BinaryOperator("Name", materialType));
+            item.Forgings = forgings;
+            item.Castings = castings;
+            item.WroughtFittings = wroughtFittings;
+            item.Pipe = pipe;
         }
     }
 }

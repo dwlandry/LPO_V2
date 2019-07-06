@@ -49,7 +49,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         NominalPipeSize nPS;
         Project.Project project;
         PipingSchedule schedule;
-        Metallurgy metallurgy;
+        //MetallurgyMaterial metallurgy;
         string lineNumber;
         double outerDiameter;
         double wallThickness;
@@ -65,7 +65,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [LookupEditorMode(LookupEditorMode.AllItems)]
         public NominalPipeSize NPS { get => nPS; set => SetPropertyValue(nameof(NPS), ref nPS, value); }
 
-        public Metallurgy Metallurgy { get => metallurgy; set => SetPropertyValue(nameof(Metallurgy), ref metallurgy, value); }
+        //public MetallurgyMaterial Metallurgy { get => metallurgy; set => SetPropertyValue(nameof(Metallurgy), ref metallurgy, value); }
 
         [DataSourceProperty("AvailableSchedules")]
         public PipingSchedule Schedule{ get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value);}
@@ -120,55 +120,78 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
             }
         }
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Inner Diameter (in)")]        
+        [DisplayName("Inner Diameter (in)")]
         public double InnerDiameter => outerDiameter - 2 * wallThickness;
         [ModelDefault("DisplayFormat", "F5")]
         [DisplayName("Inner Area (in^2)")]
         public double InnerAreaInSquareInches =>  Math.PI * Math.Pow(InnerDiameter / 2,2);
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Metal Area (in^2)")]        
+        [DisplayName("Metal Area (in^2)")]
         public double MetalAreaInSquareInches => Math.PI * Math.Pow(outerDiameter / 2, 2) - InnerAreaInSquareInches;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of CS Pipe per Foot (lbs)")]        
+        [DisplayName("Wt of CS Pipe per Foot (lbs)")]
         public double WeightOfCarbonSteelPipePerFootInPounds => 10.6802 * wallThickness * (outerDiameter - wallThickness);
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Water per Foot (lbs)")]        
+        [DisplayName("Wt of Water per Foot (lbs)")]
         public double WeightOfWaterPerFootInPounds => 0.3405 * Math.Pow(InnerDiameter, 2);
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Ferritic SS Pipe per Foot (lbs)")]        
+        [DisplayName("Wt of Ferritic SS Pipe per Foot (lbs)")]
         public double WeightOfFerriticSSPipePerFootInPounds => 0.95 * WeightOfCarbonSteelPipePerFootInPounds;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Austentic SS Pipe per Foot (lbs)")]        
+        [DisplayName("Wt of Austentic SS Pipe per Foot (lbs)")]
         public double WeightOfAustenticSSPipePerFootInPounds => 1.02 * WeightOfCarbonSteelPipePerFootInPounds;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Inner Surface Area per Foot (ft^2)")]        
+        [DisplayName("Inner Surface Area per Foot (ft^2)")]
         public double InnerSurfaceAreaPerFootInFeetSquared => 0.2618 * InnerDiameter;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Moment of Inertia (in^4)")]        
+        [DisplayName("Moment of Inertia (in^4)")]
         public double MomentOfInertiaInInches4 => 0.0491 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4));
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Elastic Section Modulus (in^3)")]        
+        [DisplayName("Elastic Section Modulus (in^3)")]
         public double ElasticSectionModulusInInches3 => 0.0982 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4)) / outerDiameter;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Plastic Section Modulus (in^3)")]        
+        [DisplayName("Plastic Section Modulus (in^3)")]
         public double PlasticSectionModulusInInches3 => Math.Pow(outerDiameter, 3) - Math.Pow(InnerDiameter, 3) / 6;
         [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Radius of Gyration (in)")]        
+        [DisplayName("Radius of Gyration (in)")]
         public double RadiusOfGyrationInInches => 0.25 *Math.Pow(Math.Pow(outerDiameter,2) - Math.Pow(InnerDiameter,2),0.5);
     }
 
-    public class Metallurgy : BaseObject
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
+    public class MetallurgyMaterial : BaseObject
     {
         
-        public Metallurgy(Session session) : base(session) { }
+        public MetallurgyMaterial(Session session) : base(session) { }
 
 
+        string pipe;
+        string wroughtFittings;
+        string castings;
+        string forgings;
+        MetallurgyGeneralType type;
         string description;
         string alias;
         string name;
 
+
+        [Association("MetallurgyGeneralType-Materials")]
+        public MetallurgyGeneralType Type { get => type; set => SetPropertyValue(nameof(Type), ref type, value); }
+
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleUniqueValue]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Forgings { get => forgings; set => SetPropertyValue(nameof(Forgings), ref forgings, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Castings { get => castings; set => SetPropertyValue(nameof(Castings), ref castings, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string WroughtFittings { get => wroughtFittings; set => SetPropertyValue(nameof(WroughtFittings), ref wroughtFittings, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Pipe { get => pipe; set => SetPropertyValue(nameof(Pipe), ref pipe, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Alias { get => alias; set => SetPropertyValue(nameof(Alias), ref alias, value); }
@@ -176,6 +199,20 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [Size(300)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
+    }
+
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
+    public class MetallurgyGeneralType : BaseObject
+    {
+        public MetallurgyGeneralType(Session session) : base (session) { }
+
+        string name;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        [RuleUniqueValue]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+        [Association("MetallurgyGeneralType-Materials")]
+        public XPCollection<MetallurgyMaterial> Materials { get { return GetCollection<MetallurgyMaterial>(nameof(Materials)); } }
     }
 
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
