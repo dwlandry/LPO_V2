@@ -236,6 +236,11 @@
         <ColumnInfo Id="Source" PropertyName="Source" Width="70" Index="3" IsNewNode="True" />
       </Columns>
     </ListView>
+    <ListView Id="NominalPipeSize_LookupListView">
+      <Columns>
+        <ColumnInfo Id="NominalSizeInInches" Width="100" DisplayFormat="" />
+      </Columns>
+    </ListView>
     <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <DetailView Id="Project_DetailView" AllowDelete="False" />
     <ListView Id="Project_ListView" AllowDelete="False" />

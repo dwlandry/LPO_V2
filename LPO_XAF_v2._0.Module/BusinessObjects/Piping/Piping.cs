@@ -3,7 +3,6 @@ using System.Linq;
 using System.Text;
 using DevExpress.Xpo;
 using DevExpress.ExpressApp;
-//using System.ComponentModel;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Data.Filtering;
 using DevExpress.Persistent.Base;
@@ -12,7 +11,6 @@ using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using LPO_XAF_v2._0.Module.BusinessObjects.Project;
-//using System.ComponentModel.DataAnnotations;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 {
@@ -53,7 +51,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         PipingSchedule schedule;
         Metallurgy metallurgy;
         string lineNumber;
-
+        double outerDiameter;
+        double wallThickness;
 
         [Association("Project-PipingLines")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
@@ -62,15 +61,100 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
         [DisplayName("NPS")]
+        [ToolTip("Nominal Pipe Size in inches")]
+        [LookupEditorMode(LookupEditorMode.AllItems)]
         public NominalPipeSize NPS { get => nPS; set => SetPropertyValue(nameof(NPS), ref nPS, value); }
 
         public Metallurgy Metallurgy { get => metallurgy; set => SetPropertyValue(nameof(Metallurgy), ref metallurgy, value); }
 
-        public PipingSchedule Schedule { get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value); }
+        [DataSourceProperty("AvailableSchedules")]
+        public PipingSchedule Schedule{ get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value);}
 
         [DataSourceCriteria("Client.Oid = '@This.Project.Client.Oid'")]
         public ClientPipeSpec PipeSpec { get => pipeSpec; set => SetPropertyValue(nameof(PipeSpec), ref pipeSpec, value); }
 
+        [VisibleInDetailView(false), VisibleInListView(false)]
+        public XPCollection<PipingSchedule> AvailableSchedules
+        {
+            get
+            {
+                if (NPS != null)
+                {
+                    XPQuery<PipingSchedule> schedules = new XPQuery<PipingSchedule>(Session);
+                    XPQuery<PipeWallThickness> thickness = new XPQuery<PipeWallThickness>(Session);
+                    var list = from s in schedules
+                               join t in thickness on s.Oid equals t.Schedule.Oid
+                               where t.NPS.Oid == NPS.Oid
+                               select s;
+
+                    return new XPCollection<PipingSchedule>(Session, new InOperator("Oid",list));//, new InOperator("Name",);
+                }
+                return null;
+            }
+        }
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Outer Diameter (in)")]
+        public double OuterDiameter
+        {
+            get
+            {
+                outerDiameter = NPS == null ? 0 : NPS.OuterDiameterInInches;
+                return outerDiameter;
+            }
+        }
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Wall Thickness (in)")]
+        public double WallThickness
+        {
+            get
+            {
+                try
+                {
+                    wallThickness = Session.FindObject<PipeWallThickness>(CriteriaOperator.Parse("NPS=? and Schedule=?", NPS, Schedule)).WallThickness;
+                }
+                catch (Exception)
+                {
+                    wallThickness = 0;
+                }
+                return wallThickness;
+            }
+        }
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Inner Diameter (in)")]        
+        public double InnerDiameter => outerDiameter - 2 * wallThickness;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Inner Area (in^2)")]
+        public double InnerAreaInSquareInches =>  Math.PI * Math.Pow(InnerDiameter / 2,2);
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Metal Area (in^2)")]        
+        public double MetalAreaInSquareInches => Math.PI * Math.Pow(outerDiameter / 2, 2) - InnerAreaInSquareInches;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Wt of CS Pipe per Foot (lbs)")]        
+        public double WeightOfCarbonSteelPipePerFootInPounds => 10.6802 * wallThickness * (outerDiameter - wallThickness);
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Wt of Water per Foot (lbs)")]        
+        public double WeightOfWaterPerFootInPounds => 0.3405 * Math.Pow(InnerDiameter, 2);
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Wt of Ferritic SS Pipe per Foot (lbs)")]        
+        public double WeightOfFerriticSSPipePerFootInPounds => 0.95 * WeightOfCarbonSteelPipePerFootInPounds;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Wt of Austentic SS Pipe per Foot (lbs)")]        
+        public double WeightOfAustenticSSPipePerFootInPounds => 1.02 * WeightOfCarbonSteelPipePerFootInPounds;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Inner Surface Area per Foot (ft^2)")]        
+        public double InnerSurfaceAreaPerFootInFeetSquared => 0.2618 * InnerDiameter;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Moment of Inertia (in^4)")]        
+        public double MomentOfInertiaInInches4 => 0.0491 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4));
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Elastic Section Modulus (in^3)")]        
+        public double ElasticSectionModulusInInches3 => 0.0982 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4)) / outerDiameter;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Plastic Section Modulus (in^3)")]        
+        public double PlasticSectionModulusInInches3 => Math.Pow(outerDiameter, 3) - Math.Pow(InnerDiameter, 3) / 6;
+        [ModelDefault("DisplayFormat", "F5")]
+        [DisplayName("Radius of Gyration (in)")]        
+        public double RadiusOfGyrationInInches => 0.25 *Math.Pow(Math.Pow(outerDiameter,2) - Math.Pow(InnerDiameter,2),0.5);
     }
 
     public class Metallurgy : BaseObject
