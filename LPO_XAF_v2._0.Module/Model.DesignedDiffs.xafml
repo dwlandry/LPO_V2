@@ -3,18 +3,24 @@
   <NavigationItems StartupNavigationItem="Project_ListView">
     <Items>
       <Item Id="Default" Visible="True" />
+      <Item Id="Education" ImageName="Book" />
       <Item Id="Instrumentation" ImageName="Instruments">
         <Items>
           <Item Id="Instrument_ListView" ImageName="Instruments" Caption="Instruments" />
           <Item Id="InstrumentSpecSheetTemplate_ListView" ViewId="InstrumentSpecSheetTemplate_NavigationView" />
         </Items>
       </Item>
+      <Item Id="Piping" ImageName="Pipe" />
       <Item Id="Products" ImageName="BO_Product">
         <Items>
           <Item Id="Manufacturer_ListView" ImageName="BO_Vendor" />
         </Items>
       </Item>
-      <Item Id="Projects" ImageName="BO_Project" />
+      <Item Id="Projects" ImageName="Project">
+        <Items>
+          <Item Id="Project_ListView" Index="0" />
+        </Items>
+      </Item>
       <Item Id="Reports" Visible="False" />
       <Item Id="State Machine" Visible="False" />
     </Items>

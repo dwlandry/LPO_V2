@@ -21,7 +21,7 @@ using System.Linq;
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
 {
     [DefaultClassOptions, NavigationItem("Projects")]
-    [ImageName("BO_Project"), CreatableItem(false), DefaultProperty("DisplayName")]
+    [ImageName("Project"), CreatableItem(false), DefaultProperty("DisplayName")]
     [DefaultListViewOptions(MasterDetailMode.ListViewOnly, false, NewItemRowPosition.None)]
     [Appearance("Closed or Lost Bid", TargetItems = "*;Status",
         Criteria = "Status = 2 | Status = 3", Enabled = false)]

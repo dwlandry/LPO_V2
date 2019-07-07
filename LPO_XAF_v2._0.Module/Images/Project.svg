@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<svg viewBox="-2 -4 32 32" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Briefcase">
+      <rect x="14" y="14" width="4" height="4" rx="0" ry="0" fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Briefcase">
+      <path d="M20, 19C20, 19.5 19.5, 20 19, 20L13, 20C12.5, 20 12, 19.5 12, 19L12, 16L2, 16L2, 27C2, 27.5 2.5, 28 3, 28L29, 28C29.5, 28 30, 27.5 30, 27L30, 16L20, 16L20, 19z" fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+  <g id="Layer_1" transform="translate(-2, -4)">
+    <g id="Briefcase">
+      <path d="M29, 8L22, 8L22, 5C22, 4.5 21.5, 4 21, 4L11, 4C10.5, 4 10, 4.5 10, 5L10, 8L3, 8C2.5, 8 2, 8.5 2, 9L2, 14L12, 14L12, 13C12, 12.5 12.5, 12 13, 12L19, 12C19.5, 12 20, 12.5 20, 13L20, 14L30, 14L30, 9C30, 8.5 29.5, 8 29, 8zM20, 8L12, 8L12, 6L20, 6L20, 8z" fill="#FFB115" class="Yellow" />
+    </g>
+  </g>
+</svg>

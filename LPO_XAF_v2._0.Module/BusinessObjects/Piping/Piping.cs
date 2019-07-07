@@ -14,14 +14,6 @@ using LPO_XAF_v2._0.Module.BusinessObjects.Project;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 {
-    //public class PipingMetallurgy : BaseObject
-    //{
-    //    
-    //    public PipingMetallurgy(Session session) : base(session) { }
-    //    
-    //}
-
-    [DefaultClassOptions,CreatableItem(false), NavigationItem("Piping")]
     [XafDefaultProperty("NominalSizeInInches")]
     public class NominalPipeSize : BaseObject
     {
@@ -37,6 +29,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
     }
 
     [XafDefaultProperty("LineNumber")]
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     [RuleCombinationOfPropertiesIsUnique("UniqueLineNumberPerProjectRule",DefaultContexts.Save, "Project, LineNumber", 
         "This Line Number is already used in this project.  Please try a different Line Number.")]
     public class Line : BaseObject
@@ -157,7 +150,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public double RadiusOfGyrationInInches => 0.25 *Math.Pow(Math.Pow(outerDiameter,2) - Math.Pow(InnerDiameter,2),0.5);
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     public class MetallurgyMaterial : BaseObject
     {
         
@@ -201,7 +194,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
     public class MetallurgyGeneralType : BaseObject
     {
         public MetallurgyGeneralType(Session session) : base (session) { }
@@ -215,7 +207,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public XPCollection<MetallurgyMaterial> Materials { get { return GetCollection<MetallurgyMaterial>(nameof(Materials)); } }
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
     public class PipingStandard : BaseObject
     {
         
@@ -235,7 +226,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     }
 
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
     public class PipingSchedule : BaseObject
     {
         
@@ -257,6 +247,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     [RuleCombinationOfPropertiesIsUnique("UniqueSpecNumberRule", DefaultContexts.Save, "Client, SpecNumber", "This Spec Number already exists for the Client.")]
     [XafDefaultProperty("SpecNumber")]
+    [DefaultClassOptions,CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     public class ClientPipeSpec : BaseObject
     {
         public ClientPipeSpec(Session session) : base(session) { }
@@ -278,7 +269,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     [RuleCombinationOfPropertiesIsUnique("UniqueSizeAndScheduleRule", DefaultContexts.Save, "NPS, Schedule", "Combination of NPS and Schedule must be unique.")]
     [XafDefaultProperty("WallThickness")]
-    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping")]
     public class PipeWallThickness : BaseObject
     {
         
