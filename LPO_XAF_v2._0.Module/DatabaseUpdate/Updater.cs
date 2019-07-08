@@ -13,6 +13,7 @@ using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.BaseImpl.PermissionPolicy;
 using LPO_XAF_v2._0.Module.BusinessObjects.Instrument;
 using LPO_XAF_v2._0.Module.BusinessObjects.Piping;
+using LPO_XAF_v2._0.Module.BusinessObjects.Project;
 using System;
 using System.Linq;
 
@@ -28,13 +29,8 @@ namespace LPO_XAF_v2._0.Module.DatabaseUpdate
         public override void UpdateDatabaseAfterUpdateSchema()
         {
             base.UpdateDatabaseAfterUpdateSchema();
-            //string name = "MyName";
-            //DomainObject1 theObject = ObjectSpace.FindObject<DomainObject1>(CriteriaOperator.Parse("Name=?", name));
-            //if(theObject == null) {
-            //    theObject = ObjectSpace.CreateObject<DomainObject1>();
-            //    theObject.Name = name;
-            //}
-            CreateDefaultRole();
+            
+            CreateSecurityRoles();
             SupplyInitialDataForInstrumentMeasurementCategories();
             SupplyInitialDataForInstrumentDeviceCategories();
             SupplyNominalPipeSizeData();
@@ -50,6 +46,12 @@ namespace LPO_XAF_v2._0.Module.DatabaseUpdate
             //if(CurrentDBVersion < new Version("1.1.0.0") && CurrentDBVersion > new Version("0.0.0.0")) {
             //    RenameColumn("DomainObject1Table", "OldColumnName", "NewColumnName");
             //}
+        }
+
+        private void CreateSecurityRoles()
+        {
+            CreateDefaultRole();
+            CreateInstrumentEngineerRole();
         }
         private PermissionPolicyRole CreateDefaultRole()
         {
@@ -71,6 +73,41 @@ namespace LPO_XAF_v2._0.Module.DatabaseUpdate
             }
             return defaultRole;
         }
+        private PermissionPolicyRole CreateInstrumentEngineerRole()
+        {
+            PermissionPolicyRole instrumentEngineerRole = ObjectSpace.FindObject<PermissionPolicyRole>(new BinaryOperator("Name", "Instrument Engineer"));
+            if (instrumentEngineerRole == null)
+            {
+                instrumentEngineerRole = ObjectSpace.CreateObject<PermissionPolicyRole>();
+                instrumentEngineerRole.Name = "Instrument Engineer";
+                instrumentEngineerRole.PermissionPolicy = SecurityPermissionPolicy.ReadOnlyAllByDefault;
+                instrumentEngineerRole.AddObjectPermission<PermissionPolicyUser>(SecurityOperations.Read, "[Oid] = CurrentUserId()", SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<Instrument>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<Instrument>(SecurityOperations.Delete, SecurityPermissionState.Deny);
+                instrumentEngineerRole.AddTypePermission<InstrumentType>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentIOType>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentMeasurementCategory>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentDeviceCategory>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentQuote>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentQuote>(SecurityOperations.Delete, SecurityPermissionState.Deny);
+                instrumentEngineerRole.AddTypePermission<InstrumentSpecCheckPackage>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentSpecCheckPackage>(SecurityOperations.Delete, SecurityPermissionState.Deny);
+                instrumentEngineerRole.AddTypePermission<InstrumentSpecSheetTemplate>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentSpecSheetTemplateCategory>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<InstrumentSpecSheetTemplateSource>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<ClientPipeSpec>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+
+                instrumentEngineerRole.AddTypePermission<Project>(SecurityOperations.CRUDAccess, SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddTypePermission<Project>(SecurityOperations.Delete, SecurityPermissionState.Deny);
+                instrumentEngineerRole.AddNavigationPermission(@"Application/NavigationItems/Items/Default/Items/MyDetails", SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddNavigationPermission(@"Application/NavigationItems/Items/Instrumentation", SecurityPermissionState.Allow);
+                instrumentEngineerRole.AddNavigationPermission(@"Application/NavigationItems/Items/Projects", SecurityPermissionState.Allow);
+            }
+            return instrumentEngineerRole;
+        }
+        
+
+
 
         private void SupplyInitialDataForInstrumentMeasurementCategories()
         {
