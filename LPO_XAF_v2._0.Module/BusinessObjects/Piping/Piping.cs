@@ -1,23 +1,26 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using DevExpress.Xpo;
-using DevExpress.ExpressApp;
-using DevExpress.ExpressApp.DC;
+﻿//-----------------------------------------------------------------------
+// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Piping\Piping.cs" company="David W. Landry III">
+//     Author: _**David Landry**_
+//     *Copyright (c) David W. Landry III. All rights reserved.*
+// </copyright>
+//-----------------------------------------------------------------------
 using DevExpress.Data.Filtering;
-using DevExpress.Persistent.Base;
-using System.Collections.Generic;
+using DevExpress.ExpressApp.DC;
 using DevExpress.ExpressApp.Model;
+using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
 using LPO_XAF_v2._0.Module.BusinessObjects.Project;
+using System;
+using System.Linq;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 {
     [XafDefaultProperty("NominalSizeInInches")]
     public class NominalPipeSize : BaseObject
     {
-        
+
         public NominalPipeSize(Session session) : base(session) { }
 
         double outerDiameterInInches;
@@ -30,11 +33,11 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     [XafDefaultProperty("LineNumber")]
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
-    [RuleCombinationOfPropertiesIsUnique("UniqueLineNumberPerProjectRule",DefaultContexts.Save, "Project, LineNumber", 
+    [RuleCombinationOfPropertiesIsUnique("UniqueLineNumberPerProjectRule", DefaultContexts.Save, "Project, LineNumber",
         "This Line Number is already used in this project.  Please try a different Line Number.")]
     public class Line : BaseObject
     {
-        
+
         public Line(Session session) : base(session) { }
 
 
@@ -61,10 +64,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         //public MetallurgyMaterial Metallurgy { get => metallurgy; set => SetPropertyValue(nameof(Metallurgy), ref metallurgy, value); }
 
         [DataSourceProperty("AvailableSchedules")]
-        public PipingSchedule Schedule{ get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value);}
+        public PipingSchedule Schedule { get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value); }
 
         [DataSourceCriteria("Client.Oid = '@This.Project.Client.Oid'")]
         public ClientPipeSpec PipeSpec { get => pipeSpec; set => SetPropertyValue(nameof(PipeSpec), ref pipeSpec, value); }
+
+        [Association("Line-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument.Instrument> Instruments { get { return GetCollection<Instrument.Instrument>(nameof(Instruments)); } }
 
         [VisibleInDetailView(false), VisibleInListView(false)]
         public XPCollection<PipingSchedule> AvailableSchedules
@@ -80,7 +87,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
                                where t.NPS.Oid == NPS.Oid
                                select s;
 
-                    return new XPCollection<PipingSchedule>(Session, new InOperator("Oid",list));//, new InOperator("Name",);
+                    return new XPCollection<PipingSchedule>(Session, new InOperator("Oid", list));//, new InOperator("Name",);
                 }
                 return null;
             }
@@ -117,7 +124,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public double InnerDiameter => outerDiameter - 2 * wallThickness;
         [ModelDefault("DisplayFormat", "F5")]
         [DisplayName("Inner Area (in^2)")]
-        public double InnerAreaInSquareInches =>  Math.PI * Math.Pow(InnerDiameter / 2,2);
+        public double InnerAreaInSquareInches => Math.PI * Math.Pow(InnerDiameter / 2, 2);
         [ModelDefault("DisplayFormat", "F5")]
         [DisplayName("Metal Area (in^2)")]
         public double MetalAreaInSquareInches => Math.PI * Math.Pow(outerDiameter / 2, 2) - InnerAreaInSquareInches;
@@ -147,13 +154,13 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public double PlasticSectionModulusInInches3 => Math.Pow(outerDiameter, 3) - Math.Pow(InnerDiameter, 3) / 6;
         [ModelDefault("DisplayFormat", "F5")]
         [DisplayName("Radius of Gyration (in)")]
-        public double RadiusOfGyrationInInches => 0.25 *Math.Pow(Math.Pow(outerDiameter,2) - Math.Pow(InnerDiameter,2),0.5);
+        public double RadiusOfGyrationInInches => 0.25 * Math.Pow(Math.Pow(outerDiameter, 2) - Math.Pow(InnerDiameter, 2), 0.5);
     }
 
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     public class MetallurgyMaterial : BaseObject
     {
-        
+
         public MetallurgyMaterial(Session session) : base(session) { }
 
 
@@ -196,7 +203,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     public class MetallurgyGeneralType : BaseObject
     {
-        public MetallurgyGeneralType(Session session) : base (session) { }
+        public MetallurgyGeneralType(Session session) : base(session) { }
 
         string name;
 
@@ -209,7 +216,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     public class PipingStandard : BaseObject
     {
-        
+
         public PipingStandard(Session session) : base(session) { }
 
         string description;
@@ -228,7 +235,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     public class PipingSchedule : BaseObject
     {
-        
+
         public PipingSchedule(Session session) : base(session) { }
 
 
@@ -247,11 +254,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     [RuleCombinationOfPropertiesIsUnique("UniqueSpecNumberRule", DefaultContexts.Save, "Client, SpecNumber", "This Spec Number already exists for the Client.")]
     [XafDefaultProperty("SpecNumber")]
-    [DefaultClassOptions,CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
+    [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     public class ClientPipeSpec : BaseObject
     {
         public ClientPipeSpec(Session session) : base(session) { }
 
+        string title;
+        DateTime revisionDate;
+        string revision;
         FileData file;
         string specNumber;
         Client client;
@@ -262,6 +272,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string SpecNumber { get => specNumber; set => SetPropertyValue(nameof(SpecNumber), ref specNumber, value); }
 
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Revision { get => revision; set => SetPropertyValue(nameof(Revision), ref revision, value); }
+
+        public DateTime RevisionDate { get => revisionDate; set => SetPropertyValue(nameof(RevisionDate), ref revisionDate, value); }
+
+        [Size(200)]
+        public string Title { get => title; set => SetPropertyValue(nameof(Title), ref title, value); }
+
         public FileData File { get => file; set => SetPropertyValue(nameof(File), ref file, value); }
 
 
@@ -271,7 +289,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
     [XafDefaultProperty("WallThickness")]
     public class PipeWallThickness : BaseObject
     {
-        
+
         public PipeWallThickness(Session session) : base(session) { }
 
 

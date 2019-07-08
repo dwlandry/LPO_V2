@@ -11,6 +11,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Piping;
 using LPO_XAF_v2._0.Module.BusinessObjects.Procurement;
 using LPO_XAF_v2._0.Module.BusinessObjects.Products;
 using System;
@@ -32,6 +33,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
             createdOn = DateTime.Now;
         }
 
+        Line lineNumber;
         string specSheetNumber;
         [Persistent("CreatedOn")]
         DateTime createdOn;
@@ -48,7 +50,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         ResponsibleEngineeringCompany responsibleCompany;
         ControlSystem controlSystem;
         string equipmentNumber;
-        string lineNumber;
+        //string lineNumber;
         Physical_Instrument physicalOrSoftTag;
         byte[] notes;
         LoopDrawing loopDrawing;
@@ -100,9 +102,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //[VisibleInListView(false)]
+        //public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
+
+        [Association("Line-Instruments")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         [VisibleInListView(false)]
-        public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
+        public Line LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
         [VisibleInListView(false)]
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]

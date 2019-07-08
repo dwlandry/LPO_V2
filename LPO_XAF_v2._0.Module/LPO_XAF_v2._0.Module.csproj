@@ -182,6 +182,18 @@
     <Compile Include="Controllers\InitializePropertiesForControlSystemViewController.Designer.cs">
       <DependentUpon>InitializePropertiesForControlSystemViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\InitializePropertiesForPipeSpecViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForPipeSpecViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForPipeSpecViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForPipingLineViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\InitializePropertiesForPipingLineViewController.Designer.cs">
+      <DependentUpon>InitializePropertiesForPipingLineViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\InitializePropertiesForResponsibleCompanyViewController.cs">
       <SubType>Component</SubType>
     </Compile>
