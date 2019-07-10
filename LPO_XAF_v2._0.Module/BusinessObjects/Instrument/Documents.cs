@@ -43,6 +43,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("PID-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<Instrument> Instruments { get { return GetCollection<Instrument>(nameof(Instruments)); } }
+        [Association("PIDs-Lines")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Piping.Line> Lines { get { return GetCollection<Piping.Line>(nameof(Lines)); } }
     }
 
     public class LoopDrawing : Drawing, IProjectDrawing

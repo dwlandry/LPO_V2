@@ -43,10 +43,15 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public Address Address { get => address; set => SetPropertyValue(nameof(Address), ref address, value); }
 
         [Association("Vendor-InteractionExperience")]
-        public XPCollection<VendorJournalEntry> InteractionExperience { get { return GetCollection<VendorJournalEntry>(nameof(InteractionExperience)); } }
-
+        public XPCollection<VendorJournalEntry> InteractionExperience => GetCollection<VendorJournalEntry>(nameof(InteractionExperience));
         [Association("Vendor-SupportedManufacturers")]
-        public XPCollection<Manufacturer> SupportedManufacturers { get { return GetCollection<Manufacturer>(nameof(SupportedManufacturers)); } }
+        public XPCollection<Manufacturer> SupportedManufacturers => GetCollection<Manufacturer>(nameof(SupportedManufacturers));
+        [Association("Vendor-PhoneNumbers")]
+        public XPCollection<VendorPhoneNumber> PhoneNumbers => GetCollection<VendorPhoneNumber>(nameof(PhoneNumbers));
+
+        [DisplayName("Phone Numbers")]
+        [VisibleInListView(true)]
+        public String AllPhoneNumbers => string.Join("; ", PhoneNumbers.Select(x => $"({x.PhoneType}) {x.Number}"));
 
         public FileData LineListDocument { get => lineListDocument; set => SetPropertyValue(nameof(LineListDocument), ref lineListDocument, value); }
     }
@@ -76,7 +81,27 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public XPCollection<VendorContactJournalEntry> Journal { get { return GetCollection<VendorContactJournalEntry>(nameof(Journal)); } }
 
     }
+    public class VendorPhoneNumber : BaseObject
+    {
 
+        public VendorPhoneNumber(Session session) : base(session) { }
+
+        string phoneType;
+        string number;
+        Vendor vendor;
+
+        [Association("Vendor-PhoneNumbers")]
+        public Vendor Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
+
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Number { get => number; set => SetPropertyValue(nameof(Number), ref number, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string PhoneType { get => phoneType; set => SetPropertyValue(nameof(PhoneType), ref phoneType, value); }
+
+
+    }
     public class VendorContactJournalEntry : JournalEntry
     {
 

@@ -48,6 +48,11 @@ namespace LPO_XAF_v2._0.Module.Controllers
                         Project project = (Project)((UnitOfWork)((Quote)projectQuote).Session).GetObjectByKey(typeof(Project), instrument.Project.Oid);
                         projectQuote.Project = project;
                     }
+                    //else
+                    //{
+                    //    Project project = ((NestedFrame)Frame).ViewItem.CurrentObject as Project;
+                    //    if (project != null) projectQuote.Project = project;
+                    //}
                 }
             }
         }

@@ -73,6 +73,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<Instrument.Instrument> Instruments { get { return GetCollection<Instrument.Instrument>(nameof(Instruments)); } }
 
+        [Association("PIDs-Lines")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Instrument.PID> PIDs { get { return GetCollection<Instrument.PID>(nameof(PIDs)); } }
+
         [VisibleInDetailView(false), VisibleInListView(false)]
         public XPCollection<PipingSchedule> AvailableSchedules
         {

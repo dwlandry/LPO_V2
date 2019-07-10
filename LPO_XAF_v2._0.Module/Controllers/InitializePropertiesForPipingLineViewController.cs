@@ -46,6 +46,15 @@ namespace LPO_XAF_v2._0.Module.Controllers
                         Project project = (Project)((UnitOfWork)pipingLine.Session).GetObjectByKey(typeof(Project), instrument.Project.Oid);
                         pipingLine.Project = project;
                     }
+                    else
+                    {
+                        PID pid = ((NestedFrame)Frame).ViewItem.CurrentObject as PID;
+                        if (pid != null)
+                        {
+                            Project project = (Project)((UnitOfWork)pipingLine.Session).GetObjectByKey(typeof(Project), pid.Project.Oid);
+                            pipingLine.Project = project;
+                        }
+                    }
                 }
             }
         }
