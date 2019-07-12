@@ -4,7 +4,6 @@
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
 //-----------------------------------------------------------------------
-using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.Base;
@@ -23,23 +22,33 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
     [CreatableItem(false), NavigationItem("Instrumentation")]
     [ImageName("Instrument")]
     //[DefaultListViewOptions(MasterDetailMode.ListViewAndDetailView)]
-    public class Instrument : BaseObject
+    public class Instrument : _MyBaseObject.BaseObjectWithCreatedAndLastModified
     {
         public Instrument(Session session) : base(session) { }
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            createdBy = SecuritySystem.CurrentUserName;
-            createdOn = DateTime.Now;
+            //createdBy = GetCurrentUser();
+            //createdOn = DateTime.Now;
+        }
+        protected override void OnSaving()
+        {
+            base.OnSaving();
+            //lastModifiedBy = GetCurrentUser();
+            //lastModifiedOn = DateTime.Now;
         }
 
+        //[Persistent("CreatedBy")]
+        //PermissionPolicyUser createdBy;
+        //[Persistent("CreatedOn")]
+        //DateTime createdOn;
+        //[Persistent("LastModifiedBy")]
+        //PermissionPolicyUser lastModifiedBy;
+        //[Persistent("LastModifiedOn")]
+        //DateTime lastModifiedOn;
         Line lineNumber;
         string specSheetNumber;
-        [Persistent("CreatedOn")]
-        DateTime createdOn;
         private XPCollection<AuditDataItemPersistent> auditTrail;
-        [Persistent("CreatedBy")]
-        string createdBy;
         bool requiresSpecSheet;
         AreaClassificationDrawing areaClassificationDrawing;
         TracingDetail tracingDetail;
@@ -50,7 +59,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         ResponsibleEngineeringCompany responsibleCompany;
         ControlSystem controlSystem;
         string equipmentNumber;
-        //string lineNumber;
         Physical_Instrument physicalOrSoftTag;
         byte[] notes;
         LoopDrawing loopDrawing;
@@ -76,11 +84,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         string tagNumber;
         Project.Project project;
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        [PersistentAlias("createdBy"), VisibleInListView(false)]
-        public string CreatedBy { get => createdBy; }
-        [PersistentAlias("createdOn"), VisibleInListView(false)]
-        public DateTime CreatedOn { get => createdOn; }
+        //[PersistentAlias("createdBy")]
+        //public PermissionPolicyUser CreatedBy { get => createdBy; protected set => SetPropertyValue(nameof(CreatedBy), ref createdBy, value); }
+        //[PersistentAlias("createdOn")]
+        //public DateTime CreatedOn { get => createdOn; protected set => SetPropertyValue(nameof(CreatedOn), ref createdOn, value); }
+        //[PersistentAlias("lastModifiedBy")]
+        //public PermissionPolicyUser LastModifiedBy { get => lastModifiedBy; protected set => SetPropertyValue(nameof(LastModifiedBy), ref lastModifiedBy, value); }
+        //[PersistentAlias("lastModifiedOn")]
+        //public DateTime LastModifiedOn { get => lastModifiedOn; protected set => SetPropertyValue(nameof(LastModifiedOn), ref lastModifiedOn, value); }
         [Association("Project-Instruments"), VisibleInListView(false)]
         [RuleRequiredField("RuleRequiredField for Instrument.Project", DefaultContexts.Save, "A Project must be specified.")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
@@ -101,10 +112,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public Physical_Instrument PhysicalOrSoftTag { get => physicalOrSoftTag; set => SetPropertyValue(nameof(PhysicalOrSoftTag), ref physicalOrSoftTag, value); }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
-
-        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        //[VisibleInListView(false)]
-        //public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
         [Association("Line-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
@@ -214,6 +221,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("Instruments-Quotes")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<InstrumentQuote> Quotes { get { return GetCollection<InstrumentQuote>(nameof(Quotes)); } }
+
+        //PermissionPolicyUser GetCurrentUser() => Session.GetObjectByKey<PermissionPolicyUser>(SecuritySystem.CurrentUserId);
     }
 
     public enum AreaClass_Class

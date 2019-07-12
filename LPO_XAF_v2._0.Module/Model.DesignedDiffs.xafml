@@ -162,6 +162,30 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="InstrumentCalculator_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="InstrumentCalculator">
+              <LayoutItem Id="Name" ViewItem="Name" />
+            </LayoutGroup>
+            <LayoutGroup Id="BaseObjectWithCreatedAndLastModified" Removed="True">
+              <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="0" ShowCaption="" IsNewNode="True" Removed="True" />
+              <LayoutItem Id="CreatedOn" ViewItem="CreatedOn" />
+              <LayoutItem Id="LastModifiedBy" ViewItem="LastModifiedBy" />
+              <LayoutItem Id="LastModifiedOn" ViewItem="LastModifiedOn" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors" Direction="Horizontal">
+            <LayoutItem Id="Calculator" ViewItem="Calculator" ShowCaption="True" Index="0" CaptionLocation="Top" RelativeSize="2" IsNewNode="True" />
+            <LayoutItem Id="Notes" ShowCaption="True" CaptionLocation="Top" RelativeSize="1" />
+          </LayoutGroup>
+          <LayoutGroup Id="Calculator_Group" Removed="True">
+            <LayoutItem Id="Calculator" ViewItem="Calculator" Removed="True" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="InstrumentSpecCheckPackage_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
@@ -253,33 +277,11 @@
     <DetailView Id="Tutorial_DetailView">
       <Items>
         <PropertyEditor Id="CreatedBy" AllowEdit="False" />
-        <PropertyEditor Id="DateCreated" AllowEdit="False" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main" RelativeSize="100">
           <LayoutGroup Id="SimpleEditors" RelativeSize="17.80821917808219">
-            <LayoutGroup Id="Tutorial" RelativeSize="100" Direction="Vertical">
-              <LayoutGroup Id="Tutorial_col1" Caption="Tutorial_col1" RelativeSize="100" Direction="Vertical">
-                <LayoutGroup Id="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a" ShowCaption="False" Caption="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a(5)" Index="0" RelativeSize="100" Direction="Vertical" IsNewNode="True">
-                  <LayoutGroup Id="Autoe25358a3-b5a3-46ec-8c67-6f6f59ada0d0" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50" IsNewNode="True">
-                    <LayoutItem Id="DateCreated" ViewItem="DateCreated" Index="0" RelativeSize="34.034165571616292" IsNewNode="True" />
-                    <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="1" RelativeSize="32.982917214191851" IsNewNode="True" />
-                    <LayoutItem Id="SearchableTerms" ViewItem="SearchableTerms" Index="2" RelativeSize="32.982917214191851" IsNewNode="True" />
-                  </LayoutGroup>
-                  <LayoutGroup Id="Auto4c4bd55a-b45f-4c1b-b5a1-51b91ca422aa" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="50" IsNewNode="True">
-                    <LayoutItem Id="Category" ViewItem="Category" Index="0" RelativeSize="38.896189224704337" IsNewNode="True" />
-                    <LayoutItem Id="Topic" ViewItem="Topic" Index="1" RelativeSize="61.103810775295663" IsNewNode="True" />
-                  </LayoutGroup>
-                </LayoutGroup>
-                <LayoutItem Id="Category" Index="1" RelativeSize="50" Removed="True" />
-                <LayoutItem Id="CreatedBy" Removed="True" />
-                <LayoutItem Id="DateCreated" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Tutorial_col2" RelativeSize="34.559789750328513" Caption="Tutorial_col2" Direction="Horizontal" Removed="True">
-                <LayoutItem Id="SearchableTerms" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="Topic" RelativeSize="50" Removed="True" />
-              </LayoutGroup>
-            </LayoutGroup>
+            <LayoutGroup Id="Tutorial" RelativeSize="100" Direction="Vertical" />
           </LayoutGroup>
           <LayoutGroup Id="Content_Group" Direction="Vertical" RelativeSize="82.1917808219178">
             <LayoutItem Id="Content" RelativeSize="100" ShowCaption="False" />

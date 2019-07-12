@@ -4,10 +4,8 @@
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
 //-----------------------------------------------------------------------
-using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
-using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
 using System;
@@ -18,7 +16,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Education
 {
     [DefaultClassOptions, ImageName("Book"), CreatableItem(false), NavigationItem("Education")]
     [DefaultProperty("Topic")]
-    public class Tutorial : BaseObject
+    public class Tutorial : _MyBaseObject.BaseObjectWithCreatedAndLastModified
     { // Inherit from a different class to provide a custom primary key, concurrency and deletion behavior, etc. (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument113146.aspx).
         public Tutorial(Session session)
             : base(session)
@@ -27,10 +25,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Education
         public override void AfterConstruction()
         {
             base.AfterConstruction();
-            // Place your initialization code here (https://documentation.devexpress.com/eXpressAppFramework/CustomDocument112834.aspx).
-            if (SecuritySystem.CurrentUser != null)
-                CreatedBy = SecuritySystem.CurrentUserName;
-            DateCreated = DateTime.Today;
         }
 
 
@@ -38,14 +32,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Education
         string searchableTerms;
         string topic;
         Category category;
-        DateTime dateCreated;
-        string createdBy;
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string CreatedBy { get => createdBy; set => SetPropertyValue(nameof(CreatedBy), ref createdBy, value); }
-
-        public DateTime DateCreated { get => dateCreated; set => SetPropertyValue(nameof(DateCreated), ref dateCreated, value); }
-
 
         [Association("Category-Tutorials")]
         [RuleRequiredField]
@@ -61,7 +47,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Education
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         public byte[] Content { get => content; set => SetPropertyValue(nameof(Content), ref content, value); }
     }
-    public class Category : BaseObject
+    public class Category : _MyBaseObject.BaseObjectWithCreatedAndLastModified
     {
 
         public Category(Session session) : base(session) { }

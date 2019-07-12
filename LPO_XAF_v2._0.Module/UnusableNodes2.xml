@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Tutorial_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="DateCreated" AllowEdit="False" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Tutorial">
+              <LayoutGroup Id="Tutorial_col1" Caption="Tutorial_col1" RelativeSize="100" Direction="Vertical">
+                <LayoutGroup Id="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a" ShowCaption="False" Caption="Autoa35c54a0-9f84-4400-9d82-0de1fdcc041a(5)" Index="0" RelativeSize="100" Direction="Vertical">
+                  <LayoutGroup Id="Autoe25358a3-b5a3-46ec-8c67-6f6f59ada0d0" ShowCaption="False" Caption="" Direction="Horizontal" Index="0" RelativeSize="50">
+                    <LayoutItem Id="DateCreated" ViewItem="DateCreated" Index="0" RelativeSize="34.034165571616292" />
+                    <LayoutItem Id="CreatedBy" ViewItem="CreatedBy" Index="1" RelativeSize="32.982917214191851" />
+                    <LayoutItem Id="SearchableTerms" ViewItem="SearchableTerms" Index="2" RelativeSize="32.982917214191851" />
+                  </LayoutGroup>
+                  <LayoutGroup Id="Auto4c4bd55a-b45f-4c1b-b5a1-51b91ca422aa" ShowCaption="False" Caption="" Direction="Horizontal" Index="1" RelativeSize="50">
+                    <LayoutItem Id="Category" ViewItem="Category" Index="0" RelativeSize="38.896189224704337" />
+                    <LayoutItem Id="Topic" ViewItem="Topic" Index="1" RelativeSize="61.103810775295663" />
+                  </LayoutGroup>
+                </LayoutGroup>
+                <LayoutItem Id="Category" Index="1" RelativeSize="50" Removed="True" />
+                <LayoutItem Id="CreatedBy" Removed="True" />
+                <LayoutItem Id="DateCreated" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Tutorial_col2" RelativeSize="34.559789750328513" Caption="Tutorial_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="SearchableTerms" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="Topic" RelativeSize="50" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

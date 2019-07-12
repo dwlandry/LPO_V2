@@ -150,6 +150,7 @@
     <Compile Include="BusinessObjects\Education\Tutorial.cs" />
     <Compile Include="BusinessObjects\Instrument\Documents.cs" />
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
+    <Compile Include="BusinessObjects\Instrument\InstrumentCalculator.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentIndexTemplate.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" />
@@ -158,6 +159,7 @@
     <Compile Include="BusinessObjects\Project\ClientStandards.cs" />
     <Compile Include="BusinessObjects\Project\Project.cs" />
     <Compile Include="BusinessObjects\Products\Products.cs" />
+    <Compile Include="BusinessObjects\_MyBaseObject\BaseObjectWithCreatedAndLastModified.cs" />
     <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -292,6 +294,17 @@
     <EmbeddedResource Include="Images\Project.svg">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\InstrumentCalculator.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

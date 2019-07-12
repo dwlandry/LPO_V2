@@ -81,5 +81,16 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="InstrumentCalculator_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="Calculator" RelativeSize="8" />
+            <SplitterItem Id="splitter1" Index="2" IsNewNode="True" />
+            <LayoutItem Id="Notes" Index="3" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
   </Views>
 </Application>
