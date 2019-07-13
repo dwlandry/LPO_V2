@@ -46,6 +46,7 @@
             this.OpenPID.ConfirmationMessage = null;
             this.OpenPID.Id = "c9fc22f9-d6f3-4d60-b496-27446764ba25";
             this.OpenPID.ToolTip = null;
+            this.OpenPID.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenPID_Execute);
             // 
             // OpenMountingDetail
             // 
@@ -54,6 +55,7 @@
             this.OpenMountingDetail.ConfirmationMessage = null;
             this.OpenMountingDetail.Id = "74f1781e-dc6d-4a95-be4a-3c5bcde7645d";
             this.OpenMountingDetail.ToolTip = null;
+            this.OpenMountingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenMountingDetail_Execute);
             // 
             // OpenElectricalDetail
             // 
@@ -62,6 +64,7 @@
             this.OpenElectricalDetail.ConfirmationMessage = null;
             this.OpenElectricalDetail.Id = "330eba5f-2249-479e-bc30-713abeb60a2c";
             this.OpenElectricalDetail.ToolTip = null;
+            this.OpenElectricalDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenElectricalDetail_Execute);
             // 
             // OpenTracingDetail
             // 
@@ -70,6 +73,7 @@
             this.OpenTracingDetail.ConfirmationMessage = null;
             this.OpenTracingDetail.Id = "0c52ca43-7133-4a22-be81-bbdd775c946f";
             this.OpenTracingDetail.ToolTip = null;
+            this.OpenTracingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenTracingDetail_Execute);
             // 
             // OpenTubingDetail
             // 
@@ -78,6 +82,7 @@
             this.OpenTubingDetail.ConfirmationMessage = null;
             this.OpenTubingDetail.Id = "df862f06-420e-4560-95b7-754001ad9344";
             this.OpenTubingDetail.ToolTip = null;
+            this.OpenTubingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenTubingDetail_Execute);
             // 
             // OpenAreaClassDrawing
             // 
@@ -86,6 +91,7 @@
             this.OpenAreaClassDrawing.ConfirmationMessage = null;
             this.OpenAreaClassDrawing.Id = "5e6b7be9-b38a-44b6-8b95-4d3a67b24465";
             this.OpenAreaClassDrawing.ToolTip = null;
+            this.OpenAreaClassDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenAreaClassDrawing_Execute);
             // 
             // OpenLoopDrawing
             // 
@@ -94,6 +100,7 @@
             this.OpenLoopDrawing.ConfirmationMessage = null;
             this.OpenLoopDrawing.Id = "dbb925cb-d8c4-4661-834c-e67c3ea4e160";
             this.OpenLoopDrawing.ToolTip = null;
+            this.OpenLoopDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenLoopDrawing_Execute);
             // 
             // OpenPlanDrawing
             // 
@@ -102,6 +109,7 @@
             this.OpenPlanDrawing.ConfirmationMessage = null;
             this.OpenPlanDrawing.Id = "54fca96a-4040-4f7d-bacc-ecc5531a59f0";
             this.OpenPlanDrawing.ToolTip = null;
+            this.OpenPlanDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenPlanDrawing_Execute);
             // 
             // OpenLinePipeSpec
             // 
