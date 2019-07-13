@@ -77,22 +77,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "P&ID";
             Instrument instrument = ((Instrument)e.CurrentObject);
             PID dwg = instrument.Pid;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenMountingDetail_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -100,21 +85,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Mounting Detail";
             Instrument instrument = ((Instrument)e.CurrentObject);
             MountingDetail dwg = instrument.MountingDetail;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenElectricalDetail_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -122,21 +93,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Electrical Detail";
             Instrument instrument = ((Instrument)e.CurrentObject);
             ElectricalDetail dwg = instrument.ElectricalDetail;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenTracingDetail_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -144,21 +101,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Tracing Detail";
             Instrument instrument = ((Instrument)e.CurrentObject);
             var dwg = instrument.TracingDetail;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenAreaClassDrawing_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -166,21 +109,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Area Classification Drawing";
             Instrument instrument = ((Instrument)e.CurrentObject);
             var dwg = instrument.AreaClassificationDrawing;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenLoopDrawing_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -188,21 +117,7 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Loop Drawing";
             Instrument instrument = ((Instrument)e.CurrentObject);
             var dwg = instrument.LoopDrawing;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenPlanDrawing_Execute(object sender, SimpleActionExecuteEventArgs e)
@@ -210,28 +125,19 @@ namespace LPO_XAF_v2._0.Module.Controllers
             string dwgName = "Plan Drawing";
             Instrument instrument = ((Instrument)e.CurrentObject);
             var dwg = instrument.PlanDrawing;
-            if (dwg == null)
-            {
-                XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");
-                return;
-            }
-            FileData fd = dwg.GetType().GetProperty("File").GetValue(dwg, null) as FileData;
-            if (fd == null)
-            {
-                XtraMessageBox.Show($"There is no file associated with {dwgName} {dwg.DrawingNumber}.");
-                return;
-            }
-            var tempFolder = System.IO.Path.GetTempPath();
-            var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
-            System.IO.File.WriteAllBytes(filename, fd.Content);
-            System.Diagnostics.Process.Start(filename);
+            OpenDrawingFile(dwgName, instrument, dwg);
         }
 
         private void OpenTubingDetail_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
             string dwgName = "Tubing Detail";
-            Instrument instrument = ((Instrument)e.CurrentObject);
+            Instrument instrument = (Instrument)e.CurrentObject;
             var dwg = instrument.TubingDetail;
+            OpenDrawingFile(dwgName, instrument, dwg);
+        }
+
+        private static void OpenDrawingFile(string dwgName, Instrument instrument, IDrawing dwg)
+        {
             if (dwg == null)
             {
                 XtraMessageBox.Show($"No {dwgName} has been selected for instrument {instrument.TagNumber}.");

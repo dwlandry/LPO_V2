@@ -188,10 +188,17 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         Project.Project Project { get; set; }
     }
 
+    public interface IDrawing
+    {
+        string Description { get; set; }
+        string DrawingNumber { get; set; }
+        FileData File { get; set; }
+    }
+
     [DefaultProperty("DrawingNumber")]
     [DefaultClassOptions, CreatableItem(false)]
     //[DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
-    public class Drawing : BaseObject
+    public class Drawing : BaseObject, IDrawing
     {
         public Drawing(Session session) : base(session) { }
 
