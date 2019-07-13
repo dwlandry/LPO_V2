@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Instrument_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="Instrument_Group">
+            <LayoutGroup Id="Tag Number">
+              <LayoutGroup Id="Tag Number_Row1" ShowCaption="False" RelativeSize="50">
+                <LayoutItem Id="TagNumber" RelativeSize="35.030549898167" />
+                <LayoutItem Id="PhysicalOrSoftTag" RelativeSize="32.179226069246432" />
+                <LayoutItem Id="ResponsibleCompany" RelativeSize="32.790224032586558" />
+              </LayoutGroup>
+              <LayoutGroup Id="Tag Number_Row2" Index="1" RelativeSize="50">
+                <LayoutItem Id="OptionalPrefix" RelativeSize="25.254582484725052" />
+                <LayoutItem Id="Letters" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="Number" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="OptionalSuffix" RelativeSize="24.236252545824847" />
+                <LayoutItem Id="Item2" RelativeSize="2.0366598778004072" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Area Classification">
+              <LayoutItem Id="GroupA" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupB" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupC" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="GroupD" RelativeSize="14.052953156822811" />
+              <LayoutItem Id="Item1" RelativeSize="13.034623217922608" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

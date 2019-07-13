@@ -156,6 +156,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'"), VisibleInListView(false)]
         public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
         [VisibleInListView(false)]
+        [CaptionsForBoolValues("YES", "NO")]
+        [Nullable(true)]
         public bool RequiresSpecSheet { get => requiresSpecSheet; set => SetPropertyValue(nameof(RequiresSpecSheet), ref requiresSpecSheet, value); }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string SpecSheetNumber { get => specSheetNumber; set => SetPropertyValue(nameof(SpecSheetNumber), ref specSheetNumber, value); }

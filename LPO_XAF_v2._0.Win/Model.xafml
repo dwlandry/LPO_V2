@@ -24,52 +24,16 @@
       <Layout>
         <LayoutGroup Id="Main">
           <LayoutGroup Id="Instrument_Group" RelativeSize="2" ImageName="Instrument">
-            <LayoutGroup Id="Tag Number" RelativeSize="24.691358024691358" Index="1">
-              <LayoutGroup Id="Tag Number_Row1" ShowCaption="False" RelativeSize="50">
-                <LayoutItem Id="TagNumber" RelativeSize="35.030549898167" />
-                <LayoutItem Id="PhysicalOrSoftTag" RelativeSize="32.179226069246432" />
-                <LayoutItem Id="ResponsibleCompany" RelativeSize="32.790224032586558" />
-              </LayoutGroup>
-              <LayoutGroup Id="Tag Number_Row2" Index="1" RelativeSize="50">
-                <LayoutItem Id="OptionalPrefix" RelativeSize="25.254582484725052" />
-                <LayoutItem Id="Letters" RelativeSize="24.236252545824847" />
-                <LayoutItem Id="Number" RelativeSize="24.236252545824847" />
-                <LayoutItem Id="OptionalSuffix" RelativeSize="24.236252545824847" />
-                <LayoutItem Id="Item2" RelativeSize="2.0366598778004072" />
-              </LayoutGroup>
-            </LayoutGroup>
-            <LayoutGroup Id="Area Classification" TextAlignMode="AlignWithChildren" RelativeSize="11.640211640211641" Index="2">
-              <LayoutItem Id="Class" RelativeSize="16.700610997963341" />
-              <LayoutItem Id="Div" RelativeSize="14.052953156822811" />
-              <LayoutItem Id="GroupA" RelativeSize="14.052953156822811" />
-              <LayoutItem Id="GroupB" RelativeSize="14.052953156822811" />
-              <LayoutItem Id="GroupC" RelativeSize="14.052953156822811" />
-              <LayoutItem Id="GroupD" RelativeSize="14.052953156822811" />
-              <LayoutItem Id="Item1" RelativeSize="13.034623217922608" />
-            </LayoutGroup>
-            <LayoutGroup Id="Instrument" RelativeSize="32.804232804232804" Index="3">
-              <LayoutItem Id="ServiceDescription" RelativeSize="20" />
-              <LayoutItem Id="Location" RelativeSize="15" />
-              <LayoutGroup Id="Controls">
-                <LayoutItem Id="IoType" TextAlignMode="UseParentOptions" />
-              </LayoutGroup>
-              <LayoutItem Id="Manufacturer" RelativeSize="15" />
-              <LayoutItem Id="ModelNumber" RelativeSize="20" />
-            </LayoutGroup>
-            <LayoutGroup Id="Drawings" RelativeSize="30.864197530864196" Index="4">
-              <LayoutItem Id="Pid" RelativeSize="22.695035460992909" />
-              <LayoutItem Id="PlanDrawing" RelativeSize="77.304964539007088" />
-              <LayoutItem Id="LoopDrawing" ViewItem="LoopDrawing" IsNewNode="True" />
-            </LayoutGroup>
-            <LayoutGroup Id="Installation Details" Index="5" />
-            <LayoutGroup Id="Vendor Docs" Index="6" />
+            <LayoutGroup Id="Tag Number" Index="1" TextAlignMode="AlignLocal" />
+            <LayoutGroup Id="Area Classification" Index="2" TextAlignMode="AlignLocal" />
+            <LayoutGroup Id="Instrument" Index="3" TextAlignMode="AlignLocal" />
+            <LayoutGroup Id="Drawings" Index="4" TextAlignMode="AlignLocal" />
+            <LayoutGroup Id="Installation Details" Index="5" TextAlignMode="AlignLocal" />
+            <LayoutGroup Id="Vendor Docs" Index="6" TextAlignMode="AlignLocal" />
             <SplitterItem Id="Splitter3" Index="7" RelativeSize="0.5089058524173028" IsNewNode="True" />
-            <LayoutGroup Id="Quotes" Index="8" />
+            <LayoutGroup Id="Quotes" Index="8" TextAlignMode="AlignLocal" />
             <SplitterItem Id="Splitter4" Index="9" RelativeSize="0.5089058524173028" IsNewNode="True" />
-            <LayoutGroup Id="Audit Trail" Index="10">
-              <LayoutGroup Id="Creation Group" Index="0" />
-              <LayoutItem Id="Audit Trail" Index="1" />
-            </LayoutGroup>
+            <LayoutGroup Id="Audit Trail" Index="10" TextAlignMode="AlignLocal" />
             <SplitterItem Id="Splitter5" Index="11" RelativeSize="0.5089058524173028" IsNewNode="True" />
           </LayoutGroup>
           <SplitterItem Id="Splitter1" Index="1" RelativeSize="0.5089058524173028" IsNewNode="True" />

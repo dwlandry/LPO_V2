@@ -57,46 +57,34 @@
               <LayoutItem Id="ProjectFolder" ViewItem="ProjectFolder" ShowCaption="False" IsNewNode="True" />
             </LayoutGroup>
             <LayoutGroup Id="Tag Number" ShowCaption="True" Index="2" RelativeSize="23.634453781512605" IsNewNode="True">
-              <LayoutGroup Id="Tag Number_Row1" Index="0" Direction="Horizontal" IsNewNode="True">
-                <LayoutItem Id="TagNumber" ViewItem="TagNumber" Index="0" RelativeSize="36.30952380952381" CaptionLocation="Top" IsNewNode="True" />
-                <LayoutItem Id="PhysicalOrSoftTag" ViewItem="PhysicalOrSoftTag" CaptionLocation="Top" Index="1" IsNewNode="True" />
-                <LayoutItem Id="ResponsibleCompany" Index="2" ViewItem="ResponsibleCompany" CaptionLocation="Top" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Tag Number_Row2" ShowCaption="False" Index="2" RelativeSize="100" Direction="Horizontal" IsNewNode="True">
-                <LayoutItem Id="OptionalPrefix" ViewItem="OptionalPrefix" CaptionLocation="Top" Index="0" RelativeSize="25.595238095238095" IsNewNode="True" />
-                <LayoutItem Id="Letters" ViewItem="Letters" Index="1" RelativeSize="24.404761904761905" CaptionLocation="Top" IsNewNode="True" />
-                <LayoutItem Id="Number" ViewItem="Number" Index="2" RelativeSize="24.404761904761905" CaptionLocation="Top" IsNewNode="True" />
-                <LayoutItem Id="OptionalSuffix" ViewItem="OptionalSuffix" Index="3" RelativeSize="24.404761904761905" CaptionLocation="Top" IsNewNode="True" />
-                <LayoutItem Id="Item2" Index="4" RelativeSize="1.1904761904761905" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="TagNumber_Row3" Direction="Horizontal" ShowCaption="False" IsNewNode="True">
-                <LayoutItem Id="RequiresSpecSheet" ViewItem="RequiresSpecSheet" Index="0" CaptionLocation="Default" IsNewNode="True" />
-                <LayoutItem Id="SpecSheetNumber" ViewItem="SpecSheetNumber" CaptionLocation="Top" Index="1" IsNewNode="True" />
-                <LayoutItem Id="EmptySpaceItem" Index="2" IsNewNode="True" />
-                <LayoutItem Id="EmptySpaceItem2" Index="2" IsNewNode="True" />
-              </LayoutGroup>
+              <LayoutItem Id="TagNumber" ViewItem="TagNumber" Index="0" IsNewNode="True" />
+              <LayoutItem Id="OptionalPrefix" ViewItem="OptionalPrefix" Index="1" IsNewNode="True" />
+              <LayoutItem Id="Letters" ViewItem="Letters" Index="2" IsNewNode="True" />
+              <LayoutItem Id="Number" ViewItem="Number" Index="3" IsNewNode="True" />
+              <LayoutItem Id="OptionalSuffix" ViewItem="OptionalSuffix" Index="4" IsNewNode="True" />
+              <LayoutItem Id="PhysicalOrSoftTag" ViewItem="PhysicalOrSoftTag" Index="5" IsNewNode="True" />
+              <LayoutItem Id="RequitesSpecSheet" ViewItem="RequiresSpecSheet" Index="6" ShowCaption="True" IsNewNode="True" />
+              <LayoutItem Id="SpecSheetNumber" ViewItem="SpecSheetNumber" Index="7" IsNewNode="True" />
+              <LayoutItem Id="ResponsibleCompany" ViewItem="ResponsibleCompany" Index="8" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="Area Classification" ShowCaption="True" Index="3" RelativeSize="17.744154057771663" Direction="Horizontal" IsNewNode="True">
-              <LayoutItem Id="Class" ShowCaption="False" ViewItem="Class" Index="0" RelativeSize="16.785714285714285" IsNewNode="True" />
-              <LayoutItem Id="Div" ShowCaption="False" ViewItem="Div" Index="1" RelativeSize="14.285714285714287" IsNewNode="True" />
-              <LayoutItem Id="GroupA" ShowCaption="False" ViewItem="GroupA" Index="2" RelativeSize="14.285714285714287" IsNewNode="True" />
-              <LayoutItem Id="GroupB" ShowCaption="False" ViewItem="GroupB" Index="3" RelativeSize="14.285714285714287" IsNewNode="True" />
-              <LayoutItem Id="GroupC" ShowCaption="False" ViewItem="GroupC" Index="4" RelativeSize="14.285714285714287" IsNewNode="True" />
-              <LayoutItem Id="GroupD" ShowCaption="False" ViewItem="GroupD" Index="5" RelativeSize="14.285714285714287" IsNewNode="True" />
-              <LayoutItem Id="Item1" Index="6" RelativeSize="11.785714285714287" IsNewNode="True" />
+            <LayoutGroup Id="Area Classification" ShowCaption="True" Index="3" RelativeSize="17.744154057771663" Direction="Vertical" IsNewNode="True">
+              <LayoutItem Id="Class" ShowCaption="True" ViewItem="Class" Index="0" RelativeSize="16.785714285714285" IsNewNode="True" />
+              <LayoutItem Id="Div" ShowCaption="True" ViewItem="Div" Index="1" RelativeSize="14.285714285714287" IsNewNode="True" />
+              <LayoutGroup Id="AreaClassGroups" Direction="Horizontal" IsNewNode="True">
+                <LayoutItem Id="GroupA" ShowCaption="False" ViewItem="GroupA" Index="0" RelativeSize="14.285714285714287" IsNewNode="True" />
+                <LayoutItem Id="GroupB" ShowCaption="False" ViewItem="GroupB" Index="1" RelativeSize="14.285714285714287" IsNewNode="True" />
+                <LayoutItem Id="GroupC" ShowCaption="False" ViewItem="GroupC" Index="2" RelativeSize="14.285714285714287" IsNewNode="True" />
+                <LayoutItem Id="GroupD" ShowCaption="False" ViewItem="GroupD" Index="3" RelativeSize="14.285714285714287" IsNewNode="True" />
+              </LayoutGroup>
             </LayoutGroup>
             <LayoutGroup Id="Instrument" ShowCaption="True" Index="4" RelativeSize="47.867950481430533" IsNewNode="True">
               <LayoutItem Id="ServiceDescription" ViewItem="ServiceDescription" Index="0" RelativeSize="19.934640522875817" IsNewNode="True" />
-              <LayoutItem Id="Line Number" ViewItem="LineNumber" Index="2" IsNewNode="True" />
-              <LayoutItem Id="Location" ViewItem="Location" Index="4" RelativeSize="15.032679738562091" IsNewNode="True" />
-              <LayoutGroup Id="Line_Equipment" Direction="Horizontal" Index="5" IsNewNode="True">
-                <LayoutItem Id="Equipment Number" ViewItem="EquipmentNumber" Index="1" IsNewNode="True" />
-                <LayoutItem Id="InstrumentType" ViewItem="InstrumentType" Index="3" RelativeSize="0" IsNewNode="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="Controls" ShowCaption="False" Direction="Horizontal" Index="6" IsNewNode="True">
-                <LayoutItem Id="ControlSystem" ViewItem="ControlSystem" Index="0" IsNewNode="True" />
-                <LayoutItem Id="IoType" ViewItem="IoType" Index="1" RelativeSize="0" CaptionHorizontalAlignment="Default" HorizontalAlign="NotSet" SizeConstraintsType="Default" IsNewNode="True" />
-              </LayoutGroup>
+              <LayoutItem Id="InstrumentType" ViewItem="InstrumentType" Index="1" RelativeSize="0" IsNewNode="True" />
+              <LayoutItem Id="Location" ViewItem="Location" Index="2" RelativeSize="15.032679738562091" IsNewNode="True" />
+              <LayoutItem Id="Line Number" ViewItem="LineNumber" Index="3" IsNewNode="True" />
+              <LayoutItem Id="Equipment Number" ViewItem="EquipmentNumber" Index="4" IsNewNode="True" />
+              <LayoutItem Id="ControlSystem" ViewItem="ControlSystem" Index="5" IsNewNode="True" />
+              <LayoutItem Id="IoType" ViewItem="IoType" Index="6" RelativeSize="0" SizeConstraintsType="Default" IsNewNode="True" />
               <LayoutItem Id="Manufacturer" ViewItem="Manufacturer" Index="7" RelativeSize="15.032679738562091" IsNewNode="True" />
               <LayoutItem Id="ModelNumber" ViewItem="ModelNumber" Index="8" RelativeSize="19.934640522875817" IsNewNode="True" />
             </LayoutGroup>
