@@ -23,7 +23,7 @@
     <DetailView Id="Instrument_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
-          <LayoutGroup Id="Instrument_Group" RelativeSize="20" ImageName="Instrument">
+          <LayoutGroup Id="Instrument_Group" RelativeSize="2" ImageName="Instrument">
             <LayoutGroup Id="Tag Number" RelativeSize="24.691358024691358" Index="1">
               <LayoutGroup Id="Tag Number_Row1" ShowCaption="False" RelativeSize="50">
                 <LayoutItem Id="TagNumber" RelativeSize="35.030549898167" />
@@ -73,9 +73,9 @@
             <SplitterItem Id="Splitter5" Index="11" RelativeSize="0.5089058524173028" IsNewNode="True" />
           </LayoutGroup>
           <SplitterItem Id="Splitter1" Index="1" RelativeSize="0.5089058524173028" IsNewNode="True" />
-          <LayoutGroup Id="SpecSheet_Group" Index="2" TextAlignMode="AlignWithChildren" RelativeSize="50" ImageName="Instrument" />
+          <LayoutGroup Id="SpecSheet_Group" Index="2" TextAlignMode="AlignWithChildren" RelativeSize="3" ImageName="Instrument" />
           <SplitterItem Id="Splitter2" Index="3" RelativeSize="0.5089058524173028" IsNewNode="True" />
-          <LayoutGroup Id="Notes" ShowCaption="True" Index="4" TextAlignMode="AlignWithChildren" RelativeSize="30" ImageName="BO_Note">
+          <LayoutGroup Id="Notes" ShowCaption="True" Index="4" TextAlignMode="AlignWithChildren" RelativeSize="1" ImageName="BO_Note">
             <LayoutItem Id="Notes" RelativeSize="100" ViewItem="Notes" />
           </LayoutGroup>
         </LayoutGroup>
