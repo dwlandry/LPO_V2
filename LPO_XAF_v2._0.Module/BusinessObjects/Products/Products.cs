@@ -9,6 +9,7 @@ using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Procurement;
 using System;
 using System.Linq;
 
@@ -46,12 +47,15 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public XPCollection<VendorJournalEntry> InteractionExperience => GetCollection<VendorJournalEntry>(nameof(InteractionExperience));
         [Association("Vendor-SupportedManufacturers")]
         public XPCollection<Manufacturer> SupportedManufacturers => GetCollection<Manufacturer>(nameof(SupportedManufacturers));
-        [Association("Vendor-PhoneNumbers")]
+        [Association("Vendor-PhoneNumbers"), Aggregated]
         public XPCollection<VendorPhoneNumber> PhoneNumbers => GetCollection<VendorPhoneNumber>(nameof(PhoneNumbers));
 
         [DisplayName("Phone Numbers")]
         [VisibleInListView(true)]
         public String AllPhoneNumbers => string.Join("; ", PhoneNumbers.Select(x => $"({x.PhoneType}) {x.Number}"));
+
+        [Association("Vendor-Quotes"), Aggregated]
+        public XPCollection<Quote> Quotes => GetCollection<Quote>(nameof(Quotes));
 
         public FileData LineListDocument { get => lineListDocument; set => SetPropertyValue(nameof(LineListDocument), ref lineListDocument, value); }
     }

@@ -174,6 +174,55 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="InstrumentQuote_DetailView">
+      <Items>
+        <PropertyEditor Id="Vendor" PropertyName="Vendor" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="InstrumentQuote">
+              <LayoutItem Id="Project" ViewItem="Project" />
+            </LayoutGroup>
+            <LayoutGroup Id="Quote">
+              <LayoutGroup Id="Quote_col1">
+                <LayoutItem Id="Description" ViewItem="Description" />
+                <LayoutItem Id="Vendor" Index="1" IsNewNode="True" />
+                <LayoutItem Id="VendorQuoteNumber" Index="2" ViewItem="VendorQuoteNumber" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="ContactName" ViewItem="ContactName" Index="3" />
+                <LayoutItem Id="ContactEmail" ViewItem="ContactEmail" Index="4" />
+                <LayoutItem Id="ContactPhoneNumber" ViewItem="ContactPhoneNumber" Index="5" />
+                <LayoutItem Id="DateExpires" ViewItem="DateExpires" Removed="True" />
+                <LayoutItem Id="DateReceived" ViewItem="DateReceived" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Quote_col2">
+                <LayoutItem Id="DateReceived" Index="0" ViewItem="DateReceived" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="DateExpires" Index="1" ViewItem="DateExpires" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="QuoteTotal" ViewItem="QuoteTotal" Index="2" />
+                <LayoutItem Id="TaxTotal" ViewItem="TaxTotal" Index="3" />
+                <LayoutItem Id="QuoteFile" ViewItem="QuoteFile" Index="4" />
+                <LayoutItem Id="Status" ViewItem="Status" Index="5" />
+                <LayoutItem Id="VendorQuoteNumber" ViewItem="VendorQuoteNumber" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="Comments" ViewItem="Comments" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Instruments">
+              <LayoutItem Id="Instruments" ViewItem="Instruments" />
+            </LayoutGroup>
+            <LayoutGroup Id="LineItems" Index="1">
+              <LayoutItem Id="LineItems" ViewItem="LineItems" />
+            </LayoutGroup>
+            <LayoutGroup Id="Documents" Index="2">
+              <LayoutItem Id="Documents" ViewItem="Documents" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="InstrumentSpecCheckPackage_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
@@ -262,6 +311,49 @@
     <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <DetailView Id="Project_DetailView" AllowDelete="False" />
     <ListView Id="Project_ListView" AllowDelete="False" />
+    <DetailView Id="Quote_DetailView">
+      <Items>
+        <PropertyEditor Id="Vendor" PropertyName="Vendor" IsNewNode="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Quote">
+              <LayoutGroup Id="Quote_col1">
+                <LayoutItem Id="Description" ViewItem="Description" />
+                <LayoutItem Id="Vendor" ViewItem="Vendor" Index="1" IsNewNode="True" />
+                <LayoutItem Id="ContactName" Index="2" ViewItem="ContactName" />
+                <LayoutItem Id="ContactEmail" Index="3" ViewItem="ContactEmail" />
+                <LayoutItem Id="ContactPhoneNumber" Index="4" ViewItem="ContactPhoneNumber" />
+                <LayoutItem Id="DateReceived" ViewItem="DateReceived" Index="5" Removed="True" />
+                <LayoutItem Id="VendorQuoteNumber" ViewItem="VendorQuoteNumber" ShowCaption="" Index="5" IsNewNode="True" />
+                <LayoutItem Id="DateExpires" ViewItem="DateExpires" Index="6" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Quote_col2">
+                <LayoutItem Id="DateReceived" Index="0" ViewItem="DateReceived" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="DateExpires" Index="1" ViewItem="DateExpires" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="QuoteTotal" Index="2" ViewItem="QuoteTotal" />
+                <LayoutItem Id="TaxTotal" Index="3" ViewItem="TaxTotal" />
+                <LayoutItem Id="QuoteFile" Index="4" ViewItem="QuoteFile" />
+                <LayoutItem Id="Status" Index="5" ViewItem="Status" />
+                <LayoutItem Id="VendorQuoteNumber" ViewItem="VendorQuoteNumber" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="Comments" ViewItem="Comments" />
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="LineItems" Index="0">
+              <LayoutItem Id="LineItems" ViewItem="LineItems" />
+            </LayoutGroup>
+            <LayoutGroup Id="Documents" Index="1">
+              <LayoutItem Id="Documents" ViewItem="Documents" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <DetailView Id="Tutorial_DetailView">
       <Items>
         <PropertyEditor Id="CreatedBy" AllowEdit="False" />

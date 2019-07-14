@@ -10,6 +10,7 @@ using DevExpress.ExpressApp.Editors;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Products;
 using System;
 using System.ComponentModel;
 using System.Drawing;
@@ -43,7 +44,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         Project.Project Project { get; set; }
     }
 
-    [DefaultProperty("DisplayText")]
+    [DefaultProperty("DisplayText"), NavigationItem("Procurement")]
     [Appearance("Waiting For Quote", TargetItems = "*;Status;Comments",
         Criteria = "Status == 0 || Status == 2", FontColor = "DarkMagenta", BackColor = "LightGoldenrodYellow")]
     [Appearance("Rejected", TargetItems = "*;Status;Comments",
@@ -61,6 +62,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
             Status = QuoteStatus.Received;
         }
 
+        Vendor vendor;
         QuoteStatus quoteStatus;
         string description;
         decimal taxTotal;
@@ -73,14 +75,21 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         string contactPhoneNumber;
         string contactEmail;
         string contactName;
-        string vendor;
+        //string vendor;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
+        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        //public string Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
 
+        
+        [Association("Vendor-Quotes")]
+        public Vendor Vendor
+        {
+            get => vendor;
+            set => SetPropertyValue(nameof(Vendor), ref vendor, value);
+        }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ContactName { get => contactName; set => SetPropertyValue(nameof(ContactName), ref contactName, value); }
 
