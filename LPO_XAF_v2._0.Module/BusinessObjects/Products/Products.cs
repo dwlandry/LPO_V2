@@ -84,6 +84,14 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         [Association("VendorContact-Journal"), Aggregated]
         public XPCollection<VendorContactJournalEntry> Journal { get { return GetCollection<VendorContactJournalEntry>(nameof(Journal)); } }
 
+        [Association("VendorContacts-Quotes")]
+        public XPCollection<Quote> Quotes
+        {
+            get
+            {
+                return GetCollection<Quote>(nameof(Quotes));
+            }
+        }
     }
     public class VendorPhoneNumber : BaseObject
     {

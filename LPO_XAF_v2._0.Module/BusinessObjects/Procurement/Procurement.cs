@@ -75,21 +75,13 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         string contactPhoneNumber;
         string contactEmail;
         string contactName;
-        //string vendor;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
 
-        //[Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        //public string Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
-
-        
         [Association("Vendor-Quotes")]
-        public Vendor Vendor
-        {
-            get => vendor;
-            set => SetPropertyValue(nameof(Vendor), ref vendor, value);
-        }
+        public Vendor Vendor { get => vendor; set => SetPropertyValue(nameof(Vendor), ref vendor, value); }
+
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ContactName { get => contactName; set => SetPropertyValue(nameof(ContactName), ref contactName, value); }
 
@@ -98,6 +90,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ContactPhoneNumber { get => contactPhoneNumber; set => SetPropertyValue(nameof(ContactPhoneNumber), ref contactPhoneNumber, value); }
+
+        [Association("VendorContacts-Quotes")]
+        [DataSourceCriteria("Vendor.Oid = '@This.Vendor.Oid'")]
+        public XPCollection<VendorContact> VendorContacts { get { return GetCollection<VendorContact>(nameof(VendorContacts)); } }
 
         public DateTime DateReceived { get => dateReceived; set => SetPropertyValue(nameof(DateReceived), ref dateReceived, value); }
 
@@ -122,7 +118,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         public XPCollection<QuoteLineItem> LineItems { get { return GetCollection<QuoteLineItem>(nameof(LineItems)); } }
 
         [VisibleInListView(false), VisibleInDetailView(false)]
-        public string DisplayText { get { return $"{Vendor} - Quote No: {VendorQuoteNumber}"; } }
+        public string DisplayText { get { return $"{Vendor.Name} - Quote No: {VendorQuoteNumber}"; } }
 
         public QuoteStatus Status { get => quoteStatus; set => SetPropertyValue(nameof(QuoteStatus), ref quoteStatus, value); }
     }

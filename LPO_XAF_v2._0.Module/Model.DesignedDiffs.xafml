@@ -187,22 +187,22 @@
             <LayoutGroup Id="Quote">
               <LayoutGroup Id="Quote_col1">
                 <LayoutItem Id="Description" ViewItem="Description" />
-                <LayoutItem Id="Vendor" Index="1" IsNewNode="True" />
-                <LayoutItem Id="VendorQuoteNumber" Index="2" ViewItem="VendorQuoteNumber" ShowCaption="" IsNewNode="True" />
-                <LayoutItem Id="ContactName" ViewItem="ContactName" Index="3" />
-                <LayoutItem Id="ContactEmail" ViewItem="ContactEmail" Index="4" />
-                <LayoutItem Id="ContactPhoneNumber" ViewItem="ContactPhoneNumber" Index="5" />
+                <LayoutItem Id="Vendor" Index="0" IsNewNode="True" />
+                <LayoutItem Id="VendorContacts" ViewItem="VendorContacts" ShowCaption="True" Index="1" IsNewNode="True" />
+                <LayoutItem Id="ContactName" Index="3" ViewItem="ContactName" Removed="True" />
+                <LayoutItem Id="ContactEmail" Index="4" ViewItem="ContactEmail" Removed="True" />
+                <LayoutItem Id="ContactPhoneNumber" Index="5" ViewItem="ContactPhoneNumber" Removed="True" />
                 <LayoutItem Id="DateExpires" ViewItem="DateExpires" Removed="True" />
                 <LayoutItem Id="DateReceived" ViewItem="DateReceived" Removed="True" />
               </LayoutGroup>
               <LayoutGroup Id="Quote_col2">
-                <LayoutItem Id="DateReceived" Index="0" ViewItem="DateReceived" ShowCaption="" IsNewNode="True" />
-                <LayoutItem Id="DateExpires" Index="1" ViewItem="DateExpires" ShowCaption="" IsNewNode="True" />
-                <LayoutItem Id="QuoteTotal" ViewItem="QuoteTotal" Index="2" />
-                <LayoutItem Id="TaxTotal" ViewItem="TaxTotal" Index="3" />
-                <LayoutItem Id="QuoteFile" ViewItem="QuoteFile" Index="4" />
-                <LayoutItem Id="Status" ViewItem="Status" Index="5" />
-                <LayoutItem Id="VendorQuoteNumber" ViewItem="VendorQuoteNumber" Removed="True" />
+                <LayoutItem Id="VendorQuoteNumber" Index="0" ViewItem="VendorQuoteNumber" ShowCaption="" IsNewNode="True" Removed="True" />
+                <LayoutItem Id="DateReceived" Index="1" ViewItem="DateReceived" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="DateExpires" Index="2" ViewItem="DateExpires" ShowCaption="" IsNewNode="True" />
+                <LayoutItem Id="QuoteTotal" Index="3" ViewItem="QuoteTotal" />
+                <LayoutItem Id="TaxTotal" Index="4" ViewItem="TaxTotal" />
+                <LayoutItem Id="QuoteFile" Index="5" ViewItem="QuoteFile" />
+                <LayoutItem Id="Status" Index="6" ViewItem="Status" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
@@ -219,6 +219,7 @@
             <LayoutGroup Id="Documents" Index="2">
               <LayoutItem Id="Documents" ViewItem="Documents" />
             </LayoutGroup>
+            <LayoutGroup Id="VendorContacts" Removed="True" />
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
@@ -354,6 +355,7 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Quote_VendorContacts_ListView" AllowEdit="False" NewItemRowPosition="None" AllowDelete="False" AllowNew="False" AllowLink="True" AllowUnlink="True" />
     <DetailView Id="Tutorial_DetailView">
       <Items>
         <PropertyEditor Id="CreatedBy" AllowEdit="False" />
@@ -365,6 +367,59 @@
           </LayoutGroup>
           <LayoutGroup Id="Content_Group" Direction="Vertical" RelativeSize="82.1917808219178">
             <LayoutItem Id="Content" RelativeSize="100" ShowCaption="False" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="VendorContact_LookupListView" DetailViewID="VendorContact_LookupListView_DetailView">
+      <Columns>
+        <ColumnInfo Id="Title" PropertyName="Title" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="VendorContact_LookupListView_DetailView" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Products.VendorContact" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Address1" PropertyName="Address1" IsNewNode="True" />
+        <PropertyEditor Id="Address2" PropertyName="Address2" IsNewNode="True" />
+        <PropertyEditor Id="Birthday" PropertyName="Birthday" IsNewNode="True" />
+        <PropertyEditor Id="DisplayName" PropertyName="DisplayName" IsNewNode="True" />
+        <PropertyEditor Id="Email" PropertyName="Email" IsNewNode="True" />
+        <PropertyEditor Id="FirstName" PropertyName="FirstName" IsNewNode="True" />
+        <PropertyEditor Id="FullName" PropertyName="FullName" IsNewNode="True" />
+        <PropertyEditor Id="Journal" PropertyName="Journal" View="VendorContact_Journal_ListView" IsNewNode="True" />
+        <PropertyEditor Id="LastName" PropertyName="LastName" IsNewNode="True" />
+        <PropertyEditor Id="MiddleName" PropertyName="MiddleName" IsNewNode="True" />
+        <PropertyEditor Id="Notes" PropertyName="Notes" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="PhoneNumbers" PropertyName="PhoneNumbers" View="Party_PhoneNumbers_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Photo" PropertyName="Photo" IsNewNode="True" />
+        <PropertyEditor Id="Quotes" PropertyName="Quotes" View="VendorContact_Quotes_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Title" PropertyName="Title" IsNewNode="True" />
+        <PropertyEditor Id="Vendor" PropertyName="Vendor" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="VendorContact" Index="0" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="Vendor" ViewItem="Vendor" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutGroup Id="Row_1" Direction="Horizontal" Index="1" IsNewNode="True">
+                <LayoutItem Id="FirstName" ViewItem="FirstName" ShowCaption="" Index="2" IsNewNode="True" />
+                <LayoutItem Id="LastName" ViewItem="LastName" ShowCaption="" Index="3" IsNewNode="True" />
+                <LayoutItem Id="MiddleName" ViewItem="MiddleName" ShowCaption="" Index="4" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Row_2" Direction="Horizontal" Index="2" IsNewNode="True">
+                <LayoutItem Id="Title" ViewItem="Title" ShowCaption="" Index="3" IsNewNode="True" />
+                <LayoutItem Id="Email" ViewItem="Email" ShowCaption="" Index="4" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Party" Index="2" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="Photo" ViewItem="Photo" ShowCaption="" Index="0" IsNewNode="True" />
+              <LayoutItem Id="Address1" ViewItem="Address1" ShowCaption="" Index="1" IsNewNode="True" />
+              <LayoutItem Id="Address2" ViewItem="Address2" ShowCaption="" Index="2" IsNewNode="True" />
+              <LayoutItem Id="DisplayName" ViewItem="DisplayName" ShowCaption="" Index="3" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PhoneNumbersGroup" Caption="PhoneNumbers" IsNewNode="True">
+              <LayoutItem Id="PhoneNumbers" ViewItem="PhoneNumbers" IsNewNode="True" />
+            </LayoutGroup>
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
