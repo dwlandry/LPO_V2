@@ -118,7 +118,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         public XPCollection<QuoteLineItem> LineItems { get { return GetCollection<QuoteLineItem>(nameof(LineItems)); } }
 
         [VisibleInListView(false), VisibleInDetailView(false)]
-        public string DisplayText { get { return $"{Vendor.Name} - Quote No: {VendorQuoteNumber}"; } }
+        public string DisplayText { get { return Vendor != null ? $"{Vendor.Name} - Quote No: {VendorQuoteNumber}" : $"[Unknown Vendor] - Quote No: {VendorQuoteNumber}"; } }
 
         public QuoteStatus Status { get => quoteStatus; set => SetPropertyValue(nameof(QuoteStatus), ref quoteStatus, value); }
     }
