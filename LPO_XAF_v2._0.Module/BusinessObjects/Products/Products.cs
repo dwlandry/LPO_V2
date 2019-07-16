@@ -43,7 +43,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
 
         public Address Address { get => address; set => SetPropertyValue(nameof(Address), ref address, value); }
 
-        [Association("Vendor-InteractionExperience")]
+        [Association("Vendor-InteractionExperience"), Aggregated]
         public XPCollection<VendorJournalEntry> InteractionExperience => GetCollection<VendorJournalEntry>(nameof(InteractionExperience));
         [Association("Vendor-SupportedManufacturers")]
         public XPCollection<Manufacturer> SupportedManufacturers => GetCollection<Manufacturer>(nameof(SupportedManufacturers));

@@ -163,6 +163,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [DetailViewLayout("Site Requirements")]
         public byte[] SitePPERequirements { get => sitePPERequirements; set => SetPropertyValue(nameof(SitePPERequirements), ref sitePPERequirements, value); }
 
+        [Association("Client-Contacts"), Aggregated]
+        public XPCollection<ClientContact> Contacts { get { return GetCollection<ClientContact>(nameof(Contacts)); } }
         [DevExpress.Xpo.DisplayName("AML Document")]
         public FileData AMLDocument { get => aMLDocument; set => SetPropertyValue(nameof(AMLDocument), ref aMLDocument, value); }
         [Association("Client-ApprovedInstrumentManufacturers"), Aggregated]
@@ -171,8 +173,26 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Client-PipeSpecs")]
         [DataSourceCriteria("ClientPipeSpec.Oid = '@This.Oid'"), Aggregated]
         public XPCollection<Piping.ClientPipeSpec> PipeSpecs { get { return GetCollection<Piping.ClientPipeSpec>(nameof(PipeSpecs)); } }
+
     }
 
+    public class ClientContact : Person
+    {
+        public ClientContact(Session session) : base(session) { }
+
+        string notes;
+        Client client;
+        string title;
+
+
+        [Association("Client-Contacts")]
+        public Client Client { get => client; set => SetPropertyValue(nameof(Client), ref client, value); }
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Title { get => title; set => SetPropertyValue(nameof(Title), ref title, value); }
+
+        [Size(SizeAttribute.Unlimited)]
+        public string Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
+    }
     public enum ProjectStatus
     {
         Bid = 0,
