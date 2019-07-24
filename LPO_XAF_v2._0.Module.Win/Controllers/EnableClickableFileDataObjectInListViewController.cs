@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module.Win\Controllers\EnableClickableFileDataObjectInListViewController.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module.Win\Controllers\EnableClickableFileDataObjectInListViewController.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -72,10 +72,15 @@ namespace LPO_XAF_v2._0.Module.Win.Controllers
                             {
                                 fd = obj.GetType().GetProperty("QuoteFile").GetValue(obj, null) as FileData;
                             }
+                            else if (obj.GetType() == typeof(BusinessObjects.Project.Client))
+                            {
+                                fd = obj.GetType().GetProperty("AMLDocument").GetValue(obj, null) as FileData;
+                            }
                             else
                             {
                                 fd = obj.GetType().GetProperty("File").GetValue(obj, null) as FileData;
                             }
+
                             var tempFolder = System.IO.Path.GetTempPath();
                             var filename = System.IO.Path.Combine(tempFolder, fd.FileName);
                             System.IO.File.WriteAllBytes(filename, fd.Content);

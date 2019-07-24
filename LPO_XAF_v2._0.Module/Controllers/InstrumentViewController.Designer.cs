@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem1 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem2 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem3 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem4 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem5 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem6 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem7 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem8 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
+            DevExpress.ExpressApp.Actions.ChoiceActionItem choiceActionItem9 = new DevExpress.ExpressApp.Actions.ChoiceActionItem();
             this.OpenPID = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.OpenMountingDetail = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.OpenElectricalDetail = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
@@ -38,13 +47,15 @@
             this.OpenLoopDrawing = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.OpenPlanDrawing = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             this.OpenLinePipeSpec = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.OpenDocument = new DevExpress.ExpressApp.Actions.SingleChoiceAction(this.components);
             // 
             // OpenPID
             // 
             this.OpenPID.Caption = "P&&ID";
             this.OpenPID.Category = "OpenObject";
             this.OpenPID.ConfirmationMessage = null;
-            this.OpenPID.Id = "c9fc22f9-d6f3-4d60-b496-27446764ba25";
+            this.OpenPID.Id = "OpenPID";
+            this.OpenPID.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenPID.ToolTip = null;
             this.OpenPID.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenPID_Execute);
             // 
@@ -53,7 +64,8 @@
             this.OpenMountingDetail.Caption = "Mounting Detail";
             this.OpenMountingDetail.Category = "OpenObject";
             this.OpenMountingDetail.ConfirmationMessage = null;
-            this.OpenMountingDetail.Id = "74f1781e-dc6d-4a95-be4a-3c5bcde7645d";
+            this.OpenMountingDetail.Id = "OpenMountingDetail";
+            this.OpenMountingDetail.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenMountingDetail.ToolTip = null;
             this.OpenMountingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenMountingDetail_Execute);
             // 
@@ -62,7 +74,8 @@
             this.OpenElectricalDetail.Caption = "Electrical Detail Drawing";
             this.OpenElectricalDetail.Category = "OpenObject";
             this.OpenElectricalDetail.ConfirmationMessage = null;
-            this.OpenElectricalDetail.Id = "330eba5f-2249-479e-bc30-713abeb60a2c";
+            this.OpenElectricalDetail.Id = "OpenElectricalDetail";
+            this.OpenElectricalDetail.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenElectricalDetail.ToolTip = null;
             this.OpenElectricalDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenElectricalDetail_Execute);
             // 
@@ -71,7 +84,8 @@
             this.OpenTracingDetail.Caption = "Tracing Detail Drawing";
             this.OpenTracingDetail.Category = "OpenObject";
             this.OpenTracingDetail.ConfirmationMessage = null;
-            this.OpenTracingDetail.Id = "0c52ca43-7133-4a22-be81-bbdd775c946f";
+            this.OpenTracingDetail.Id = "OpenTracingDetail";
+            this.OpenTracingDetail.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenTracingDetail.ToolTip = null;
             this.OpenTracingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenTracingDetail_Execute);
             // 
@@ -80,7 +94,8 @@
             this.OpenTubingDetail.Caption = "Tubing Detail Drawing";
             this.OpenTubingDetail.Category = "OpenObject";
             this.OpenTubingDetail.ConfirmationMessage = null;
-            this.OpenTubingDetail.Id = "df862f06-420e-4560-95b7-754001ad9344";
+            this.OpenTubingDetail.Id = "OpenTubingDetail";
+            this.OpenTubingDetail.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenTubingDetail.ToolTip = null;
             this.OpenTubingDetail.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenTubingDetail_Execute);
             // 
@@ -89,7 +104,8 @@
             this.OpenAreaClassDrawing.Caption = "Area Classification Drawing";
             this.OpenAreaClassDrawing.Category = "OpenObject";
             this.OpenAreaClassDrawing.ConfirmationMessage = null;
-            this.OpenAreaClassDrawing.Id = "5e6b7be9-b38a-44b6-8b95-4d3a67b24465";
+            this.OpenAreaClassDrawing.Id = "OpenAreaClassDrawing";
+            this.OpenAreaClassDrawing.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenAreaClassDrawing.ToolTip = null;
             this.OpenAreaClassDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenAreaClassDrawing_Execute);
             // 
@@ -98,7 +114,8 @@
             this.OpenLoopDrawing.Caption = "Loop Drawing";
             this.OpenLoopDrawing.Category = "OpenObject";
             this.OpenLoopDrawing.ConfirmationMessage = null;
-            this.OpenLoopDrawing.Id = "dbb925cb-d8c4-4661-834c-e67c3ea4e160";
+            this.OpenLoopDrawing.Id = "OpenLoopDrawing";
+            this.OpenLoopDrawing.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenLoopDrawing.ToolTip = null;
             this.OpenLoopDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenLoopDrawing_Execute);
             // 
@@ -107,7 +124,8 @@
             this.OpenPlanDrawing.Caption = "Plan Drawing";
             this.OpenPlanDrawing.Category = "OpenObject";
             this.OpenPlanDrawing.ConfirmationMessage = null;
-            this.OpenPlanDrawing.Id = "54fca96a-4040-4f7d-bacc-ecc5531a59f0";
+            this.OpenPlanDrawing.Id = "OpenPlanDrawing";
+            this.OpenPlanDrawing.TargetViewNesting = DevExpress.ExpressApp.Nesting.Root;
             this.OpenPlanDrawing.ToolTip = null;
             this.OpenPlanDrawing.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenPlanDrawing_Execute);
             // 
@@ -120,6 +138,71 @@
             this.OpenLinePipeSpec.ToolTip = null;
             this.OpenLinePipeSpec.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.OpenLinePipeSpec_Execute);
             // 
+            // OpenDocument
+            // 
+            this.OpenDocument.Caption = "Open Document";
+            this.OpenDocument.Category = "OpenObject";
+            this.OpenDocument.ConfirmationMessage = null;
+            this.OpenDocument.Id = "OpenDocument";
+            choiceActionItem1.Caption = "Tubing Detail";
+            choiceActionItem1.Id = "TubingDetail";
+            choiceActionItem1.ImageName = null;
+            choiceActionItem1.Shortcut = null;
+            choiceActionItem1.ToolTip = null;
+            choiceActionItem2.Caption = "Mounting Detail";
+            choiceActionItem2.Id = "MountingDetail";
+            choiceActionItem2.ImageName = null;
+            choiceActionItem2.Shortcut = null;
+            choiceActionItem2.ToolTip = null;
+            choiceActionItem3.Caption = "Electrical Detail";
+            choiceActionItem3.Id = "ElectricalDetail";
+            choiceActionItem3.ImageName = null;
+            choiceActionItem3.Shortcut = null;
+            choiceActionItem3.ToolTip = null;
+            choiceActionItem4.Caption = "Tracing Detail";
+            choiceActionItem4.Id = "TracingDetail";
+            choiceActionItem4.ImageName = null;
+            choiceActionItem4.Shortcut = null;
+            choiceActionItem4.ToolTip = null;
+            choiceActionItem5.Caption = "P&ID";
+            choiceActionItem5.Id = "PID";
+            choiceActionItem5.ImageName = null;
+            choiceActionItem5.Shortcut = null;
+            choiceActionItem5.ToolTip = null;
+            choiceActionItem6.Caption = "Loop Drawing";
+            choiceActionItem6.Id = "LoopDrawing";
+            choiceActionItem6.ImageName = null;
+            choiceActionItem6.Shortcut = null;
+            choiceActionItem6.ToolTip = null;
+            choiceActionItem7.Caption = "Area Classification Drawing";
+            choiceActionItem7.Id = "AreaClassificationDrawing";
+            choiceActionItem7.ImageName = null;
+            choiceActionItem7.Shortcut = null;
+            choiceActionItem7.ToolTip = null;
+            choiceActionItem8.Caption = "Plan Drawing";
+            choiceActionItem8.Id = "PlanDrawing";
+            choiceActionItem8.ImageName = null;
+            choiceActionItem8.Shortcut = null;
+            choiceActionItem8.ToolTip = null;
+            choiceActionItem9.ActiveItemsBehavior = DevExpress.ExpressApp.Actions.ActiveItemsBehavior.RequireActiveItems;
+            choiceActionItem9.Caption = "Line Pipe Spec";
+            choiceActionItem9.Id = "LinePipeSpec";
+            choiceActionItem9.ImageName = null;
+            choiceActionItem9.Shortcut = null;
+            choiceActionItem9.ToolTip = null;
+            this.OpenDocument.Items.Add(choiceActionItem1);
+            this.OpenDocument.Items.Add(choiceActionItem2);
+            this.OpenDocument.Items.Add(choiceActionItem3);
+            this.OpenDocument.Items.Add(choiceActionItem4);
+            this.OpenDocument.Items.Add(choiceActionItem5);
+            this.OpenDocument.Items.Add(choiceActionItem6);
+            this.OpenDocument.Items.Add(choiceActionItem7);
+            this.OpenDocument.Items.Add(choiceActionItem8);
+            this.OpenDocument.Items.Add(choiceActionItem9);
+            this.OpenDocument.ItemType = DevExpress.ExpressApp.Actions.SingleChoiceActionItemType.ItemIsOperation;
+            this.OpenDocument.ToolTip = null;
+            this.OpenDocument.Execute += new DevExpress.ExpressApp.Actions.SingleChoiceActionExecuteEventHandler(this.OpenDocument_Execute);
+            // 
             // InstrumentViewController
             // 
             this.Actions.Add(this.OpenPID);
@@ -131,6 +214,7 @@
             this.Actions.Add(this.OpenLoopDrawing);
             this.Actions.Add(this.OpenPlanDrawing);
             this.Actions.Add(this.OpenLinePipeSpec);
+            this.Actions.Add(this.OpenDocument);
 
         }
 
@@ -145,5 +229,6 @@
         private DevExpress.ExpressApp.Actions.SimpleAction OpenLoopDrawing;
         private DevExpress.ExpressApp.Actions.SimpleAction OpenPlanDrawing;
         private DevExpress.ExpressApp.Actions.SimpleAction OpenLinePipeSpec;
+        private DevExpress.ExpressApp.Actions.SingleChoiceAction OpenDocument;
     }
 }

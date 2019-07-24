@@ -154,5 +154,12 @@ namespace LPO_XAF_v2._0.Module.Controllers
             System.IO.File.WriteAllBytes(filename, fd.Content);
             System.Diagnostics.Process.Start(filename);
         }
+
+        private void OpenDocument_Execute(object sender, SingleChoiceActionExecuteEventArgs e)
+        {
+            string dwgName = e.SelectedChoiceActionItem.Caption;
+            Instrument instrument = (Instrument)e.CurrentObject;
+
+        }
     }
 }
