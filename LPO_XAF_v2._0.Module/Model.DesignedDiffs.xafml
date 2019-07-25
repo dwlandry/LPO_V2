@@ -310,8 +310,179 @@
       </Columns>
     </ListView>
     <ListView Id="PID_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
-    <DetailView Id="Project_DetailView" AllowDelete="False" />
-    <ListView Id="Project_ListView" AllowDelete="False" />
+    <DetailView Id="Project_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="ProjectScope" Removed="True" />
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Project_DetailView_InstrumentsView" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Project.Project" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="AreaClassificationDrawings" PropertyName="AreaClassificationDrawings" View="Project_AreaClassificationDrawings_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Client" PropertyName="Client" IsNewNode="True" />
+        <PropertyEditor Id="ClientProjectNumber" PropertyName="ClientProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="ControlSystems" PropertyName="ControlSystems" View="Project_ControlSystems_ListView" IsNewNode="True" />
+        <PropertyEditor Id="InstallationDetails" PropertyName="InstallationDetails" View="Project_InstallationDetails_ListView" IsNewNode="True" />
+        <PropertyEditor Id="InstrumentQuotes" PropertyName="InstrumentQuotes" View="Project_InstrumentQuotes_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Instruments" PropertyName="Instruments" View="Project_Instruments_ListView" IsNewNode="True" />
+        <PropertyEditor Id="InstrumentSpecCheckPackages" PropertyName="InstrumentSpecCheckPackages" View="Project_InstrumentSpecCheckPackages_ListView" IsNewNode="True" />
+        <PropertyEditor Id="JunctionBoxes" PropertyName="JunctionBoxes" View="Project_JunctionBoxes_ListView" IsNewNode="True" />
+        <PropertyEditor Id="LayoutDrawings" PropertyName="LayoutDrawings" View="Project_LayoutDrawings_ListView" IsNewNode="True" />
+        <PropertyEditor Id="LoopDrawings" PropertyName="LoopDrawings" View="Project_LoopDrawings_ListView" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="PIDs" PropertyName="PIDs" View="Project_PIDs_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PipingLines" PropertyName="PipingLines" View="Project_PipingLines_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PlanDrawings" PropertyName="PlanDrawings" View="Project_PlanDrawings_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ProjectDescription" PropertyName="ProjectDescription" IsNewNode="True" />
+        <PropertyEditor Id="ProjectFolder" PropertyName="ProjectFolder" IsNewNode="True" />
+        <PropertyEditor Id="ProjectNumber" PropertyName="ProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="WiringDrawings" PropertyName="WiringDrawings" View="Project_WiringDrawings_ListView" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="Project" Index="0" Direction="Horizontal" ShowCaption="True" IsNewNode="True">
+              <LayoutGroup Id="Project_col1" Index="0" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="ProjectNumber" ViewItem="ProjectNumber" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ProjectDescription" ViewItem="ProjectDescription" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="ProjectFolder" ViewItem="ProjectFolder" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Project_col2" Index="1" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="Client" ViewItem="Client" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ClientProjectNumber" ViewItem="ClientProjectNumber" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" IsNewNode="True">
+            <LayoutGroup Id="Instruments" Index="1" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="Instruments" ViewItem="Instruments" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PlanDrawings" Index="2" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PlanDrawings" ViewItem="PlanDrawings" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PIDs" Index="3" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PIDs" ViewItem="PIDs" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="LoopDrawings" Index="4" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="LoopDrawings" ViewItem="LoopDrawings" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="WiringDrawings" Index="5" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="WiringDrawings" ViewItem="WiringDrawings" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="LayoutDrawings" Index="6" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="LayoutDrawings" ViewItem="LayoutDrawings" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="AreaClassificationDrawings" Index="7" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="AreaClassificationDrawings" ViewItem="AreaClassificationDrawings" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="InstallationDetails" Index="8" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="InstallationDetails" ViewItem="InstallationDetails" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="JunctionBoxes" Index="9" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="JunctionBoxes" ViewItem="JunctionBoxes" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="ControlSystems" Index="10" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="ControlSystems" ViewItem="ControlSystems" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="InstrumentQuotes" Index="11" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="InstrumentQuotes" ViewItem="InstrumentQuotes" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PipingLines" Index="12" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PipingLines" ViewItem="PipingLines" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Project_DetailView_PipingView" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Project.Project" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Client" PropertyName="Client" IsNewNode="True" />
+        <PropertyEditor Id="ClientProjectNumber" PropertyName="ClientProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="PIDs" PropertyName="PIDs" View="Project_PIDs_ListView" IsNewNode="True" />
+        <PropertyEditor Id="PipingLines" PropertyName="PipingLines" View="Project_PipingLines_ListView" IsNewNode="True" />
+        <PropertyEditor Id="ProjectDescription" PropertyName="ProjectDescription" IsNewNode="True" />
+        <PropertyEditor Id="ProjectFolder" PropertyName="ProjectFolder" IsNewNode="True" />
+        <PropertyEditor Id="ProjectNumber" PropertyName="ProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="Project" Index="0" Direction="Horizontal" ShowCaption="True" IsNewNode="True">
+              <LayoutGroup Id="Project_col1" Index="0" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="ProjectNumber" ViewItem="ProjectNumber" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ProjectDescription" ViewItem="ProjectDescription" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="ProjectFolder" ViewItem="ProjectFolder" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Project_col2" Index="1" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="Client" ViewItem="Client" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ClientProjectNumber" ViewItem="ClientProjectNumber" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" IsNewNode="True">
+            <LayoutGroup Id="PIDs" Index="3" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PIDs" ViewItem="PIDs" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="PipingLines" Index="12" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="PipingLines" ViewItem="PipingLines" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Project_DetailView_ProjectOverview" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Project.Project" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Client" PropertyName="Client" IsNewNode="True" />
+        <PropertyEditor Id="ClientProjectNumber" PropertyName="ClientProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="DisplayName" PropertyName="DisplayName" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="ProjectDescription" PropertyName="ProjectDescription" IsNewNode="True" />
+        <PropertyEditor Id="ProjectFolder" PropertyName="ProjectFolder" IsNewNode="True" />
+        <PropertyEditor Id="ProjectNumber" PropertyName="ProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="ProjectScope" PropertyName="ProjectScope" IsNewNode="True" />
+        <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="Project" Index="0" Direction="Horizontal" ShowCaption="True" IsNewNode="True">
+              <LayoutGroup Id="Project_col1" Index="0" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="ProjectNumber" ViewItem="ProjectNumber" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ProjectDescription" ViewItem="ProjectDescription" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="ProjectFolder" ViewItem="ProjectFolder" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Project_col2" Index="1" ShowCaption="False" IsNewNode="True">
+                <LayoutItem Id="Client" ViewItem="Client" ShowCaption="" Index="0" IsNewNode="True" />
+                <LayoutItem Id="ClientProjectNumber" ViewItem="ClientProjectNumber" ShowCaption="" Index="1" IsNewNode="True" />
+                <LayoutItem Id="Status" ViewItem="Status" ShowCaption="" Index="2" IsNewNode="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+            <LayoutGroup Id="Project Overview" ShowCaption="True" CaptionLocation="Top" IsNewNode="True">
+              <LayoutItem Id="Project Scope" ViewItem="ProjectScope" ShowCaption="False" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="Project_DetailView_Varied" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Project.Project" IsNewNode="True">
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True" />
+      </Layout>
+      <Variants Current="Overview" IsNewNode="True">
+        <Variant Id="Overview" ViewID="Project_DetailView_ProjectOverview" Caption="Overview" Index="1" IsNewNode="True" />
+        <Variant Id="Piping" ViewID="Project_DetailView_PipingView" Caption="Piping" Index="2" IsNewNode="True" />
+        <Variant Id="Instrumentation" ViewID="Project_DetailView_InstrumentsView" Caption="Instrumentation" Index="3" IsNewNode="True" />
+      </Variants>
+    </DetailView>
+    <ListView Id="Project_ListView" AllowDelete="False" DetailViewID="Project_DetailView_Varied" />
     <DetailView Id="Quote_DetailView">
       <Items>
         <PropertyEditor Id="Vendor" PropertyName="Vendor" IsNewNode="True" />
