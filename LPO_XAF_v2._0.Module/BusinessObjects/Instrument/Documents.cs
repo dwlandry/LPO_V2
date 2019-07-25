@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Documents.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Documents.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -46,6 +46,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("PIDs-Lines")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<Piping.Line> Lines { get { return GetCollection<Piping.Line>(nameof(Lines)); } }
+        [Association("PID-TiePoints")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public XPCollection<Piping.PipingTiePoint> TiePoints { get { return GetCollection<Piping.PipingTiePoint>(nameof(TiePoints)); } }
+
     }
 
     public class LoopDrawing : Drawing, IProjectDrawing

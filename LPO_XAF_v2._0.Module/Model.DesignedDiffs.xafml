@@ -410,6 +410,7 @@
         <PropertyEditor Id="ProjectFolder" PropertyName="ProjectFolder" IsNewNode="True" />
         <PropertyEditor Id="ProjectNumber" PropertyName="ProjectNumber" IsNewNode="True" />
         <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
+        <PropertyEditor Id="TiePoints" PropertyName="TiePoints" View="Project_TiePoints_ListView" IsNewNode="True" />
       </Items>
       <Layout IsNewNode="True">
         <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
@@ -434,6 +435,9 @@
             <LayoutGroup Id="PipingLines" Index="12" ShowCaption="True" IsNewNode="True">
               <LayoutItem Id="PipingLines" ViewItem="PipingLines" ShowCaption="False" Index="0" IsNewNode="True" />
             </LayoutGroup>
+            <LayoutGroup Id="TiePoints" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="TiePoints" ViewItem="TiePoints" ShowCaption="False" IsNewNode="True" />
+            </LayoutGroup>
           </TabbedGroup>
         </LayoutGroup>
       </Layout>
@@ -447,6 +451,7 @@
         <PropertyEditor Id="ProjectDescription" PropertyName="ProjectDescription" IsNewNode="True" />
         <PropertyEditor Id="ProjectFolder" PropertyName="ProjectFolder" IsNewNode="True" />
         <PropertyEditor Id="ProjectNumber" PropertyName="ProjectNumber" IsNewNode="True" />
+        <PropertyEditor Id="ProjectOverview" PropertyName="ProjectOverview" IsNewNode="True" />
         <PropertyEditor Id="ProjectScope" PropertyName="ProjectScope" IsNewNode="True" />
         <PropertyEditor Id="Status" PropertyName="Status" IsNewNode="True" />
       </Items>
@@ -465,7 +470,10 @@
                 <LayoutItem Id="Status" ViewItem="Status" ShowCaption="" Index="2" IsNewNode="True" />
               </LayoutGroup>
             </LayoutGroup>
-            <LayoutGroup Id="Project Overview" ShowCaption="True" CaptionLocation="Top" IsNewNode="True">
+            <LayoutGroup Id="Project Overview" ShowCaption="True" CaptionLocation="Top" Index="1" IsNewNode="True">
+              <LayoutItem Id="Project Overview" ViewItem="ProjectOverview" ShowCaption="False" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Project Scope" ShowCaption="True" CaptionLocation="Top" Index="2" IsNewNode="True">
               <LayoutItem Id="Project Scope" ViewItem="ProjectScope" ShowCaption="False" IsNewNode="True" />
             </LayoutGroup>
           </LayoutGroup>

@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Project\Project.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Project\Project.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -42,6 +42,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
             base.AfterConstruction();
         }
 
+        byte[] projectOverview;
         string projectFolder;
         string clientProjectNumber;
         byte[] scope;
@@ -73,6 +74,15 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         public Client Client { get => client; set => SetPropertyValue(nameof(Client), ref client, value); }
 
         public ProjectStatus Status { get => status; set => SetPropertyValue(nameof(Status), ref status, value); }
+
+
+        [Size(SizeAttribute.Unlimited)]
+        [EditorAlias(EditorAliases.RichTextPropertyEditor)]
+        public byte[] ProjectOverview
+        {
+            get => projectOverview;
+            set => SetPropertyValue(nameof(ProjectOverview), ref projectOverview, value);
+        }
 
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
@@ -137,6 +147,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-PipingLines"), Aggregated]
         [DataSourceCriteria("Project.Oid = '@This.Oid'")]
         public XPCollection<Piping.Line> PipingLines { get { return GetCollection<Piping.Line>(nameof(PipingLines)); } }
+
+        [Association("Project-PipingTiePoints"), Aggregated]
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        public XPCollection<Piping.PipingTiePoint> TiePoints { get { return GetCollection<Piping.PipingTiePoint>(nameof(TiePoints)); } }
     }
 
     [DefaultClassOptions, NavigationItem("Projects")]

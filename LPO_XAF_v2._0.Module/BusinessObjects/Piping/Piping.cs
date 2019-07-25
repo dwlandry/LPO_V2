@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Piping\Piping.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Piping\Piping.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -41,6 +41,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         public Line(Session session) : base(session) { }
 
 
+        string processDescription;
         ClientPipeSpec pipeSpec;
         NominalPipeSize nPS;
         Project.Project project;
@@ -56,7 +57,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
-        [DisplayName("NPS")]
+        [DevExpress.Xpo.DisplayName("NPS")]
         [ToolTip("Nominal Pipe Size in inches")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         public NominalPipeSize NPS { get => nPS; set => SetPropertyValue(nameof(NPS), ref nPS, value); }
@@ -68,6 +69,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
         [DataSourceCriteria("Client.Oid = '@This.Project.Client.Oid'")]
         public ClientPipeSpec PipeSpec { get => pipeSpec; set => SetPropertyValue(nameof(PipeSpec), ref pipeSpec, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string ProcessDescription { get => processDescription; set => SetPropertyValue(nameof(ProcessDescription), ref processDescription, value); }
 
         [Association("Line-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
@@ -96,69 +100,69 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
                 return null;
             }
         }
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Outer Diameter (in)")]
-        public double OuterDiameter
-        {
-            get
-            {
-                outerDiameter = NPS == null ? 0 : NPS.OuterDiameterInInches;
-                return outerDiameter;
-            }
-        }
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wall Thickness (in)")]
-        public double WallThickness
-        {
-            get
-            {
-                try
-                {
-                    wallThickness = Session.FindObject<PipeWallThickness>(CriteriaOperator.Parse("NPS=? and Schedule=?", NPS, Schedule)).WallThickness;
-                }
-                catch (Exception)
-                {
-                    wallThickness = 0;
-                }
-                return wallThickness;
-            }
-        }
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Inner Diameter (in)")]
-        public double InnerDiameter => outerDiameter - 2 * wallThickness;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Inner Area (in^2)")]
-        public double InnerAreaInSquareInches => Math.PI * Math.Pow(InnerDiameter / 2, 2);
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Metal Area (in^2)")]
-        public double MetalAreaInSquareInches => Math.PI * Math.Pow(outerDiameter / 2, 2) - InnerAreaInSquareInches;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of CS Pipe per Foot (lbs)")]
-        public double WeightOfCarbonSteelPipePerFootInPounds => 10.6802 * wallThickness * (outerDiameter - wallThickness);
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Water per Foot (lbs)")]
-        public double WeightOfWaterPerFootInPounds => 0.3405 * Math.Pow(InnerDiameter, 2);
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Ferritic SS Pipe per Foot (lbs)")]
-        public double WeightOfFerriticSSPipePerFootInPounds => 0.95 * WeightOfCarbonSteelPipePerFootInPounds;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Wt of Austentic SS Pipe per Foot (lbs)")]
-        public double WeightOfAustenticSSPipePerFootInPounds => 1.02 * WeightOfCarbonSteelPipePerFootInPounds;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Inner Surface Area per Foot (ft^2)")]
-        public double InnerSurfaceAreaPerFootInFeetSquared => 0.2618 * InnerDiameter;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Moment of Inertia (in^4)")]
-        public double MomentOfInertiaInInches4 => 0.0491 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4));
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Elastic Section Modulus (in^3)")]
-        public double ElasticSectionModulusInInches3 => 0.0982 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4)) / outerDiameter;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Plastic Section Modulus (in^3)")]
-        public double PlasticSectionModulusInInches3 => Math.Pow(outerDiameter, 3) - Math.Pow(InnerDiameter, 3) / 6;
-        [ModelDefault("DisplayFormat", "F5")]
-        [DisplayName("Radius of Gyration (in)")]
-        public double RadiusOfGyrationInInches => 0.25 * Math.Pow(Math.Pow(outerDiameter, 2) - Math.Pow(InnerDiameter, 2), 0.5);
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Outer Diameter (in)")]
+        //public double OuterDiameter
+        //{
+        //    get
+        //    {
+        //        outerDiameter = NPS == null ? 0 : NPS.OuterDiameterInInches;
+        //        return outerDiameter;
+        //    }
+        //}
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Wall Thickness (in)")]
+        //public double WallThickness
+        //{
+        //    get
+        //    {
+        //        try
+        //        {
+        //            wallThickness = Session.FindObject<PipeWallThickness>(CriteriaOperator.Parse("NPS=? and Schedule=?", NPS, Schedule)).WallThickness;
+        //        }
+        //        catch (Exception)
+        //        {
+        //            wallThickness = 0;
+        //        }
+        //        return wallThickness;
+        //    }
+        //}
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Inner Diameter (in)")]
+        //public double InnerDiameter => outerDiameter - 2 * wallThickness;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Inner Area (in^2)")]
+        //public double InnerAreaInSquareInches => Math.PI * Math.Pow(InnerDiameter / 2, 2);
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Metal Area (in^2)")]
+        //public double MetalAreaInSquareInches => Math.PI * Math.Pow(outerDiameter / 2, 2) - InnerAreaInSquareInches;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Wt of CS Pipe per Foot (lbs)")]
+        //public double WeightOfCarbonSteelPipePerFootInPounds => 10.6802 * wallThickness * (outerDiameter - wallThickness);
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Wt of Water per Foot (lbs)")]
+        //public double WeightOfWaterPerFootInPounds => 0.3405 * Math.Pow(InnerDiameter, 2);
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Wt of Ferritic SS Pipe per Foot (lbs)")]
+        //public double WeightOfFerriticSSPipePerFootInPounds => 0.95 * WeightOfCarbonSteelPipePerFootInPounds;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Wt of Austentic SS Pipe per Foot (lbs)")]
+        //public double WeightOfAustenticSSPipePerFootInPounds => 1.02 * WeightOfCarbonSteelPipePerFootInPounds;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Inner Surface Area per Foot (ft^2)")]
+        //public double InnerSurfaceAreaPerFootInFeetSquared => 0.2618 * InnerDiameter;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Moment of Inertia (in^4)")]
+        //public double MomentOfInertiaInInches4 => 0.0491 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4));
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Elastic Section Modulus (in^3)")]
+        //public double ElasticSectionModulusInInches3 => 0.0982 * (Math.Pow(outerDiameter, 4) - Math.Pow(InnerDiameter, 4)) / outerDiameter;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Plastic Section Modulus (in^3)")]
+        //public double PlasticSectionModulusInInches3 => Math.Pow(outerDiameter, 3) - Math.Pow(InnerDiameter, 3) / 6;
+        //[ModelDefault("DisplayFormat", "F5")]
+        //[DisplayName("Radius of Gyration (in)")]
+        //public double RadiusOfGyrationInInches => 0.25 * Math.Pow(Math.Pow(outerDiameter, 2) - Math.Pow(InnerDiameter, 2), 0.5);
     }
 
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
@@ -301,7 +305,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         PipingSchedule schedule;
         NominalPipeSize nPS;
 
-        [DisplayName("NPS")]
+        [DevExpress.Xpo.DisplayName("NPS")]
         [ModelDefault("AllowEdit", "False")]
         public NominalPipeSize NPS { get => nPS; set => SetPropertyValue(nameof(NPS), ref nPS, value); }
 
@@ -313,5 +317,71 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
 
     }
 
+    [RuleCombinationOfPropertiesIsUnique("UniqueProjectAndTiePointNumberRule", DefaultContexts.Save, "Project, Number", "The Tie Point Number entered already exists for the project.")]
+    public class PipingTiePoint : BaseObject
+    {
 
+        public PipingTiePoint(Session session) : base(session) { }
+
+        public override void AfterConstruction()
+        {
+            base.AfterConstruction();
+            this.Qty = TieInQuantity.One;
+        }
+
+        string service;
+        TieInQuantity qty;
+        bool tagHung;
+        string note;
+        bool hotTap;
+        string tieInMethod;
+        Line newLine;
+        string description;
+        BusinessObjects.Instrument.PID pID;
+        Line existingLine;
+        string number;
+        Project.Project project;
+
+        [Association("Project-PipingTiePoints")]
+        public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
+
+        [Size(20)]
+        public string Number { get => number; set => SetPropertyValue(nameof(Number), ref number, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Service { get => service; set => SetPropertyValue(nameof(Service), ref service, value); }
+
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public Line ExistingLine { get => existingLine; set => SetPropertyValue(nameof(Line), ref existingLine, value); }
+
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public Line NewLine { get => newLine; set => SetPropertyValue(nameof(NewLine), ref newLine, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string TieInMethod { get => tieInMethod; set => SetPropertyValue(nameof(Type), ref tieInMethod, value); }
+
+        public TieInQuantity Qty { get => qty; set => SetPropertyValue(nameof(Qty), ref qty, value); }
+
+        [CaptionsForBoolValues("Yes", "No")]
+        public bool HotTap { get => hotTap; set => SetPropertyValue(nameof(HotTap), ref hotTap, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Note { get => note; set => SetPropertyValue(nameof(Note), ref note, value); }
+
+        [CaptionsForBoolValues("Yes", "No")]
+        public bool TagHung { get => tagHung; set => SetPropertyValue(nameof(TagHung), ref tagHung, value); }
+
+        [Association("PID-TiePoints")]
+        [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
+        public Instrument.PID PID { get => pID; set => SetPropertyValue(nameof(PID), ref pID, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
+    }
+
+    public enum TieInQuantity
+    {
+        One = 1,
+        Two = 2
+    }
 }

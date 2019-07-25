@@ -36,5 +36,10 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="Project_DetailView_ProjectOverview">
+      <Items>
+        <PropertyEditor Id="ProjectOverview" PropertyEditorType="DevExpress.ExpressApp.Office.Web.ASPxRichTextPropertyEditor" />
+      </Items>
+    </DetailView>
   </Views>
 </Application>
