@@ -71,11 +71,14 @@ namespace LPO_XAF_v2._0.Module.Win.Controllers
                 object o = hi.HitTest.ToString() + hi.RowHandle.ToString();
 
                 PID pid = ObjectSpace.FindObject<PID>(new BinaryOperator("Oid", ((PID)hi.RowInfo.RowKey).Oid));
-                
-                string text = $"Tie Points: {pid.TiePoints.Count}, Instrument: {pid.Instruments.Count}, Lines: {pid.Lines.Count}";
                 info = new ToolTipControlInfo();
                 info.Object = o;
                 SuperToolTip superToolTip = new SuperToolTip();
+
+                // PID Header
+                ToolTipTitleItem pidNumber = new ToolTipTitleItem();
+                pidNumber.Text = $"<size=+4>{pid.DrawingNumber}</size> <href=OpenFile><color=145,197,242>Open File</color></href>";
+                superToolTip.Items.Add(pidNumber);
                 
                 // Instruments
                 var InstrumentCount = pid.Instruments.Count;
