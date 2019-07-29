@@ -12,6 +12,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Persistent.Validation;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Mechanical;
 using LPO_XAF_v2._0.Module.BusinessObjects.Products;
 using System;
 using System.ComponentModel;
@@ -151,6 +152,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-PipingTiePoints"), Aggregated]
         [DataSourceCriteria("Project.Oid = '@This.Oid'")]
         public XPCollection<Piping.PipingTiePoint> TiePoints { get { return GetCollection<Piping.PipingTiePoint>(nameof(TiePoints)); } }
+
+        [Association("Project-Equipment"), Aggregated]
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        public XPCollection<Equipment> Equipment { get { return GetCollection<Equipment>(nameof(Equipment)); } }
     }
 
     [DefaultClassOptions, NavigationItem("Projects")]

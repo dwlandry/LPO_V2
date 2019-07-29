@@ -11,6 +11,7 @@ using DevExpress.XtraGrid.Views.Base.ViewInfo;
 using DevExpress.XtraGrid.Views.Grid;
 using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using LPO_XAF_v2._0.Module.BusinessObjects.Instrument;
+using LPO_XAF_v2._0.Module.BusinessObjects.Mechanical;
 using LPO_XAF_v2._0.Module.BusinessObjects.Piping;
 using System;
 using System.Collections.Generic;
@@ -72,50 +73,24 @@ namespace LPO_XAF_v2._0.Module.Win.Controllers
                 Process.Start(filename);
             }
             else if (category == HyperlinkCategory.OpenRecord.ToString())
-            {
-                IObjectSpace space = Application.CreateObjectSpace(typeof(PID));
-                PID pid = space.FindObject<PID>(new BinaryOperator("Oid", item));
-
-                ShowViewParameters svp = new ShowViewParameters();
-                DetailView dv = Application.CreateDetailView(space, pid);
-                svp.CreatedView = dv;
-                Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
-
-            }
+                OpenDetailView<PID>(item, Application.CreateObjectSpace(typeof(PID)));
             else if (category == HyperlinkCategory.Equipment.ToString())
-            {
-
-            }
+                OpenDetailView<Equipment>(item, Application.CreateObjectSpace(typeof(Equipment)));
             else if (category == HyperlinkCategory.Instrument.ToString())
-            {
-                IObjectSpace space = Application.CreateObjectSpace(typeof(Instrument));
-                Instrument instrument = space.FindObject<Instrument>(new BinaryOperator("Oid", item));
-
-                ShowViewParameters svp = new ShowViewParameters();
-                DetailView dv = Application.CreateDetailView(space, instrument);
-                svp.CreatedView = dv;
-                Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
-            }
+                OpenDetailView<Instrument>(item, Application.CreateObjectSpace(typeof(Instrument)));
             else if (category == HyperlinkCategory.Line.ToString())
-            {
-                IObjectSpace space = Application.CreateObjectSpace(typeof(Line));
-                Line line = space.FindObject<Line>(new BinaryOperator("Oid", item));
-
-                ShowViewParameters svp = new ShowViewParameters();
-                DetailView dv = Application.CreateDetailView(space, line);
-                svp.CreatedView = dv;
-                Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
-            }
+                OpenDetailView<Line>(item, Application.CreateObjectSpace(typeof(Line)));
             else if (category == HyperlinkCategory.TiePoint.ToString())
-            {
-                IObjectSpace space = Application.CreateObjectSpace(typeof(PipingTiePoint));
-                PipingTiePoint tiePoint = space.FindObject<PipingTiePoint>(new BinaryOperator("Oid", item));
+                OpenDetailView<PipingTiePoint>(item, Application.CreateObjectSpace(typeof(PipingTiePoint)));
+        }
 
-                ShowViewParameters svp = new ShowViewParameters();
-                DetailView dv = Application.CreateDetailView(space, tiePoint);
-                svp.CreatedView = dv;
-                Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
-            }
+        private void OpenDetailView<T>(string item, IObjectSpace space)
+        {
+            var businessObject = space.FindObject<T>(new BinaryOperator("Oid", item));
+            ShowViewParameters svp = new ShowViewParameters();
+            DetailView dv = Application.CreateDetailView(space, businessObject);
+            svp.CreatedView = dv;
+            Application.ShowViewStrategy.ShowView(svp, new ShowViewSource(null, null));
         }
 
         private void ToolTipController_GetActiveObjectInfo(object sender, ToolTipControllerGetActiveObjectInfoEventArgs e)
@@ -148,58 +123,31 @@ namespace LPO_XAF_v2._0.Module.Win.Controllers
                 superToolTip.Items.Add(pidLinks);
                 superToolTip.Items.Add(new ToolTipSeparatorItem());
 
-                // Instruments
-                var InstrumentCount = pid.Instruments.Count;
-                ToolTipTitleItem titleItemInstruments = new ToolTipTitleItem();
-                titleItemInstruments.Text = $"Instruments ({InstrumentCount})";
-                superToolTip.Items.Add(titleItemInstruments);
-                if (InstrumentCount > 0)
-                {
-                    ToolTipItem itemInstruments = new ToolTipItem();
-                    itemInstruments.Text = String.Join(", ", pid.Instruments.Select(item => $"<href={HyperlinkCategory.Instrument}:{item.Oid}><color=145,197,242>{item.TagNumber}</color></href>"));
-                    superToolTip.Items.Add(itemInstruments);
-                }
-                superToolTip.Items.Add(new ToolTipSeparatorItem());
-                
-                //Lines
-                var LineCount = pid.Lines.Count;
-                ToolTipTitleItem titleItemLines = new ToolTipTitleItem();
-                titleItemLines.Text = $"Lines ({LineCount})";
-                superToolTip.Items.Add(titleItemLines);
-                if (LineCount>0)
-                {
-                    ToolTipItem itemLines = new ToolTipItem();
-                    itemLines.Text = String.Join(", ", pid.Lines.Select(item => $"<href={HyperlinkCategory.Line}:{item.Oid}><color=145,197,242>{item.LineNumber}</color></href>"));
-                    superToolTip.Items.Add(itemLines);
-                }
-                superToolTip.Items.Add(new ToolTipSeparatorItem());
-                
-                //Tie Points
-                var TiePointCount = pid.TiePoints.Count;
-                ToolTipTitleItem titleItemTiePoints = new ToolTipTitleItem();
-                titleItemTiePoints.Text = $"Tie Points ({TiePointCount})";
-                superToolTip.Items.Add(titleItemTiePoints);
-                if (TiePointCount>0)
-                {
-                    ToolTipItem itemTiePoints = new ToolTipItem();
-                    itemTiePoints.Text = String.Join(", ", pid.TiePoints.Select(item => $"<href={HyperlinkCategory.TiePoint}:{item.Oid}><color=145,197,242>{item.Number}</color></href>"));
-                    superToolTip.Items.Add(itemTiePoints);
-                }
-                //superToolTip.Items.Add(new ToolTipSeparatorItem());
-                
-                // Equipment
-                //ToolTipTitleItem titleItemEquipment = new ToolTipTitleItem();
-                //titleItemEquipment.Text = "Equipment";
-                //ToolTipItem itemEquipment = new ToolTipItem();
-                //itemEquipment.Text = $"Count: "; //{pid.Equipment.Count}";
-                //superToolTip.Items.Add(titleItemEquipment);
-                //superToolTip.Items.Add(itemEquipment);
-                //superToolTip.Items.Add(new ToolTipSeparatorItem());
+                AddDataToSuperToolTip(superToolTip, "Instruments", HyperlinkCategory.Instrument, pid.Instruments.ToDictionary(x => x.Oid, x => x.TagNumber));
+                AddDataToSuperToolTip(superToolTip, "Lines", HyperlinkCategory.Line, pid.Lines.ToDictionary(x => x.Oid, x => x.LineNumber));
+                AddDataToSuperToolTip(superToolTip, "Tie Points", HyperlinkCategory.TiePoint, pid.TiePoints.ToDictionary(x => x.Oid, x => x.Number));
+                AddDataToSuperToolTip(superToolTip, "Equipment", HyperlinkCategory.Equipment, pid.Equipment.ToDictionary(x => x.Oid, x => x.Name));
 
                 info.SuperTip = superToolTip;
             }
             if (info != null)
                 e.Info = info;
+        }
+
+        private static void AddDataToSuperToolTip(SuperToolTip superToolTip, string categoryName,
+            HyperlinkCategory category, Dictionary<Guid, string> dictionary)
+        {
+            int itemCount = dictionary.Count();
+            ToolTipTitleItem titleItemEquipment = new ToolTipTitleItem();
+            titleItemEquipment.Text = $"{categoryName} ({itemCount})";
+            superToolTip.Items.Add(titleItemEquipment);
+            if (itemCount > 0)
+            {
+                ToolTipItem toolTipItem = new ToolTipItem();
+                toolTipItem.Text = String.Join(", ", dictionary.Select(item => $"<href={category}:{item.Key}><color=145,197,242>{item.Value}</color></href>"));
+                superToolTip.Items.Add(toolTipItem);
+            }
+            superToolTip.Items.Add(new ToolTipSeparatorItem());
         }
 
         private enum HyperlinkCategory

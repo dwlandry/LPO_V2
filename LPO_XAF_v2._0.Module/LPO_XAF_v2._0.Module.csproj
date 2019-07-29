@@ -158,6 +158,7 @@
     <Compile Include="BusinessObjects\Instrument\InstrumentIndexTemplate.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecCheckPackage.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" />
+    <Compile Include="BusinessObjects\Mechanical\Equipment.cs" />
     <Compile Include="BusinessObjects\Piping\Piping.cs" />
     <Compile Include="BusinessObjects\Procurement\Procurement.cs" />
     <Compile Include="BusinessObjects\Project\ClientStandards.cs" />

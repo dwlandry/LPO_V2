@@ -7,6 +7,7 @@
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl;
 using DevExpress.Xpo;
+using LPO_XAF_v2._0.Module.BusinessObjects.Mechanical;
 using System;
 using System.ComponentModel;
 using System.IO;
@@ -49,7 +50,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Association("PID-TiePoints")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
         public XPCollection<Piping.PipingTiePoint> TiePoints { get { return GetCollection<Piping.PipingTiePoint>(nameof(TiePoints)); } }
-
+        [Association("PID-Equipment")]
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        public XPCollection<Equipment> Equipment { get { return GetCollection<Equipment>(nameof(Equipment)); } }
     }
 
     public class LoopDrawing : Drawing, IProjectDrawing
