@@ -214,12 +214,6 @@
     <Compile Include="Controllers\InstrumentViewController.Designer.cs">
       <DependentUpon>InstrumentViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="Controllers\ProjectCommunication\ProjectCommunicationViewController.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Controllers\ProjectCommunication\ProjectCommunicationViewController.Designer.cs">
-      <DependentUpon>ProjectCommunicationViewController.cs</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
