@@ -1,17 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Text;
-using DevExpress.Xpo;
-using DevExpress.ExpressApp;
-using System.ComponentModel;
-using DevExpress.ExpressApp.DC;
-using DevExpress.Data.Filtering;
+﻿//-----------------------------------------------------------------------
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Mechanical\Equipment.cs" company="David W. Landry III">
+//     Author: _**David Landry**_
+//     *Copyright (c) David W. Landry III. All rights reserved.*
+// </copyright>
+//-----------------------------------------------------------------------
 using DevExpress.Persistent.Base;
-using System.Collections.Generic;
-using DevExpress.ExpressApp.Model;
 using DevExpress.Persistent.BaseImpl;
-using DevExpress.Persistent.Validation;
+using DevExpress.Xpo;
 using LPO_XAF_v2._0.Module.BusinessObjects.Instrument;
+using System;
+using System.Linq;
 
 namespace LPO_XAF_v2._0.Module.BusinessObjects.Mechanical
 {
@@ -28,7 +26,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Mechanical
 
 
         [Association("Project-Equipment")]
-        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]

@@ -153,6 +153,7 @@
   <ItemGroup>
     <Compile Include="BusinessObjects\Education\Tutorial.cs" />
     <Compile Include="BusinessObjects\Instrument\Documents.cs" />
+    <Compile Include="BusinessObjects\Instrument\Drawing.cs" />
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentCalculator.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentIndexTemplate.cs" />
@@ -212,6 +213,12 @@
     </Compile>
     <Compile Include="Controllers\InstrumentViewController.Designer.cs">
       <DependentUpon>InstrumentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ProjectCommunication\ProjectCommunicationViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ProjectCommunication\ProjectCommunicationViewController.Designer.cs">
+      <DependentUpon>ProjectCommunicationViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">

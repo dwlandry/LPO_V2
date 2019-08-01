@@ -201,33 +201,4 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         string DrawingNumber { get; set; }
         FileData File { get; set; }
     }
-
-    [DefaultProperty("DrawingNumber")]
-    [DefaultClassOptions, CreatableItem(false)]
-    //[DefaultListViewOptions(allowEdit: true, newItemRowPosition: NewItemRowPosition.Top)]
-    public class Drawing : BaseObject, IDrawing
-    {
-        public Drawing(Session session) : base(session) { }
-
-        string description;
-        FileData file;
-        string drawingNumber;
-
-        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
-        public string DrawingNumber { get => drawingNumber; set => SetPropertyValue(nameof(DrawingNumber), ref drawingNumber, value); }
-        [Size(200)]
-        public string Description { get => description; set => SetPropertyValue(nameof(Description), ref description, value); }
-
-        public FileData File
-        {
-            get => file;
-            set
-            {
-                if (DrawingNumber == null || DrawingNumber.Length == 0)
-                    DrawingNumber = Path.GetFileNameWithoutExtension(value.FileName);
-                SetPropertyValue(nameof(File), ref file, value);
-            }
-        }
-
-    }
 }
