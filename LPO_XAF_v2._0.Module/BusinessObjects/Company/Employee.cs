@@ -33,6 +33,9 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Company
 
         [DisplayName("Phone Numbers")]
         public string AllPhoneNumbers => String.Join(", ", base.PhoneNumbers.Select(x => $"({x?.PhoneType}) {x?.Number}").ToList());
+
+        [Association("Employee-Projects")]
+        public XPCollection<Project.ProjectTeamMember> Projects { get { return GetCollection<Project.ProjectTeamMember>(nameof(Projects)); } }
     }
 
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Company")]
