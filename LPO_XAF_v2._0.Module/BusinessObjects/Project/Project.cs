@@ -156,6 +156,10 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Project
         [Association("Project-Equipment"), Aggregated]
         [DataSourceCriteria("Project.Oid = '@This.Oid'")]
         public XPCollection<Equipment> Equipment { get { return GetCollection<Equipment>(nameof(Equipment)); } }
+
+        [Association("Project-Team"), Aggregated]
+        [DataSourceCriteria("Project.Oid = '@This.Oid'")]
+        public XPCollection<ProjectTeamMember> Team { get { return GetCollection<ProjectTeamMember>(nameof(Team)); } }
     }
 
     [DefaultClassOptions, NavigationItem("Projects")]
