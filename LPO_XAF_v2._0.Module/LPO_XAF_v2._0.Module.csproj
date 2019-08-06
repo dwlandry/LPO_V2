@@ -154,6 +154,7 @@
     <Compile Include="BusinessObjects\Company\Employee.cs" />
     <Compile Include="BusinessObjects\Education\Tutorial.cs" />
     <Compile Include="BusinessObjects\Instrument\Documents.cs" />
+    <Compile Include="BusinessObjects\Instrument\Drawing.cs" />
     <Compile Include="BusinessObjects\Instrument\Instrumentation.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentCalculator.cs" />
     <Compile Include="BusinessObjects\Instrument\InstrumentIndexTemplate.cs" />

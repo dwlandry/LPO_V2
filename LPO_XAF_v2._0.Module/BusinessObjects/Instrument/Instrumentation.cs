@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -46,6 +46,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         //PermissionPolicyUser lastModifiedBy;
         //[Persistent("LastModifiedOn")]
         //DateTime lastModifiedOn;
+        byte[] imageAsByteArrayDelayedProperty;
+        byte[] imageAsByteArray;
         Line lineNumber;
         string specSheetNumber;
         private XPCollection<AuditDataItemPersistent> auditTrail;
@@ -92,6 +94,25 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         //public PermissionPolicyUser LastModifiedBy { get => lastModifiedBy; protected set => SetPropertyValue(nameof(LastModifiedBy), ref lastModifiedBy, value); }
         //[PersistentAlias("lastModifiedOn")]
         //public DateTime LastModifiedOn { get => lastModifiedOn; protected set => SetPropertyValue(nameof(LastModifiedOn), ref lastModifiedOn, value); }
+
+
+        [VisibleInListView(true)]
+        [ImageEditor(ListViewImageEditorMode = ImageEditorMode.PictureEdit,
+            DetailViewImageEditorMode = ImageEditorMode.PictureEdit,
+            ListViewImageEditorCustomHeight = 40)]
+        public byte[] ImageAsByteArray
+        {
+            get => imageAsByteArray;
+            set => SetPropertyValue(nameof(ImageAsByteArray), ref imageAsByteArray, value);
+        }
+
+        [Delayed(), VisibleInListView(true)]
+        [ImageEditor(ListViewImageEditorMode = ImageEditorMode.PopupPictureEdit, DetailViewImageEditorMode = ImageEditorMode.DropDownPictureEdit)]
+        public byte[] ImageAsByteArrayDelayedProperty
+        {
+            get => imageAsByteArrayDelayedProperty;
+            set => SetPropertyValue(nameof(ImageAsByteArrayDelayedProperty), ref imageAsByteArrayDelayedProperty, value);
+        }
         [Association("Project-Instruments"), VisibleInListView(false)]
         [RuleRequiredField("RuleRequiredField for Instrument.Project", DefaultContexts.Save, "A Project must be specified.")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
@@ -112,6 +133,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public Physical_Instrument PhysicalOrSoftTag { get => physicalOrSoftTag; set => SetPropertyValue(nameof(PhysicalOrSoftTag), ref physicalOrSoftTag, value); }
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
+
 
         [Association("Line-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]

@@ -35,12 +35,31 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
     [DefaultClassOptions, CreatableItem(false), NavigationItem("Piping"), ImageName("Pipe")]
     [RuleCombinationOfPropertiesIsUnique("UniqueLineNumberPerProjectRule", DefaultContexts.Save, "Project, LineNumber",
         "This Line Number is already used in this project.  Please try a different Line Number.")]
+
     public class Line : BaseObject
     {
 
         public Line(Session session) : base(session) { }
 
 
+        string remarks;
+        string prefix_Unit;
+        string leakTestMedium;
+        bool pWHTRequired;
+        bool nDERequired;
+        string leakTestPressure;
+        string tracing;
+        string designPressure;
+        string operatingPressure;
+        string designTemp;
+        string operatingTemp;
+        string to;
+        string from;
+        string flowingMedium;
+        string insulationType;
+        string insulationThickness;
+        string number;
+        string serviceCode;
         string processDescription;
         ClientPipeSpec pipeSpec;
         NominalPipeSize nPS;
@@ -48,8 +67,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         PipingSchedule schedule;
         //MetallurgyMaterial metallurgy;
         string lineNumber;
-        double outerDiameter;
-        double wallThickness;
+        //double outerDiameter;
+        //double wallThickness;
 
         [Association("Project-PipingLines")]
         public Project.Project Project { get => project; set => SetPropertyValue(nameof(Project), ref project, value); }
@@ -57,18 +76,78 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string LineNumber { get => lineNumber; set => SetPropertyValue(nameof(LineNumber), ref lineNumber, value); }
 
-        [DevExpress.Xpo.DisplayName("NPS")]
+        [DisplayName("Prefix/Unit")]
+        [Size(20)]
+        public string Prefix_Unit { get => prefix_Unit; set => SetPropertyValue(nameof(Prefix_Unit), ref prefix_Unit, value); }
+
+        [Size(10)]
+        public string ServiceCode { get => serviceCode; set => SetPropertyValue(nameof(ServiceCode), ref serviceCode, value); }
+
+        [Size(20)]
+        public string Number { get => number; set => SetPropertyValue(nameof(Number), ref number, value); }
+
+        [DevExpress.Xpo.DisplayName("Size")]
         [ToolTip("Nominal Pipe Size in inches")]
         [LookupEditorMode(LookupEditorMode.AllItems)]
         public NominalPipeSize NPS { get => nPS; set => SetPropertyValue(nameof(NPS), ref nPS, value); }
+
+        [DataSourceCriteria("Client.Oid = '@This.Project.Client.Oid'")]
+        public ClientPipeSpec PipeSpec { get => pipeSpec; set => SetPropertyValue(nameof(PipeSpec), ref pipeSpec, value); }
 
         //public MetallurgyMaterial Metallurgy { get => metallurgy; set => SetPropertyValue(nameof(Metallurgy), ref metallurgy, value); }
 
         [DataSourceProperty("AvailableSchedules")]
         public PipingSchedule Schedule { get => schedule; set => SetPropertyValue(nameof(Schedule), ref schedule, value); }
 
-        [DataSourceCriteria("Client.Oid = '@This.Project.Client.Oid'")]
-        public ClientPipeSpec PipeSpec { get => pipeSpec; set => SetPropertyValue(nameof(PipeSpec), ref pipeSpec, value); }
+        [Size(10)]
+        public string InsulationThickness { get => insulationThickness; set => SetPropertyValue(nameof(InsulationThickness), ref insulationThickness, value); }
+
+        [Size(10)]
+        public string InsulationType { get => insulationType; set => SetPropertyValue(nameof(InsulationType), ref insulationType, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string FlowingMedium { get => flowingMedium; set => SetPropertyValue(nameof(FlowingMedium), ref flowingMedium, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string From { get => from; set => SetPropertyValue(nameof(From), ref from, value); }
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string To { get => to; set => SetPropertyValue(nameof(To), ref to, value); }
+
+        [Size(10)]
+        public string OperatingTemp { get => operatingTemp; set => SetPropertyValue(nameof(OperatingTemp), ref operatingTemp, value); }
+
+        [Size(10)]
+        public string DesignTemp { get => designTemp; set => SetPropertyValue(nameof(DesignTemp), ref designTemp, value); }
+
+        [Size(10)]
+        public string OperatingPressure { get => operatingPressure; set => SetPropertyValue(nameof(OperatingPressure), ref operatingPressure, value); }
+
+        [Size(10)]
+        public string DesignPressure { get => designPressure; set => SetPropertyValue(nameof(DesignPressure), ref designPressure, value); }
+
+        [Size(10)]
+        public string LeakTestPressure { get => leakTestPressure; set => SetPropertyValue(nameof(LeakTestPressure), ref leakTestPressure, value); }
+
+        [ToolTip("Typically H2O. For specific situations, another fluid might be required.  Also, pneumatic media may be required, but this is potentially more dangerous than hydrostatic tests and extreme care should be exercised.")]
+        [Size(20)]
+        public string LeakTestMedium { get => leakTestMedium; set => SetPropertyValue(nameof(LeakTestMedium), ref leakTestMedium, value); }
+
+        [ToolTip("Non-Destructive Examination")]
+        [CaptionsForBoolValues("YES", "NO")]
+        [DisplayName("NDE")]
+        public bool NDERequired { get => nDERequired; set => SetPropertyValue(nameof(NDERequired), ref nDERequired, value); }
+
+        [ToolTip("Post-Weld Heat Treatment")]
+        [CaptionsForBoolValues("YES", "NO")]
+        [DisplayName("PWHT")]
+        public bool PWHTRequired { get => pWHTRequired; set => SetPropertyValue(nameof(PWHTRequired), ref pWHTRequired, value); }
+
+        [Size(20)]
+        public string Tracing { get => tracing; set => SetPropertyValue(nameof(Tracing), ref tracing, value); }
+
+        [Size(200)]
+        public string Remarks { get => remarks; set => SetPropertyValue(nameof(Remarks), ref remarks, value); }
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ProcessDescription { get => processDescription; set => SetPropertyValue(nameof(ProcessDescription), ref processDescription, value); }
@@ -384,4 +463,6 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Piping
         One = 1,
         Two = 2
     }
+
+
 }
