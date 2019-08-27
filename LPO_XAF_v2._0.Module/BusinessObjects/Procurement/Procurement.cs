@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Procurement\Procurement.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Procurement\Procurement.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -120,6 +120,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Procurement
         [VisibleInListView(false), VisibleInDetailView(false)]
         public string DisplayText { get { return Vendor != null ? $"{Vendor.Name} - Quote No: {VendorQuoteNumber}" : $"[Unknown Vendor] - Quote No: {VendorQuoteNumber}"; } }
 
+        [ImmediatePostData(true)]
         public QuoteStatus Status { get => quoteStatus; set => SetPropertyValue(nameof(QuoteStatus), ref quoteStatus, value); }
     }
 
