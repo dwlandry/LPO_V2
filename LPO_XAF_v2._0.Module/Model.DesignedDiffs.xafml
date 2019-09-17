@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Landry's Engineering Project Organizer" Company="David Landry" Copyright="Copyright (C) 2019 {0:Company} ALL RIGHTS RESERVED" Description="The Management Tool for EPC Firms">
-  <NavigationItems StartupNavigationItem="Project_ListView">
+  <NavigationItems StartupNavigationItem="Project_ListView" DefaultChildItemsDisplayStyle="List" NavigationStyle="TreeList">
     <Items>
       <Item Id="Default" Visible="True" />
       <Item Id="Education" ImageName="Book" />

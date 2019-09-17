@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\source\repos\LPO_XAF_v2.0\LPO_XAF_v2._0.Module\BusinessObjects\Products\Products.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Products\Products.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -173,11 +173,21 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public Manufacturer(Session session) : base(session) { }
 
 
+        string products;
         string website;
         string name;
 
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
+
+
+        [VisibleInListView(true)]
+        [Size(SizeAttribute.Unlimited)]
+        public string Products
+        {
+            get => products;
+            set => SetPropertyValue(nameof(Products), ref products, value);
+        }
 
         [EditorAlias("HyperLinkStringPropertyEditor")]
         public string Website { get => website; set => SetPropertyValue(nameof(Website), ref website, value); }
