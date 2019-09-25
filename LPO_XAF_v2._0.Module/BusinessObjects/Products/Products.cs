@@ -76,22 +76,17 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public string Title { get => title; set => SetPropertyValue(nameof(Title), ref title, value); }
 
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
-        public byte[] Notes
-        {
-            get => notes;
-            set => SetPropertyValue(nameof(Notes), ref notes, value);
-        }
+        public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
+
         [Association("VendorContact-Journal"), Aggregated]
         public XPCollection<VendorContactJournalEntry> Journal { get { return GetCollection<VendorContactJournalEntry>(nameof(Journal)); } }
 
         [Association("VendorContacts-Quotes")]
-        public XPCollection<Quote> Quotes
-        {
-            get
-            {
-                return GetCollection<Quote>(nameof(Quotes));
-            }
-        }
+        public XPCollection<Quote> Quotes => GetCollection<Quote>(nameof(Quotes));
+
+        [DisplayName("Phone Numbers")]
+        public string AllPhoneNumbers => String.Join(", ", base.PhoneNumbers.Select(x => $"({x?.PhoneType}) {x?.Number}").ToList());
+
     }
     public class VendorPhoneNumber : BaseObject
     {
@@ -173,6 +168,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         public Manufacturer(Session session) : base(session) { }
 
 
+        MediaDataObject logo;
         string products;
         string website;
         string name;
@@ -180,14 +176,12 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Products
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
 
-
         [VisibleInListView(true)]
         [Size(SizeAttribute.Unlimited)]
-        public string Products
-        {
-            get => products;
-            set => SetPropertyValue(nameof(Products), ref products, value);
-        }
+        public string Products { get => products; set => SetPropertyValue(nameof(Products), ref products, value); }
+
+
+        public MediaDataObject Logo { get => logo; set => SetPropertyValue(nameof(Logo), ref logo, value); }
 
         [EditorAlias("HyperLinkStringPropertyEditor")]
         public string Website { get => website; set => SetPropertyValue(nameof(Website), ref website, value); }

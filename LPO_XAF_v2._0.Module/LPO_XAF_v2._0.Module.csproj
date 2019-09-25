@@ -168,6 +168,7 @@
     <Compile Include="BusinessObjects\Products\Products.cs" />
     <Compile Include="BusinessObjects\Project\Team.cs" />
     <Compile Include="BusinessObjects\_MyBaseObject\BaseObjectWithCreatedAndLastModified.cs" />
+    <Compile Include="BusinessObjects\_ViewVariantsManager\SettingsStore.cs" />
     <Compile Include="Controllers\InitializePropertiesForIProjectQuoteViewController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -215,6 +216,12 @@
     </Compile>
     <Compile Include="Controllers\InstrumentViewController.Designer.cs">
       <DependentUpon>InstrumentViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\ViewVariantsController\ViewVariantsController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\ViewVariantsController\ViewVariantsController.Designer.cs">
+      <DependentUpon>ViewVariantsController.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Module.cs">
