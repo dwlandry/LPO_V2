@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
+// <copyright file="F:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -46,6 +46,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         //PermissionPolicyUser lastModifiedBy;
         //[Persistent("LastModifiedOn")]
         //DateTime lastModifiedOn;
+        InstrumentStatus status;
         byte[] imageAsByteArrayDelayedProperty;
         byte[] imageAsByteArray;
         Line lineNumber;
@@ -134,6 +135,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.DefaultStringMappingFieldSize)]
         public string ServiceDescription { get => serviceDescription; set => SetPropertyValue(nameof(ServiceDescription), ref serviceDescription, value); }
 
+        public InstrumentStatus Status { get => status; set => SetPropertyValue(nameof(Status), ref status, value); }
 
         [Association("Line-Instruments")]
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'")]
@@ -289,6 +291,16 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         [Size(SizeAttribute.Unlimited)]
         [EditorAlias(EditorAliases.RichTextPropertyEditor)]
         public byte[] Notes { get => notes; set => SetPropertyValue(nameof(Notes), ref notes, value); }
+    }
+
+    public class InstrumentStatus : BaseObject
+    {
+        public InstrumentStatus(Session session) : base(session) { }
+
+        string name;
+
+        [Size(SizeAttribute.DefaultStringMappingFieldSize)]
+        public string Name { get => name; set => SetPropertyValue(nameof(Name), ref name, value); }
     }
 
     public class InstrumentMeasurementCategory : BaseObject

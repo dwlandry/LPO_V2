@@ -37,9 +37,9 @@
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules>
-    <SchemaModule Name="CloneObjectModule" Version="19.1.5.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerModuleBase" Version="19.1.5.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="19.1.5.0" IsNewNode="True" />
+    <SchemaModule Name="CloneObjectModule" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="19.1.6.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
     <DetailView Id="Client_DetailView">
@@ -575,6 +575,7 @@
         <Variant Id="Instrumentation" ViewID="Project_DetailView_InstrumentsView" Caption="Instrumentation" Index="3" IsNewNode="True" />
       </Variants>
     </DetailView>
+    <ListView Id="Project_Instruments_ListView" AllowEdit="True" NewItemRowPosition="Top" />
     <ListView Id="Project_ListView" AllowDelete="False" DetailViewID="Project_DetailView_Varied" />
     <DetailView Id="Quote_DetailView">
       <Items>
