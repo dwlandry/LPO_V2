@@ -10,9 +10,11 @@
     <RootNamespace>LPO_XAF_v2._0.Win</RootNamespace>
     <AssemblyName>LPO_XAF_v2._0.Win</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
-    <ApplicationIcon>ExpressApp.ico</ApplicationIcon>
+    <ApplicationIcon>Maysons drawing of me.ico</ApplicationIcon>
     <FileAlignment>512</FileAlignment>
     <IsWebBootstrapper>false</IsWebBootstrapper>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
     <PublishUrl>\\reconqnaptx\TX-Users\Users Shared Folders\dlandry\Public\_landrys-programs\landrys-project-organizer\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
@@ -26,13 +28,11 @@
     <ProductName>Landrys Project Organizer</ProductName>
     <PublisherName>David Landry</PublisherName>
     <SuiteName>Landrys Project Organizer</SuiteName>
-    <ApplicationRevision>29</ApplicationRevision>
+    <ApplicationRevision>31</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -531,6 +531,8 @@
     <None Include="Images\ReadMe.txt" />
     <None Include="App.config" />
     <EmbeddedResource Include="Images\Logotype.svg" />
+    <EmbeddedResource Include="Images\Maysons drawing of me.jpg" />
+    <Content Include="Maysons drawing of me.ico" />
     <Content Include="Model.xafml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

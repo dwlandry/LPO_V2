@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\Source\Repos\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Documents.cs" company="David W. Landry III">
+// <copyright file="D:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Documents.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -200,5 +200,17 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         string Description { get; set; }
         string DrawingNumber { get; set; }
         FileData File { get; set; }
+    }
+
+    public interface IDrawingVersion
+    {
+        Drawing Drawing { get; set; }
+        string VersionDescription { get; set; }
+        FileData File { get; set; }
+        DateTime DateAdded { get; set; }
+        string RevisionNumber { get; set; }
+        string RevisionDescription { get; set; }
+        bool IsMostCurrent { get; set; }
+
     }
 }

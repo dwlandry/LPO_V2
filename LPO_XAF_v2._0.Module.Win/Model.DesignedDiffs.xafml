@@ -2,26 +2,83 @@
 <Application>
   <Options ShowTypeNameInOpenObject="True" />
   <SchemaModules>
-    <SchemaModule Name="CloneObjectModule" Version="19.1.3.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerModuleBase" Version="19.1.3.0" IsNewNode="True" />
-    <SchemaModule Name="SchedulerWindowsFormsModule" Version="19.1.3.0" IsNewNode="True" />
-    <SchemaModule Name="SystemModule" Version="19.1.3.0" IsNewNode="True" />
-    <SchemaModule Name="SystemWindowsFormsModule" Version="19.1.3.0" IsNewNode="True" />
+    <SchemaModule Name="CloneObjectModule" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerModuleBase" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SchedulerWindowsFormsModule" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemModule" Version="19.1.6.0" IsNewNode="True" />
+    <SchemaModule Name="SystemWindowsFormsModule" Version="19.1.6.0" IsNewNode="True" />
   </SchemaModules>
   <Views>
+    <ListView Id="Drawing_Versions_ListView">
+      <Columns>
+        <ColumnInfo Id="VersionDescription" Width="143" />
+      </Columns>
+    </ListView>
+    <ListView Id="Drawing_Versions_ListView_ShowPDF" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Instrument.DrawingVersion" MasterDetailMode="ListViewAndDetailView" AllowDelete="False" AllowEdit="False" AllowLink="False" AllowNew="False" NewItemRowPosition="None" ImageName="Action_Export_ToPDF" MasterDetailView="DrawingVersion_DetailView_ShowPDF" IsNewNode="True">
+      <Columns IsNewNode="True">
+        <ColumnInfo Id="CreatedBy" PropertyName="CreatedBy" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="CreatedOn" PropertyName="CreatedOn" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="FileView" PropertyName="FileView" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="LastModifiedBy" PropertyName="LastModifiedBy" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="LastModifiedOn" PropertyName="LastModifiedOn" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="Oid" PropertyName="Oid" Index="-1" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="VersionDescription" PropertyName="VersionDescription" Index="0" Width="146" SortIndex="0" SortOrder="Ascending" IsNewNode="True" />
+        <ColumnInfo Id="DateAdded" PropertyName="DateAdded" Index="3" Width="70" IsNewNode="True" />
+        <ColumnInfo Id="IsMostCurrent" PropertyName="IsMostCurrent" Index="6" Width="50" IsNewNode="True" />
+      </Columns>
+    </ListView>
+    <DetailView Id="DrawingVersion_DetailView_ShowPDF" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Instrument.DrawingVersion" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Drawing" PropertyName="Drawing" IsNewNode="True" />
+        <PropertyEditor Id="FileView" PropertyName="FileView" PropertyEditorType="LPO_XAF_v2._0.Module.Win.Editors.PDF_Viewer.PdfViewerPropertyEditor" IsNewNode="True" />
+        <PropertyEditor Id="IsMostCurrent" PropertyName="IsMostCurrent" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutItem Id="FileView" ViewItem="FileView" ShowCaption="False" IsNewNode="True" />
+      </Layout>
+    </DetailView>
     <DetailView Id="Employee_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
           <TabbedGroup Id="Tabs">
             <LayoutGroup Id="PhoneNumbers">
-              <LayoutItem Id="PhoneNumbers" ViewItem="PhoneNumbers" ShowCaption="False" RelativeSize="100" Index="0" IsNewNode="True" />
+              <LayoutItem Id="PhoneNumbers" ShowCaption="False" RelativeSize="100" Index="0" ViewItem="PhoneNumbers" IsNewNode="True" />
             </LayoutGroup>
           </TabbedGroup>
-          <LayoutGroup Id="PhoneNumbers_Group" Removed="True">
-            <LayoutItem Id="PhoneNumbers" Removed="True" />
-          </LayoutGroup>
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <DetailView Id="PID_DetailView_Variants" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Instrument.PID" IsNewNode="True">
+      <Variants IsNewNode="True">
+        <Variant Id="DetailView" ViewID="PID_DetailView" Caption="Detail View" IsNewNode="True" />
+        <Variant Id="PDFView" ViewID="PID_DetailView_VersionViewer" Caption="PDF View" IsNewNode="True" />
+      </Variants>
+    </DetailView>
+    <DetailView Id="PID_DetailView_VersionViewer" ClassName="LPO_XAF_v2._0.Module.BusinessObjects.Instrument.PID" IsNewNode="True">
+      <Items IsNewNode="True">
+        <PropertyEditor Id="Description" PropertyName="Description" IsNewNode="True" />
+        <PropertyEditor Id="DrawingNumber" PropertyName="DrawingNumber" IsNewNode="True" />
+        <PropertyEditor Id="Oid" PropertyName="Oid" IsNewNode="True" />
+        <PropertyEditor Id="Versions" PropertyName="Versions" View="Drawing_Versions_ListView_ShowPDF" IsNewNode="True" />
+      </Items>
+      <Layout IsNewNode="True">
+        <LayoutGroup Id="Main" Index="0" ShowCaption="False" IsNewNode="True">
+          <LayoutGroup Id="SimpleEditors" Index="0" ShowCaption="False" IsNewNode="True">
+            <LayoutGroup Id="Drawing" Index="1" ShowCaption="False" IsNewNode="True">
+              <LayoutItem Id="DrawingNumber" ViewItem="DrawingNumber" Index="0" IsNewNode="True" />
+              <LayoutItem Id="Description" ViewItem="Description" Index="1" IsNewNode="True" />
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Tabs" Index="1" IsNewNode="True">
+            <LayoutGroup Id="Versions" Index="4" ShowCaption="True" IsNewNode="True">
+              <LayoutItem Id="Versions" ViewItem="Versions" ShowCaption="False" Index="0" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="PID_ListView" DetailViewID="PID_DetailView_Variants" />
+    <ListView Id="Project_PIDs_ListView" DetailViewID="PID_DetailView_Variants" />
   </Views>
 </Application>
