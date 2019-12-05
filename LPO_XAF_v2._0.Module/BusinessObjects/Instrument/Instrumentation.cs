@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
+// <copyright file="D:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\Instrumentation.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -46,6 +46,7 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         //PermissionPolicyUser lastModifiedBy;
         //[Persistent("LastModifiedOn")]
         //DateTime lastModifiedOn;
+        string comments;
         InstrumentStatus status;
         byte[] imageAsByteArrayDelayedProperty;
         byte[] imageAsByteArray;
@@ -179,6 +180,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public InstrumentIOType IoType { get => ioType; set => SetPropertyValue(nameof(IoType), ref ioType, value); }
         [DataSourceCriteria("Project.Oid = '@This.Project.Oid'"), VisibleInListView(false)]
         public ResponsibleEngineeringCompany ResponsibleCompany { get => responsibleCompany; set => SetPropertyValue(nameof(ResponsibleCompany), ref responsibleCompany, value); }
+        [Size(300)]
+        public string Comments { get => comments; set => SetPropertyValue(nameof(Comments), ref comments, value); }
         [VisibleInListView(false)]
         [CaptionsForBoolValues("YES", "NO")]
         [Nullable(true)]
