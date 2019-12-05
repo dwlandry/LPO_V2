@@ -36,11 +36,13 @@
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.subtitleLabel = new DevExpress.XtraEditors.LabelControl();
             this.applicationNameLabel = new DevExpress.XtraEditors.LabelControl();
+            this.pictureEdit3 = new DevExpress.XtraEditors.PictureEdit();
             ((System.ComponentModel.ISupportInitialize)(this.marqueeProgressBarControl1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit2.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // marqueeProgressBarControl1
@@ -50,12 +52,12 @@
             this.marqueeProgressBarControl1.Name = "marqueeProgressBarControl1";
             this.marqueeProgressBarControl1.Properties.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(194)))), ((int)(((byte)(194)))));
             this.marqueeProgressBarControl1.Properties.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.Simple;
-            this.marqueeProgressBarControl1.Properties.EndColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(114)))), ((int)(((byte)(0)))));
+            this.marqueeProgressBarControl1.Properties.EndColor = System.Drawing.Color.SlateGray;
             this.marqueeProgressBarControl1.Properties.LookAndFeel.SkinName = "Visual Studio 2013 Blue";
             this.marqueeProgressBarControl1.Properties.LookAndFeel.Style = DevExpress.LookAndFeel.LookAndFeelStyle.UltraFlat;
             this.marqueeProgressBarControl1.Properties.LookAndFeel.UseDefaultLookAndFeel = false;
             this.marqueeProgressBarControl1.Properties.ProgressViewStyle = DevExpress.XtraEditors.Controls.ProgressViewStyle.Solid;
-            this.marqueeProgressBarControl1.Properties.StartColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(144)))), ((int)(((byte)(0)))));
+            this.marqueeProgressBarControl1.Properties.StartColor = System.Drawing.Color.LightSteelBlue;
             this.marqueeProgressBarControl1.Size = new System.Drawing.Size(350, 16);
             this.marqueeProgressBarControl1.TabIndex = 5;
             // 
@@ -110,6 +112,7 @@
             this.panelControl1.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.panelControl1.Controls.Add(this.subtitleLabel);
             this.panelControl1.Controls.Add(this.applicationNameLabel);
+            this.panelControl1.Controls.Add(this.pictureEdit3);
             this.panelControl1.Location = new System.Drawing.Point(1, 1);
             this.panelControl1.LookAndFeel.UseDefaultLookAndFeel = false;
             this.panelControl1.Name = "panelControl1";
@@ -118,8 +121,11 @@
             // 
             // subtitleLabel
             // 
+            this.subtitleLabel.Appearance.BackColor = System.Drawing.Color.DarkGray;
+            this.subtitleLabel.Appearance.BackColor2 = System.Drawing.Color.DimGray;
             this.subtitleLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subtitleLabel.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(216)))), ((int)(((byte)(188)))));
+            this.subtitleLabel.Appearance.ForeColor = DevExpress.LookAndFeel.DXSkinColors.ForeColors.ControlText;
+            this.subtitleLabel.Appearance.Options.UseBackColor = true;
             this.subtitleLabel.Appearance.Options.UseFont = true;
             this.subtitleLabel.Appearance.Options.UseForeColor = true;
             this.subtitleLabel.Location = new System.Drawing.Point(72, 123);
@@ -130,8 +136,11 @@
             // 
             // applicationNameLabel
             // 
+            this.applicationNameLabel.Appearance.BackColor = System.Drawing.Color.DarkGray;
+            this.applicationNameLabel.Appearance.BackColor2 = System.Drawing.Color.DimGray;
             this.applicationNameLabel.Appearance.Font = new System.Drawing.Font("Segoe UI", 20F);
             this.applicationNameLabel.Appearance.ForeColor = System.Drawing.SystemColors.Window;
+            this.applicationNameLabel.Appearance.Options.UseBackColor = true;
             this.applicationNameLabel.Appearance.Options.UseFont = true;
             this.applicationNameLabel.Appearance.Options.UseForeColor = true;
             this.applicationNameLabel.Location = new System.Drawing.Point(11, 80);
@@ -139,6 +148,17 @@
             this.applicationNameLabel.Size = new System.Drawing.Size(458, 37);
             this.applicationNameLabel.TabIndex = 0;
             this.applicationNameLabel.Text = "Landry\'s Engineering Project Organizer";
+            // 
+            // pictureEdit3
+            // 
+            this.pictureEdit3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureEdit3.EditValue = ((object)(resources.GetObject("pictureEdit3.EditValue")));
+            this.pictureEdit3.Location = new System.Drawing.Point(0, 0);
+            this.pictureEdit3.Name = "pictureEdit3";
+            this.pictureEdit3.Properties.ShowCameraMenuItem = DevExpress.XtraEditors.Controls.CameraMenuItemVisibility.Auto;
+            this.pictureEdit3.Properties.SizeMode = DevExpress.XtraEditors.Controls.PictureSizeMode.Stretch;
+            this.pictureEdit3.Size = new System.Drawing.Size(494, 220);
+            this.pictureEdit3.TabIndex = 2;
             // 
             // XafSplashScreen
             // 
@@ -161,6 +181,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);
             this.panelControl1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureEdit3.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -176,5 +197,6 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.LabelControl subtitleLabel;
         private DevExpress.XtraEditors.LabelControl applicationNameLabel;
+        private DevExpress.XtraEditors.PictureEdit pictureEdit3;
     }
 }
