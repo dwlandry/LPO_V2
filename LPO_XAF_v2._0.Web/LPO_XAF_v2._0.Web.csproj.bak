@@ -182,6 +182,18 @@
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
     </Reference>
+    <Reference Include="DevExpress.Charts.v19.1.Core">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v19.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="DevExpress.CodeParser.v19.1">
+      <SpecificVersion>False</SpecificVersion>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="DevExpress.XtraReports.v19.1">
       <SpecificVersion>False</SpecificVersion>
       <Private>False</Private>
@@ -321,6 +333,10 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HyperLinkPropertyEditor.Web\HyperLinkPropertyEditor.Web.csproj">
+      <Project>{D7405FE5-4733-4700-8B8D-8BA1F61BB730}</Project>
+      <Name>HyperLinkPropertyEditor.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LPO_XAF_v2._0.Module.Web\LPO_XAF_v2._0.Module.Web.csproj">
       <Project>{0C729AAD-7626-4668-A7F1-35F7D240489D}</Project>
       <Name>LPO_XAF_v2._0.Module.Web</Name>
@@ -329,6 +345,12 @@
       <Project>{5F15837D-D1E5-44DC-92F0-4F2EBE9C3F8D}</Project>
       <Name>LPO_XAF_v2._0.Module</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="WebApplication.resx">
+      <DependentUpon>WebApplication.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
