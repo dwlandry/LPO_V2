@@ -19,6 +19,8 @@ using System.Threading.Tasks;
 
 namespace LPO_XAF_v2._0.Module.Win.Editors.PDF_Viewer
 {
+    // GoBy: https://www.devexpress.com/Support/Center/Question/Details/T252349/pdfviewer-in-xaf
+
     [PropertyEditor(typeof(FileData), false)]
     public class PdfViewerPropertyEditor : WinPropertyEditor
     {
@@ -49,6 +51,7 @@ namespace LPO_XAF_v2._0.Module.Win.Editors.PDF_Viewer
                 {
                     fileData.SaveToStream(stream);
                     Control.LoadDocument(stream);
+                    Control.ZoomMode = PdfZoomMode.FitToVisible;
                 }
             }
             else

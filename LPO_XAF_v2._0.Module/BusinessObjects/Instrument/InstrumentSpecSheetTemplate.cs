@@ -1,5 +1,5 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="F:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" company="David W. Landry III">
+// <copyright file="D:\Users\dlandry\Source\Repos\LPO_V2\LPO_XAF_v2._0.Module\BusinessObjects\Instrument\InstrumentSpecSheetTemplate.cs" company="David W. Landry III">
 //     Author: _**David Landry**_
 //     *Copyright (c) David W. Landry III. All rights reserved.*
 // </copyright>
@@ -29,6 +29,8 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
         public override void AfterConstruction() => base.AfterConstruction();
 
 
+        FileData template;
+        FileData templateFile;
         InstrumentSpecSheetTemplateCategory category;
         string formNumber;
         string title;
@@ -50,6 +52,15 @@ namespace LPO_XAF_v2._0.Module.BusinessObjects.Instrument
 
         [EditorAlias(EditorAliases.SpreadsheetPropertyEditor)]
         public byte[] SpecSheet { get => specSheet; set => SetPropertyValue(nameof(SpecSheet), ref specSheet, value); }
+
+        public FileData TemplateFile
+        {
+            get => templateFile;
+            set => SetPropertyValue(nameof(TemplateFile), ref templateFile, value);
+        }
+
+        [VisibleInListView(false)]
+        public FileData Template => templateFile;
 
         public string DisplayName
         {
